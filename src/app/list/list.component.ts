@@ -31,8 +31,8 @@ export class ListComponent implements OnInit {
 
   setList(list_id: number, value: boolean): void {
     if (this.user_id) {
-      this.gameService.updateList(this.user_id,this.game_id,list_id,value);
-      console.log(list_id+","+value)
+      this.gameService.updateList(this.user_id,this.game_id,list_id,value)
+        .subscribe(result => console.log(result));
     }
   }
 }

@@ -17,29 +17,32 @@ export class UserService {
     private http: HttpClient
   ) { }
 
-  user: User;
-
   login(username: string, password: string): Observable<User> {
     return this.http.post<User>('/api/login',{
       username: username,
       password: password
     }).pipe(tap(user => {
-      this.user = user as User;
-      return user;
+      localStorage.setItem('user',JSON.stringify(user));
+      return Object.assign(new User(), user);
     }));
   }
 
   logout(): Observable<any> {
-    this.user = undefined;
+    localStorage.removeItem('user');
     return of(null);
   }
 
   getUser(): User {
-    return this.user;
+    const u = JSON.parse(localStorage.getItem('user'));
+    return Object.assign(new User(),u);
   }
 
   isLoggedIn(): boolean {
-    return this.user != undefined;
+    return localStorage.getItem('user') !== null;
+  }
+
+  getToken(): string {
+    return this.getUser().token;
   }
 
 }

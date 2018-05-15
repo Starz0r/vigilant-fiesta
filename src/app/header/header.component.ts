@@ -31,7 +31,15 @@ export class HeaderComponent implements OnInit {
 
   login(username: string, password: string) {
     this.userService.login(username,password)
-      .subscribe(user => console.log('logged in'));
+      .subscribe(user => console.log('logged in'),
+      error => {
+        if (error.name === 'HttpErrorResponse' 
+          && error.status === 401) {
+          //TODO: notify user that login failed
+        } else {
+          console.log(error);
+        }
+      });
   }
 
   logout() {

@@ -29,6 +29,9 @@ import { ReviewListComponent } from './review-list/review-list.component';
 import { ListComponent } from './list/list.component';
 import { DashboardGamesComponent } from './dashboard-games/dashboard-games.component';
 
+import { TokenInterceptor } from './token-interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +56,10 @@ import { DashboardGamesComponent } from './dashboard-games/dashboard-games.compo
     NgxGalleryModule,
     ReactiveFormsModule
   ],
-  providers: [MessageService, GameService, UserService],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
+    MessageService, GameService, UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
