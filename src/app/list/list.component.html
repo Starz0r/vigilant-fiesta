@@ -1,0 +1,12 @@
+<label><input type="checkbox" 
+  [ngModel]="getList(1)"
+  (ngModelChange)="setList(1,$event)"
+  > Favorite</label><br>
+<label><input type="checkbox" 
+  [ngModel]="getList(2)"
+  (ngModelChange)="setList(2,$event)"
+  > Cleared</label><br>
+<label><input type="checkbox" 
+  [ngModel]="getList(3)"
+  (ngModelChange)="setList(3,$event)"
+  > Bookmark</label>

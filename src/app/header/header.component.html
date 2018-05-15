@@ -1,0 +1,17 @@
+<div class="header">
+  <h1><img src="assets/images/cherry.gif">Delicious Fruit 2.0</h1>
+  <button i18n *ngIf="!isLoggedIn()" (click)="showModal()">Login</button>
+  <button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+
+  <button i18n *ngIf="!isLoggedIn()" (click)="register()">Register</button>
+  <nav>
+    <a i18n routerLink="/dashboard">Dashboard</a>
+    <a i18n routerLink="/games">Games</a>
+    <a i18n target="_blank" href="http://www.iwannacommunity.com/forum/index.php">Forums</a>
+    <a i18n target="_blank" href="https://blue.delicious-fruit.com/">Blue</a>
+    <a i18n target="_blank" href="http://www.twitch.tv/team/thewannabes">Twitch Team</a>
+    <a i18n target="_blank" href="http://www.fangam.es/intro">Intro</a>
+  </nav>
+</div>
+
+<app-login *ngIf="showIt" (close)="closeModal($event)"></app-login>

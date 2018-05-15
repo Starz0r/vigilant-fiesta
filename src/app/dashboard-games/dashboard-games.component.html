@@ -1,0 +1,27 @@
+<h2>Newest 25 Games</h2>
+<div class="container">
+  <table *ngIf="!loading">
+    <tr>
+      <th>Game</th>
+      <th>Released</th>
+      <th>Rating</th>
+      <th>Difficulty</th>
+    </tr>
+    <tr *ngFor="let game of games">
+      <td><a routerLink="/game/{{game.id}}">{{game.name}}</a></td>
+      <td class="value">{{(game.date_created | date) || 'N/A'}}</td>
+      <td class="value">
+        {{game.rating!==null
+          ?(game.rating/10 | number:'1.1-1')
+          :'N/A'}}
+      </td>
+      <td class="value">
+        {{game.difficulty!==null
+          ?(game.difficulty | number:'1.1-1')
+          :'N/A'}}
+      </td>
+    </tr>
+  </table>  
+  <div *ngIf="loading">Loading...
+  </div>
+</div>

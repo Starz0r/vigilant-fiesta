@@ -1,0 +1,44 @@
+div.reviews {
+  margin-top: 1em;
+}
+
+ngx-gallery ::ng-deep .ngx-gallery-image-text[_ngcontent-c4] {
+  padding: 0px 10px;
+  width: auto;
+  background: rgba(0, 0, 0, 0.5);
+  bottom: 8px;
+}
+
+div.rating {
+  border: 1px solid black;
+  width: 200px;
+  font-weight: bold;
+  display: inline-block;
+  color: #000;
+  border-radius: 5px;
+  box-shadow: 5px 5px #ddd;
+  margin: 0.5em 0.25em;
+}
+
+div.rating > div {
+  text-align: center;
+  margin: 0.25em;
+}
+
+div.rating > div.value {
+  background-color: #aaa;
+  padding: 0.2em;
+  margin: 0.25em;
+  border-radius: 5px;
+  font-weight: normal;
+}
+
+div.gallery {
+  display: inline-block;
+  margin: 0.5em;
+}
+
+div.game-content {
+  display: inline-block; 
+  vertical-align: top;
+}

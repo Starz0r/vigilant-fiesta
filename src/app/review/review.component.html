@@ -1,0 +1,11 @@
+<div class="review">
+  <div class="name">
+    <a [routerLink]="'/user/'+review.user_id">{{review.user_name}}</a>
+  </div>
+  <div class="date">{{review.date_created | date}}</div>
+
+  <div class="comment">{{review.comment}}</div>
+
+  <div class="rate">Rating: {{review.rating/10 || 'N/A'}}</div> 
+  <div class="rate">Difficulty: {{review.difficulty || 'N/A'}}</div>
+</div>

@@ -1,0 +1,7 @@
+<div class="modal">
+    Username: <input type="text" (change)="username = $event.target.value;" /><br>
+    Password: <input type="password" (change)="password = $event.target.value;" /><br>
+    <button type="button" (click)="ok()">OK</button>
+    <button type="button" (click)="cancel()">Cancel</button>
+</div>
+<div class="overlay" (click)="cancel()"></div>

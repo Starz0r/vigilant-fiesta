@@ -1,0 +1,20 @@
+<div *ngIf="loading">
+  <h2>Loading...</h2>
+</div>
+
+<div *ngIf="user">
+  <h2>{{user.name}}</h2>
+  <div>{{user.bio}}</div>
+
+  <app-review-list [userId]="user.id"></app-review-list>
+</div>    
+
+<div *ngIf="notFound">
+  <h2>No user found by id {{id}}</h2>
+</div>
+
+<div *ngIf="!user && !loading && !notFound">
+  <h2>Unable to load user {{id}}. Please try again later.</h2>
+</div>
+
+<button (click)="goBack()">go back</button>

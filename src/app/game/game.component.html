@@ -1,0 +1,74 @@
+<div *ngIf="loading">
+  <h2>Loading...</h2>
+</div>
+
+<div *ngIf="game">
+  <div class="game-content">
+    <h2>{{game.name}}</h2>
+    <div>
+      <ng-container [ngPlural]="game.author.length">
+        <ng-template ngPluralCase="=0">Creators:</ng-template>
+        <ng-template ngPluralCase="=1">Creator:</ng-template>
+        <ng-template ngPluralCase="other">Creators:</ng-template>
+      </ng-container>
+      {{game.author.join(", ")}}
+    </div>
+
+    <div class="rating" [ngStyle]="{'background-color': rateColor(game.rating)}">
+      <div>Average Rating</div>
+      <div class="value">
+        {{game.rating!==null
+          ?(game.rating/10 | number:'1.1-1')+' / 10'
+          :'N/A'
+        }}<br>
+        {{game.rating!==null
+          ?rateNames[(game.rating/10 | number:'1.0-0')]
+          :'&nbsp;'
+        }}
+      </div>
+    </div>
+    <div class="rating" [ngStyle]="{'background-color': diffColor(game.difficulty)}">
+      <div>Average Difficulty</div>
+      <div class="value">
+        {{game.difficulty!==null
+          ?(game.difficulty | number:'1.1-1')+' / 100'
+          :'N/A'
+        }}<br>
+        {{game.difficulty!==null
+          ?diffNames[(game.difficulty/10 | number:'1.0-0')]
+          :'&nbsp;'
+        }}
+      </div>
+    </div>
+
+    <div>Release Date: {{game.date_created ? (game.date_created | date) : 'Not Available'}}</div>
+
+    <div *ngIf="game.url">
+      <a target="_blank" href="{{game.url}}">Download Game</a>
+    </div>
+    <div *ngIf="!game.url">
+      Private Game
+    </div>
+
+    <app-list *ngIf="isLoggedIn()"
+      [user_id]="this.userService.getUser().id"
+      [game_id]="this.id"></app-list>
+
+  </div>
+
+  <div class="gallery">
+    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+  </div>
+
+  <app-review-list [gameId]="game.id"></app-review-list>
+</div>
+
+<div *ngIf="notFound">
+  <h2>No game found by id {{id}}</h2>
+</div>
+
+<div *ngIf="!game && !loading && !notFound">
+  <h2>Unable to load game {{id}}. Please try again later.</h2>
+</div>
+
+<button (click)="goBack()">go back</button>
