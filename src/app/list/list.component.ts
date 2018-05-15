@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
     if (this.game_id && this.user_id) {
       this.gameService
         .getListsForUserGame(this.user_id,this.game_id)
-        .subscribe(list => this.lists);
+        .subscribe(list => this.lists = list);
     }
   }
 
