@@ -1,4 +1,7 @@
-<div *ngFor="let tag of tagMap()">
-  {{tag.tags[0].name}}: 
-  {{tag.count}}
-</div>
+<mat-chip-list>
+    <app-tag *ngFor="let tag of tagMap()"
+    [id]="tag.tags[0].tag_id"
+    [name]="tag.tags[0].name"
+    [count]="tag.count"
+  ></app-tag>
+</mat-chip-list>

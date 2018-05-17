@@ -32,7 +32,8 @@ export class TagListComponent implements OnInit {
       obj.tags.push(cur);
       obj.count++;
       return acc;
-    },[]);
+    },[])
+    .sort((a,b)=>b.count-a.count);
   }
 
 }

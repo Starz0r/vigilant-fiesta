@@ -8,7 +8,9 @@ import { Tag } from '../tag';
 })
 export class TagComponent implements OnInit {
 
-  @Input() tag: Tag;
+  @Input() name: string;
+  @Input() id: number;
+  @Input() count: number;
 
   constructor() { }
 

@@ -34,6 +34,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TagComponent } from './tag/tag.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 
+import { MatChipsModule, MatCheckboxModule, MatCardModule } from '@angular/material';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,10 @@ import { TagListComponent } from './tag-list/tag-list.component';
     HttpClientModule,
     InfiniteScrollModule,
     NgxGalleryModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatChipsModule,
+    MatCheckboxModule,
+    MatCardModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
