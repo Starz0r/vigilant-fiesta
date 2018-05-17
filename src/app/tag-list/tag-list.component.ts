@@ -26,9 +26,10 @@ export class TagListComponent implements OnInit {
       let res = acc || [];
       let obj = res.find(val => val.tag_id === cur.tag_id);
       if (!obj) {
-        obj = {tag_id: cur.tag_id, count: 0};
+        obj = {tag_id: cur.tag_id, count: 0, tags: []};
         acc.push(obj);
       }
+      obj.tags.push(cur);
       obj.count++;
       return acc;
     },[]);
