@@ -50,23 +50,29 @@
       Private Game
     </div>
 
-    <app-list *ngIf="isLoggedIn()"
+    <app-list *ngIf="isLoggedIn() && this.game"
       [user_id]="this.userService.getUser().id"
-      [game_id]="this.id">
+      [game_id]="this.game.id">
     </app-list>
 
-    <app-tag-list [game_id]="this.id">
+    <app-tag-list 
+      *ngIf="this.game" 
+      [game_id]="this.game.id">
     </app-tag-list>
 
   </div>
 
   <div class="gallery">
-    <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+    <ngx-gallery 
+      [options]="galleryOptions" 
+      [images]="galleryImages"></ngx-gallery>
   </div>
 
 
   <button *ngIf="isLoggedIn()">Write a Review</button>
-  <app-review-list [gameId]="game.id"></app-review-list>
+  <app-review-list 
+  *ngIf="this.game" 
+    [gameId]="this.game.id"></app-review-list>
 </div>
 
 <div *ngIf="notFound">
