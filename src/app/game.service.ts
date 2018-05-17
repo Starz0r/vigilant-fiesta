@@ -4,12 +4,13 @@ import { Game } from './game';
 import { Review } from './review';
 import { User } from './user';
 import { List } from './list';
+import { Tag } from './tag';
 import { UserService } from './user.service';
 import { PublicUser } from './public-user';
 import { Screenshot } from './screenshot';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
-import { of } from 'rxjs/observable/of';
+import { of } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -80,5 +81,9 @@ export class GameService {
       gameId: gameId,
       value: value
     });
+  }
+
+  getTagsForGame(gameId: number): Observable<Tag[]> {
+    return this.http.get<Tag[]>(`/api/games/${gameId}/tags`);
   }
 }

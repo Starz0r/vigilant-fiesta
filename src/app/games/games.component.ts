@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from '../game';
 import { GameService } from '../game.service';
 import { FormControl } from '@angular/forms';
-import { debounceTime } from 'rxjs/operators/debounceTime';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-games',

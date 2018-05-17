@@ -31,6 +31,8 @@ import { DashboardGamesComponent } from './dashboard-games/dashboard-games.compo
 
 import { TokenInterceptor } from './token-interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TagComponent } from './tag/tag.component';
+import { TagListComponent } from './tag-list/tag-list.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     UserComponent,
     ReviewListComponent,
     ListComponent,
-    DashboardGamesComponent
+    DashboardGamesComponent,
+    TagComponent,
+    TagListComponent
   ],
   imports: [
     BrowserModule,

@@ -52,7 +52,11 @@
 
     <app-list *ngIf="isLoggedIn()"
       [user_id]="this.userService.getUser().id"
-      [game_id]="this.id"></app-list>
+      [game_id]="this.id">
+    </app-list>
+
+    <app-tag-list [game_id]="this.id">
+    </app-tag-list>
 
   </div>
 
@@ -60,6 +64,8 @@
     <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
   </div>
 
+
+  <button *ngIf="isLoggedIn()">Write a Review</button>
   <app-review-list [gameId]="game.id"></app-review-list>
 </div>
 
