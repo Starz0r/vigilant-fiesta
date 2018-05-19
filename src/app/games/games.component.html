@@ -4,8 +4,7 @@
   Filter: <input type="text" [formControl]="term">
 </div>  
 
-<ul infiniteScroll 
-    (scrolled)="onScroll()">
+<ul>
   <li *ngFor="let game of games">
     <a routerLink="/game/{{game.id}}">
       {{game.name}}

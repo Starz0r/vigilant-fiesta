@@ -19,7 +19,6 @@ import { GamesComponent } from './games/games.component';
 
 import { UserService } from './user.service';
 
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { ReviewComponent } from './review/review.component';
 import { HeaderComponent } from './header/header.component';
@@ -58,7 +57,6 @@ import { MatChipsModule, MatCheckboxModule, MatCardModule } from '@angular/mater
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    InfiniteScrollModule,
     NgxGalleryModule,
     ReactiveFormsModule,
     MatChipsModule,

@@ -2,8 +2,8 @@ export class Review {
   id: number;
   game_id: number;
   user_id: number;
-  rating: string;
-  difficulty: string;
+  rating: number;
+  difficulty: number;
   comment: number;
   date_created: Date;
   removed: number;
