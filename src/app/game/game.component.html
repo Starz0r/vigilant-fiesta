@@ -17,10 +17,7 @@
     <div class="rating" [ngStyle]="{'background-color': rateColor(game.rating)}">
       <div>Average Rating</div>
       <div class="value">
-        {{game.rating!==null
-          ?(game.rating/10 | number:'1.1-1')+' / 10'
-          :'N/A'
-        }}<br>
+        {{game.rating | rating}}<br>
         {{game.rating!==null
           ?rateNames[(game.rating/10 | number:'1.0-0')]
           :'&nbsp;'
@@ -30,10 +27,7 @@
     <div class="rating" [ngStyle]="{'background-color': diffColor(game.difficulty)}">
       <div>Average Difficulty</div>
       <div class="value">
-        {{game.difficulty!==null
-          ?(game.difficulty | number:'1.1-1')+' / 100'
-          :'N/A'
-        }}<br>
+        {{game.difficulty | difficulty}}<br>
         {{game.difficulty!==null
           ?diffNames[(game.difficulty/10 | number:'1.0-0')]
           :'&nbsp;'
@@ -69,7 +63,7 @@
   </div>
 
 
-  <button *ngIf="isLoggedIn()">Write a Review</button>
+  <app-review-input *ngIf="isLoggedIn()">Write a Review</app-review-input>
   <app-review-list 
   *ngIf="this.game" 
     [gameId]="this.game.id"></app-review-list>

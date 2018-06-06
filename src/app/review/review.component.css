@@ -13,3 +13,7 @@ div.rate {
 div.name {
   color: black;
 }
+
+mat-card {
+  margin-bottom: 0.5em;
+}

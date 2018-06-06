@@ -2,5 +2,6 @@
 <app-header></app-header>
 <div class="body">
   <router-outlet></router-outlet>
-  <app-messages></app-messages>
+  <div *ngIf="production">Production Environment</div>
+  <div *ngIf="!production">Development Environment</div>
 </div>

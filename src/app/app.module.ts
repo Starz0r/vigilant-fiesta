@@ -33,7 +33,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TagComponent } from './tag/tag.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 
-import { MatChipsModule, MatCheckboxModule, MatCardModule } from '@angular/material';
+import { MatChipsModule, MatCheckboxModule, MatCardModule, MatSliderModule } from '@angular/material';
+import { ReviewInputComponent } from './review-input/review-input.component';
+import { DifficultyPipe } from './difficulty.pipe';
+import { RatingPipe } from './rating.pipe';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,10 @@ import { MatChipsModule, MatCheckboxModule, MatCardModule } from '@angular/mater
     ListComponent,
     DashboardGamesComponent,
     TagComponent,
-    TagListComponent
+    TagListComponent,
+    ReviewInputComponent,
+    DifficultyPipe,
+    RatingPipe
   ],
   imports: [
     BrowserModule,
@@ -61,11 +68,13 @@ import { MatChipsModule, MatCheckboxModule, MatCardModule } from '@angular/mater
     ReactiveFormsModule,
     MatChipsModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatSliderModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    MessageService, GameService, UserService
+    MessageService, GameService, UserService,
+    DecimalPipe
   ],
   bootstrap: [AppComponent]
 })

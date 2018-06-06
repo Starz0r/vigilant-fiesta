@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './user';
 import { Observable } from 'rxjs';
+import * as jwt_decode from 'jwt-decode';
 
 import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -34,14 +35,23 @@ export class UserService {
 
   getUser(): User {
     const u = JSON.parse(localStorage.getItem('user'));
-    return Object.assign(new User(),u);
+    const user = Object.assign(new User(),u);
+    const token = jwt_decode(user.token);
+    if (token.exp <= (new Date().getTime()/1000)) {
+      console.log('user exipred %s <= %s',token.exp,new Date().getTime());
+      this.logout();
+      return null;
+    }
+    return user;
   }
 
   isLoggedIn(): boolean {
-    return localStorage.getItem('user') !== null;
+    if (localStorage.getItem('user') === null) return false;
+    else return this.getUser() !== null;
   }
 
   getToken(): string {
+    if (!this.isLoggedIn()) return null;
     return this.getUser().token;
   }
 
