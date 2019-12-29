@@ -1,4 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-login',
@@ -6,25 +8,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @Input() oldname = "";
-  @Output() close = new EventEmitter<any>();
-  username = "";
-  password = "";
-
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    throw new Error("Method not implemented.");
   }
+  constructor(
+    public dialogRef: MatDialogRef<LoginComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-  ok() {
-    this.close.emit({
-      username: this.username,
-      password: this.password
-    });
-  }
+    cancel(): void {
+      this.dialogRef.close();
+    }
 
-  cancel() {
-    this.close.emit(null);
-  }
+    ok(): void {
+      this.dialogRef.close();
+    }
+}
 
+export interface DialogData {
+  username: string;
+  password: string;
 }

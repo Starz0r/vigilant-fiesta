@@ -41,6 +41,9 @@ import { ReviewInputComponent } from './review-input/review-input.component';
 import { DifficultyPipe } from './difficulty.pipe';
 import { RatingPipe } from './rating.pipe';
 import { DecimalPipe } from '@angular/common';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -72,13 +75,17 @@ import { DecimalPipe } from '@angular/common';
     MatChipsModule,
     MatCheckboxModule,
     MatCardModule,
-    MatSliderModule
+    MatSliderModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     MessageService, GameService, UserService,
     DecimalPipe
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [LoginComponent]
 })
 export class AppModule { }

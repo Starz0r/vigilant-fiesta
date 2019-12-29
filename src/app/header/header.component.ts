@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-header',
@@ -9,24 +11,22 @@ import { UserService } from '../user.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
 
   }
 
-  showIt: boolean = false;
+  showLogin() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '250px'
+    });
 
-  showModal() {
-    this.showIt = true;
-  }
-  
-  closeModal(creds: any) {
-    this.showIt = false;
-    if (creds) {
-      this.login(creds.username, creds.password);
-    }
+    dialogRef.afterClosed().subscribe(result => {
+      this.login(result.username, result.password);
+    });
   }
 
   login(username: string, password: string) {

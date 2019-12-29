@@ -1,7 +1,15 @@
-<div class="modal">
-    Username: <input type="text" (change)="username = $event.target.value;" /><br>
-    Password: <input type="password" (change)="password = $event.target.value;" /><br>
-    <button type="button" (click)="ok()">OK</button>
-    <button type="button" (click)="cancel()">Cancel</button>
+<h1 mat-dialog-title>Login</h1>
+<div mat-dialog-content>
+    <p>Username</p>
+    <mat-form-field>
+        <input type="text" [(ngModel)]="data.username" />
+    </mat-form-field>
+    <p>Password</p>
+    <mat-form-field>
+        <input type="password" [(ngModel)]="data.password" />
+    </mat-form-field>
 </div>
-<div class="overlay" (click)="cancel()"></div>
+<div mat-dialog-actions>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
