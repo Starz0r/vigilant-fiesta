@@ -9,7 +9,7 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 })
 export class LoginComponent implements OnInit {
   ngOnInit(): void {
-    throw new Error("Method not implemented.");
+    
   }
   constructor(
     public dialogRef: MatDialogRef<LoginComponent>,
