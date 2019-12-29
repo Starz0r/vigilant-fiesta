@@ -1,9 +1,9 @@
 <div class="header">
   <h1><img src="assets/images/cherry.gif">Delicious Fruit 2.0</h1>
-  <button i18n *ngIf="!isLoggedIn()" (click)="showLogin()">Login</button>
-  <button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  <button mat-button i18n *ngIf="!isLoggedIn()" (click)="showLogin()">Login</button>
+  <button mat-button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
 
-  <button i18n *ngIf="!isLoggedIn()" (click)="register()">Register</button>
+  <button mat-button i18n *ngIf="!isLoggedIn()" (click)="register()">Register</button>
   <nav>
     <a i18n routerLink="/dashboard">Dashboard</a>
     <a i18n routerLink="/games">Games</a>
