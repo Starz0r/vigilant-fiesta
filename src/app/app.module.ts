@@ -33,7 +33,10 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TagComponent } from './tag/tag.component';
 import { TagListComponent } from './tag-list/tag-list.component';
 
-import { MatChipsModule, MatCheckboxModule, MatCardModule, MatSliderModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSliderModule } from '@angular/material/slider';
 import { ReviewInputComponent } from './review-input/review-input.component';
 import { DifficultyPipe } from './difficulty.pipe';
 import { RatingPipe } from './rating.pipe';

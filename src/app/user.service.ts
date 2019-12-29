@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './user';
-import { Observable } from 'rxjs';
+import { Observable ,  of } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
-
-import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 const httpOptions = {
