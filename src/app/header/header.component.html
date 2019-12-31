@@ -3,7 +3,7 @@
   <button mat-button i18n *ngIf="!isLoggedIn()" (click)="showLogin()">Login</button>
   <button mat-button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
 
-  <button mat-button i18n *ngIf="!isLoggedIn()" (click)="register()">Register</button>
+  <button mat-button i18n *ngIf="!isLoggedIn()" (click)="showRegister()">Register</button>
   <nav>
     <a i18n routerLink="/dashboard">Dashboard</a>
     <a i18n routerLink="/games">Games</a>

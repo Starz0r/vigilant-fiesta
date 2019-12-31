@@ -44,7 +44,9 @@ import { DecimalPipe } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TagListComponent,
     ReviewInputComponent,
     DifficultyPipe,
-    RatingPipe
+    RatingPipe,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +83,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatDialogModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
@@ -88,6 +92,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DecimalPipe
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent]
+  entryComponents: [LoginComponent,RegisterDialogComponent]
 })
 export class AppModule { }

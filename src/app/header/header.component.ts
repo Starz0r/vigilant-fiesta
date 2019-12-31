@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -21,11 +22,21 @@ export class HeaderComponent implements OnInit {
 
   showLogin() {
     const dialogRef = this.dialog.open(LoginComponent, {
-      width: '250px'
+      width: '350px', data:{}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.login(result.username, result.password);
+    });
+  }
+
+  showRegister() {
+    const dialogRef = this.dialog.open(RegisterDialogComponent, {
+      width: '350px', data:{}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.register(result.username, result.password, result.email);
     });
   }
 
@@ -51,7 +62,7 @@ export class HeaderComponent implements OnInit {
     return this.userService.isLoggedIn();
   }
 
-  register() {
+  register(username:string,password:string,email:string) {
     console.log("user wants to register")
   }
 
