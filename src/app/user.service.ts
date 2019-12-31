@@ -17,7 +17,7 @@ export class UserService {
   ) { }
 
   login(username: string, password: string): Observable<User> {
-    return this.http.post<User>('/api/login',{
+    return this.http.post<User>('/api/auth/login',{
       username: username,
       password: password
     }).pipe(tap(user => {
