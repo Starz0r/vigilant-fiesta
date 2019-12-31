@@ -63,7 +63,16 @@ export class HeaderComponent implements OnInit {
   }
 
   register(username:string,password:string,email:string) {
-    console.log("user wants to register")
+    this.userService.register(username,password,email)
+    .subscribe(user => console.log('logged in'),
+    error => {
+      if (error.name === 'HttpErrorResponse' 
+        && error.status === 400) {
+        //TODO: notify user that login failed
+      } else {
+        console.log(error);
+      }
+    });
   }
 
 }

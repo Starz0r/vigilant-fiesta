@@ -18,8 +18,16 @@ export class UserService {
 
   login(username: string, password: string): Observable<User> {
     return this.http.post<User>('/api/auth/login',{
-      username: username,
-      password: password
+      username,password
+    }).pipe(tap(user => {
+      localStorage.setItem('user',JSON.stringify(user));
+      return Object.assign(new User(), user);
+    }));
+  }
+
+  register(username: string, password: string, email: string): Observable<User> {
+    return this.http.post<User>('/api/users',{
+      username,password,email
     }).pipe(tap(user => {
       localStorage.setItem('user',JSON.stringify(user));
       return Object.assign(new User(), user);
