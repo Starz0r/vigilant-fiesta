@@ -9,17 +9,53 @@ const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
+const TOKEN_CHECK_INTERVAL_MS = 1000*60; //1 minute
+const TOKEN_REFRESH_THRESHOLD_S = 60*60*12; //12 hours
+
 @Injectable()
 export class UserService {
 
+  tokenWatchdog;
+  token;
+
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    //Grab the user every minute, to confirm it's still valid
+    //If invalid, it will log them out automatically
+    //If the token is about to expire, then it will be refreshed
+    this.tokenWatchdog = setInterval(()=>{
+      const exp = this.token.exp;
+      const now = new Date().getTime()/1000;
+      const rem = exp-now;
+  
+      console.log(`user time remaining: ${rem}`)
+  
+      if (rem <= TOKEN_REFRESH_THRESHOLD_S) {
+        console.log("refreshing token")
+        this.refresh().subscribe();
+      } else if (rem <= 0) {
+        console.log('user exipred %s <= %s',this.token.exp,new Date().getTime());
+        this.logout();
+        return null;
+      }
+    },TOKEN_CHECK_INTERVAL_MS);
+  }
 
   login(username: string, password: string): Observable<User> {
     return this.http.post<User>('/api/auth/login',{
       username,password
     }).pipe(tap(user => {
+      this.token = jwt_decode(user.token);
+      localStorage.setItem('user',JSON.stringify(user));
+      return Object.assign(new User(), user);
+    }));
+  }
+
+  refresh() {
+    return this.http.post<User>('/api/auth/refresh',{})
+    .pipe(tap(user => {
+      this.token = jwt_decode(user.token);
       localStorage.setItem('user',JSON.stringify(user));
       return Object.assign(new User(), user);
     }));
@@ -29,6 +65,7 @@ export class UserService {
     return this.http.post<User>('/api/users',{
       username,password,email
     }).pipe(tap(user => {
+      this.token = jwt_decode(user.token);
       localStorage.setItem('user',JSON.stringify(user));
       return Object.assign(new User(), user);
     }));
@@ -42,12 +79,11 @@ export class UserService {
   getUser(): User {
     const u = JSON.parse(localStorage.getItem('user'));
     const user = Object.assign(new User(),u);
-    const token = jwt_decode(user.token);
-    if (token.exp <= (new Date().getTime()/1000)) {
-      console.log('user exipred %s <= %s',token.exp,new Date().getTime());
-      this.logout();
-      return null;
+
+    if (user && !this.token) {
+      this.token = jwt_decode(user.token);
     }
+
     return user;
   }
 
