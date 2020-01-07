@@ -9,11 +9,6 @@ div.rate {
   display: inline-block;
   margin-right: 1em;
 }
-
-div.name {
-  color: black;
-}
-
 mat-card {
   margin-bottom: 0.5em;
 }

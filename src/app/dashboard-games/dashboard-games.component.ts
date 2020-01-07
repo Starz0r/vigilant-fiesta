@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Game } from '../game';
 import { GameService } from '../game.service';
 
@@ -12,6 +12,19 @@ export class DashboardGamesComponent implements OnInit {
   games: Game[] = [];
   loading: boolean = true;
 
+  columnsToDisplay=['game','released','rating','difficulty'];
+
+  @Input()
+  filter: string = null;
+  @Input()
+  start: number = 0;
+  @Input()
+  limit: number = 25;
+  @Input()
+  sort: string = "date_created";
+  @Input()
+  direction: string = "DESC";
+
   constructor(
     private gameService: GameService
   ) { }
@@ -21,7 +34,7 @@ export class DashboardGamesComponent implements OnInit {
   }
 
   getGames(): void {
-    this.gameService.getGames(null,0,25,'date_created','DESC')
+    this.gameService.getGames(this.filter,this.start,this.limit,this.sort,this.direction)
       .subscribe(games => {
         this.games = games;
         this.loading = false;

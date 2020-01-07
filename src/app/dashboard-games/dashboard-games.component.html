@@ -1,26 +1,34 @@
-<h2>Newest 25 Games</h2>
 <div class="container">
-  <table *ngIf="!loading">
-    <tr>
-      <th>Game</th>
-      <th>Released</th>
-      <th>Rating</th>
-      <th>Difficulty</th>
-    </tr>
-    <tr *ngFor="let game of games">
-      <td><a routerLink="/game/{{game.id}}">{{game.name}}</a></td>
-      <td class="value">{{(game.date_created | date) || 'N/A'}}</td>
-      <td class="value">
+  <table mat-table [dataSource]="games" *ngIf="!loading">
+    <ng-container matColumnDef="game">
+      <th mat-header-cell *matHeaderCellDef>Game</th>
+      <td mat-cell *matCellDef="let game">
+        <a mat-button routerLink="/game/{{game.id}}">{{game.name}}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="released">
+      <th mat-header-cell *matHeaderCellDef>Released</th>
+      <td mat-cell *matCellDef="let game">{{(game.date_created | date) || 'N/A'}}</td>
+    </ng-container>
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef>Rating</th>
+      <td mat-cell *matCellDef="let game">
         {{game.rating!==null
           ?(game.rating/10 | number:'1.1-1')
           :'N/A'}}
       </td>
-      <td class="value">
+    </ng-container>
+    <ng-container matColumnDef="difficulty">
+      <th mat-header-cell *matHeaderCellDef>Difficulty</th>
+      <td mat-cell *matCellDef="let game">
         {{game.difficulty!==null
           ?(game.difficulty | number:'1.1-1')
           :'N/A'}}
       </td>
-    </tr>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
   </table>  
   <div *ngIf="loading">Loading...
   </div>
