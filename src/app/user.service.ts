@@ -4,6 +4,7 @@ import { User } from './user';
 import { Observable ,  of } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
 import { tap } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,27 +20,36 @@ export class UserService {
   token;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private snackBar: MatSnackBar
   ) { 
     //Grab the user every minute, to confirm it's still valid
     //If invalid, it will log them out automatically
     //If the token is about to expire, then it will be refreshed
-    this.tokenWatchdog = setInterval(()=>{
-      const exp = this.token.exp;
-      const now = new Date().getTime()/1000;
-      const rem = exp-now;
-  
-      console.log(`user time remaining: ${rem}`)
-  
-      if (rem <= TOKEN_REFRESH_THRESHOLD_S) {
-        console.log("refreshing token")
-        this.refresh().subscribe();
-      } else if (rem <= 0) {
-        console.log('user exipred %s <= %s',this.token.exp,new Date().getTime());
-        this.logout();
-        return null;
-      }
-    },TOKEN_CHECK_INTERVAL_MS);
+    this.checkStatus();
+    this.tokenWatchdog = setInterval(this.checkStatus,TOKEN_CHECK_INTERVAL_MS);
+  }
+
+  checkStatus() {
+    if (!this.token) return;
+    const exp = this.token.exp;
+    const now = new Date().getTime()/1000;
+    const rem = exp-now;
+
+    //console.log(`user time remaining: ${rem}`)
+
+    if (rem <= TOKEN_REFRESH_THRESHOLD_S) {
+      console.log("refreshing token")
+      this.refresh().subscribe();
+    } else if (rem <= 0) {
+      console.log('user exipred %s <= %s',this.token.exp,new Date().getTime());
+      this.logout();
+      
+      this.snackBar.open("Logged out due to inactivity, please log in again.",null,{
+        duration: 5000,
+      });
+      return null;
+    }
   }
 
   login(username: string, password: string): Observable<User> {

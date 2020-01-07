@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {
