@@ -1,9 +1,10 @@
-/* AppComponent's private CSS styles */
-h1 {
-  font-size: 1.2em;
-  color: #999;
-  
-  color: black;
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+.title {
+  margin-left: 0.25em;
 }
 h2 {
   font-size: 2em;
@@ -30,7 +31,6 @@ nav a.active {
 }
 
 div.header {
-  background-color: #ccc;
   margin: 0;
   padding: 0.25em;
 }
