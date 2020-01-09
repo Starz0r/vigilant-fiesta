@@ -1,13 +1,11 @@
 <h2>Game List</h2>
 
 <div class="filter">
-  Filter: <input type="text" [formControl]="term">
+  Filter: <input type="text" [(ngModel)]="filter">
 </div>  
 
-<ul>
-  <li *ngFor="let game of games">
-    <a routerLink="/game/{{game.id}}">
-      {{game.name}}
-    </a>
-  </li>
-</ul>
+<app-dashboard-games
+[filter]="filter"
+[start]="0"
+[limit]="1000"
+></app-dashboard-games>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
 import { Game } from '../game';
 import { GameService } from '../game.service';
 
@@ -7,7 +7,7 @@ import { GameService } from '../game.service';
   templateUrl: './dashboard-games.component.html',
   styleUrls: ['./dashboard-games.component.css']
 })
-export class DashboardGamesComponent implements OnInit {
+export class DashboardGamesComponent implements OnInit, OnChanges {
 
   games: Game[] = [];
   loading: boolean = true;
@@ -31,6 +31,16 @@ export class DashboardGamesComponent implements OnInit {
 
   ngOnInit() {
     this.getGames();
+  }
+  
+  ngOnChanges(changes: SimpleChanges) {
+    /*const currentItem: SimpleChange = changes.filter;
+    console.log('prev value: ', currentItem.previousValue);
+    console.log('got item: ', currentItem.currentValue);
+    if(currentItem.currentValue){
+      this.scannedUPC = changes.item.currentValue.upc;
+    }
+    this.suppliedQuantity = 0;*/
   }
 
   getGames(): void {
