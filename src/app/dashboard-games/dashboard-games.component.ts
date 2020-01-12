@@ -1,13 +1,15 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, OnDestroy } from '@angular/core';
 import { Game } from '../game';
 import { GameService } from '../game.service';
+import { Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard-games',
   templateUrl: './dashboard-games.component.html',
   styleUrls: ['./dashboard-games.component.css']
 })
-export class DashboardGamesComponent implements OnInit, OnChanges {
+export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
 
   games: Game[] = [];
   loading: boolean = true;
@@ -25,22 +27,28 @@ export class DashboardGamesComponent implements OnInit, OnChanges {
   @Input()
   direction: string = "DESC";
 
+  debounceSearch: Subject<SimpleChanges> = new Subject<SimpleChanges>();
+
   constructor(
     private gameService: GameService
   ) { }
 
   ngOnInit() {
     this.getGames();
+
+    this.debounceSearch
+      .pipe(debounceTime(500))
+      .subscribe(() => {
+        this.getGames();
+      });
+  }
+
+  ngOnDestroy() {
+    this.debounceSearch.unsubscribe();
   }
   
   ngOnChanges(changes: SimpleChanges) {
-    /*const currentItem: SimpleChange = changes.filter;
-    console.log('prev value: ', currentItem.previousValue);
-    console.log('got item: ', currentItem.currentValue);
-    if(currentItem.currentValue){
-      this.scannedUPC = changes.item.currentValue.upc;
-    }
-    this.suppliedQuantity = 0;*/
+    this.debounceSearch.next(changes)
   }
 
   getGames(): void {
