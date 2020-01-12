@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Review } from '../review';
+import { MatSliderChange } from '@angular/material/slider';
 
 @Component({
   selector: 'app-review-input',
@@ -14,11 +15,24 @@ export class ReviewInputComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (this.review === null) this.review = new Review();
+    if (this.review === null) {
+      this.review = new Review();
+      //set to -1 so the slider starts at minimum; but this is the same as null
+      this.review.rating = -1;
+      this.review.difficulty = -1;
+    }
   }
 
   update() {
     console.log(this.review);
+  }
+
+  refreshDiff(event: MatSliderChange) {
+    this.review.difficulty = event.value;
+  }
+
+  refreshRate(event: MatSliderChange) {
+    this.review.rating = event.value;
   }
 
 }

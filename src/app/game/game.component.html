@@ -63,7 +63,14 @@
   </div>
 
 
-  <app-review-input *ngIf="isLoggedIn()">Write a Review</app-review-input>
+  <mat-expansion-panel *ngIf="isLoggedIn()">
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Write a Review
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+  <app-review-input></app-review-input>
+  </mat-expansion-panel>
   <app-review-list 
   *ngIf="this.game" 
     [gameId]="this.game.id"></app-review-list>

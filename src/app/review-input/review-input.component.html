@@ -1,26 +1,26 @@
 <div>
-  <h3>My Review</h3>
-
   <form class="example-form">
     My Rating: {{review.rating | rating}}<br>
-    <mat-slider min="0" max="100" step="1" value="0"
-      [(ngModel)]="review.rating"></mat-slider><br>
+    <mat-slider min="-1" max="100" step="1" value="-1"
+      [(ngModel)]="review.rating" name="rating"
+      (input)="refreshRate($event)"></mat-slider><br>
 
     My Difficulty: {{review.difficulty | difficulty}}<br>
-    <mat-slider min="0" max="100" step="1" value="0" 
-      [(ngModel)]="review.difficulty"></mat-slider><br>
+    <mat-slider min="-1" max="100" step="1" value="-1" 
+      [(ngModel)]="review.difficulty" name="difficulty"
+      (input)="refreshDiff($event)"></mat-slider><br>
 
     <mat-form-field class="example-full-width">
     <textarea matInput placeholder="My Review" 
-      [(ngModel)]="review.comment"></textarea><br>
+      [(ngModel)]="review.comment" name="comment"></textarea><br>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <input matInput placeholder="Tags (Separate with Spaces)" 
-        type="text">
+        type="text" name="tags">
     </mat-form-field>
 
-    <button mat-raised-button i18n (click)="update()">Update my review</button>
+    <button mat-raised-button i18n (click)="update()">Update</button>
 
   </form>
 </div>
