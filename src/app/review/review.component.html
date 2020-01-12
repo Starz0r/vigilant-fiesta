@@ -1,10 +1,13 @@
-<mat-card>
+<mat-card [routerLink]="'/game/'+review.game_id">
   <mat-card-title>
+      {{review.game_name}}
+  </mat-card-title>
+  <mat-card-subtitle>
     <div class="name">
-      <a mat-button [routerLink]="'/user/'+review.user_id">{{review.user_name}}</a>
+      By: <a mat-button [routerLink]="'/user/'+review.user_id">{{review.user_name}}</a>
     </div>
     <div class="date">{{review.date_created | date}}</div>
-  </mat-card-title>
+  </mat-card-subtitle>
 
   <mat-card-content>
     <div class="comment">{{review.comment}}</div>

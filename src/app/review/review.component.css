@@ -11,4 +11,5 @@ div.rate {
 }
 mat-card {
   margin-bottom: 0.5em;
+  cursor: pointer;
 }
