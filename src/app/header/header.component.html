@@ -7,8 +7,10 @@
         <span class="fill-remaining-space"></span>
         <span>
           <button mat-raised-button i18n *ngIf="!isLoggedIn()" (click)="showLogin()">Login</button>
-          <button mat-raised-button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
           <button mat-raised-button i18n *ngIf="!isLoggedIn()" (click)="showRegister()">Register</button>
+
+          <span class="username" *ngIf="isLoggedIn()">{{getUser().name}}</span>
+          <button mat-raised-button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
         </span>
     </mat-toolbar-row>
     <mat-toolbar-row>

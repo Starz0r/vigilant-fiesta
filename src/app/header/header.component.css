@@ -16,3 +16,8 @@ div.header {
   margin: 0;
   padding: 0.25em;
 }
+
+.username {
+  margin-right: 0.5em;
+  font-size: medium;
+}

@@ -20,6 +20,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  getUser() {
+    return this.userService.getUser();
+  }
+
   showLogin() {
     const dialogRef = this.dialog.open(LoginComponent, {
       width: '350px', data:{}
