@@ -51,6 +51,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     ReviewInputComponent,
     DifficultyPipe,
     RatingPipe,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { environment } from '../environments/environment';
  
 import { UserService } from './user.service';
 
@@ -9,8 +8,6 @@ import { UserService } from './user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  production = environment.production;
   
   constructor(
     private userService: UserService
