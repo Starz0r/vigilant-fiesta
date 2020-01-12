@@ -37,7 +37,7 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
     this.getGames();
 
     this.debounceSearch
-      .pipe(debounceTime(500))
+      .pipe(debounceTime(300))
       .subscribe(() => {
         this.getGames();
       });
