@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-footer',
@@ -10,9 +11,16 @@ export class FooterComponent implements OnInit {
 
   production = environment.production;
 
-  constructor() { }
+  constructor(
+    private userService: UserService,
+    ) { }
 
   ngOnInit() {
+  }
+
+  showAdmin() {
+    const user = this.userService.getUser();
+    return user != null && user.isAdmin;
   }
 
 }
