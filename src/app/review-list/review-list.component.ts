@@ -34,7 +34,7 @@ export class ReviewListComponent implements OnInit {
       this.gameService.getReviewsForGame(this.gameId)
         .subscribe(this.assignReviews.bind(this));
     } else {
-      this.gameService.getReviews(0,20)
+      this.gameService.getReviews(0,5)
         .subscribe(this.assignReviews.bind(this));
     }
   }
