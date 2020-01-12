@@ -1,4 +1,6 @@
 <h1>Admin Portal</h1>
-<div *ngFor="let report of reports">
-    {{report.type}} - {{report.report}}
+<div *ngIf="loading">Loading...
 </div>
+<ng-container *ngIf="!loading">
+<app-report *ngFor="let report of reports" [report]="report"></app-report>
+</ng-container>

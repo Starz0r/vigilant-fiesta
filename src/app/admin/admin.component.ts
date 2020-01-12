@@ -10,13 +10,16 @@ import { Report } from '../report';
 export class AdminComponent implements OnInit {
 
   reports: Report[] = [];
+  loading: boolean = true;
 
   constructor(
     private reportService: ReportService,) { }
 
   ngOnInit() {
+    this.loading = true;
     this.reportService.getReports(false,0,10).subscribe(reports => {
       this.reports = reports;
+      this.loading = false;
     });
   }
 

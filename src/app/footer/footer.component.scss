@@ -4,4 +4,9 @@ mat-toolbar-row {
 }
 .fill-remaining-space {
     flex: 1 1 auto;
-  }
+}
+
+.special-thanks {
+    display: unset;
+    white-space: unset;
+}

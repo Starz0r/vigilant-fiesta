@@ -53,6 +53,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
+import { ReportComponent } from './report/report.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { AdminComponent } from './admin/admin.component';
     RatingPipe,
     RegisterDialogComponent,
     FooterComponent,
-    AdminComponent
+    AdminComponent,
+    ReportComponent
   ],
   imports: [
     BrowserModule,

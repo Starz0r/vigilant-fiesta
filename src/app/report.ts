@@ -3,6 +3,7 @@ export class Report {
   type?: string;
   targetId?: string;
   report?: string;
+  reporterName?: string;
   reporterId?: string;
   answeredById?: string;
   dateCreated?: string;
