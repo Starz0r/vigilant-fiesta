@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../report.service';
 import { Report } from '../report';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-admin',
@@ -13,6 +14,7 @@ export class AdminComponent implements OnInit {
   loading: boolean = true;
 
   constructor(
+    private userService: UserService,
     private reportService: ReportService,) { }
 
   ngOnInit() {
@@ -21,6 +23,13 @@ export class AdminComponent implements OnInit {
       this.reports = reports;
       this.loading = false;
     });
+  }
+
+  resolve(reportId: number) {
+    const answererId = this.userService.getUser().id;
+    this.reportService.resolveReport(reportId,answererId).subscribe(report => {
+      console.log(report.id);
+    })
   }
 
 }

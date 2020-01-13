@@ -84,4 +84,8 @@ export class GameService {
   getTagsForGame(gameId: number): Observable<Tag[]> {
     return this.http.get<Tag[]>(`/api/games/${gameId}/tags`);
   }
+
+  submitReview(gameId: number, review: Review): Observable<any> {
+    return this.http.post<Review>(`/api/games/${gameId}/reviews`,review);
+  }
 }

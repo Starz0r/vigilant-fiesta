@@ -17,6 +17,6 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button>Mark Resolved</button>
+    <button mat-button *ngIf="!report.answeredById" (click)="resolve()">Mark Resolved</button>
   </mat-card-actions>
 </mat-card>

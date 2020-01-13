@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Report } from './report';
+import * as moment from 'moment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,5 +27,13 @@ export class ReportService {
         if (sortdir) p = p.append("order_dir", sortdir);
         if (answered !== undefined) p.append("answered",answered?"1":"0");
         return this.http.get<Report[]>(this.gamesUrl, {params: p});
+    }
+
+    resolveReport(reportId: number, answerer: number): Observable<Report> {
+      return this.http.patch<Report>(`${this.gamesUrl}/${reportId}`, {
+        id: reportId,
+        dateAnswered: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
+        answeredById: answerer
+      });
     }
 }
