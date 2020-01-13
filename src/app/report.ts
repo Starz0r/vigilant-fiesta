@@ -6,6 +6,7 @@ export class Report {
   reporterName?: string;
   reporterId?: string;
   answeredById?: string;
+  answeredByName?: string;
   dateCreated?: string;
   dateAnswered?: string;
 }
