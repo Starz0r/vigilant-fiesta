@@ -25,7 +25,9 @@ export class ReportService {
         p = p.append("limit", limit.toString());
         if (sort) p = p.append("order_col", sort);
         if (sortdir) p = p.append("order_dir", sortdir);
-        if (answered !== undefined) p.append("answered",answered?"1":"0");
+        if (answered !== undefined && answered !== null) {
+          p = p.append("answered",answered?"1":"0");
+        }
         return this.http.get<Report[]>(this.gamesUrl, {params: p});
     }
 

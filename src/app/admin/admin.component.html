@@ -1,7 +1,14 @@
 <h1>Admin Portal</h1>
-<div *ngIf="loading">Loading...
-</div>
+
+<mat-radio-group 
+    [(ngModel)]="answered" (change)="getReports()">
+    <mat-radio-button [value]="false">Unanswered</mat-radio-button>
+    <mat-radio-button [value]="true">Answered</mat-radio-button>
+    <mat-radio-button [value]="null">All</mat-radio-button>
+</mat-radio-group>
+
+<div *ngIf="loading">Loading...</div>
 <ng-container *ngIf="!loading">
-<app-report *ngFor="let report of reports" [report]="report"
-    (onResolve)="resolve(report.id)"></app-report>
+    <app-report *ngFor="let report of reports" [report]="report"
+        (onResolve)="resolve(report.id)"></app-report>
 </ng-container>

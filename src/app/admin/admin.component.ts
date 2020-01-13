@@ -13,16 +13,14 @@ export class AdminComponent implements OnInit {
   reports: Report[] = [];
   loading: boolean = true;
 
+  answered: boolean = false;
+
   constructor(
     private userService: UserService,
     private reportService: ReportService,) { }
 
   ngOnInit() {
-    this.loading = true;
-    this.reportService.getReports(false,0,10).subscribe(reports => {
-      this.reports = reports;
-      this.loading = false;
-    });
+    this.getReports();
   }
 
   resolve(reportId: number) {
@@ -31,6 +29,14 @@ export class AdminComponent implements OnInit {
       const rInd = this.reports.findIndex(r => r.id == report.id);
       this.reports[rInd] = report;
     })
+  }
+
+  getReports() {
+    this.loading = true;
+    this.reportService.getReports(this.answered,0,10).subscribe(reports => {
+      this.reports = reports;
+      this.loading = false;
+    });
   }
 
 }
