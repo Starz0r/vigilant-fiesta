@@ -43,13 +43,16 @@ export class UserService {
       this.refresh().subscribe();
     } else if (rem <= 0) {
       console.log('user exipred %s <= %s',this.token.exp,new Date().getTime());
-      this.logout();
-      
-      this.snackBar.open("Logged out due to inactivity, please log in again.",null,{
-        duration: 5000,
-      });
+      this.deauthLogout();
       return null;
     }
+  }
+
+  deauthLogout() {
+    this.logout();
+    this.snackBar.open("Logged out due to inactivity, please log in again.",null,{
+      duration: 5000,
+    });
   }
 
   login(username: string, password: string): Observable<User> {

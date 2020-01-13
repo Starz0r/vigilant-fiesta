@@ -19,6 +19,8 @@ export class FooterComponent implements OnInit {
   }
 
   showAdmin() {
+    if (!this.userService.isLoggedIn()) return false;
+    
     const user = this.userService.getUser();
     return user != null && user.isAdmin;
   }
