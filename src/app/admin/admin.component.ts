@@ -28,7 +28,8 @@ export class AdminComponent implements OnInit {
   resolve(reportId: number) {
     const answererId = this.userService.getUser().id;
     this.reportService.resolveReport(reportId,answererId).subscribe(report => {
-      console.log(report.id);
+      const rInd = this.reports.findIndex(r => r.id == report.id);
+      this.reports[rInd] = report;
     })
   }
 
