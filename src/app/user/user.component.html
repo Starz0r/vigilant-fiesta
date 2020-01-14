@@ -3,10 +3,38 @@
 </div>
 
 <div *ngIf="user">
-  <h2>{{user.name}}</h2>
-  <div>{{user.bio}}</div>
-
-  <app-review-list [userId]="user.id"></app-review-list>
+    <h2 *ngIf="!isMe">{{user.name}}'s Profile</h2>
+    <h2 *ngIf="isMe">My Profile</h2>
+  <mat-tab-group>
+      <mat-tab label="Profile">
+        <ng-template matTabContent>
+          <p>Joined on: xxx</p>
+          <p>{{user.bio}}</p>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Ratings">
+        <ng-template matTabContent>
+          Ratings
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Reviews">
+        <ng-template matTabContent>
+          <app-review-list [userId]="user.id"></app-review-list>
+        </ng-template>
+      </mat-tab>
+      <mat-tab label="Games">
+          <ng-template matTabContent>Content</ng-template>
+      </mat-tab>
+      <mat-tab label="Badges">
+        <ng-template matTabContent>Content</ng-template>
+      </mat-tab>
+      <mat-tab label="Lists">
+        <ng-template matTabContent>Content</ng-template>
+      </mat-tab>
+      <mat-tab label="Admin">
+        <ng-template matTabContent>Content</ng-template>
+      </mat-tab>
+    </mat-tab-group>
 </div>    
 
 <div *ngIf="notFound">

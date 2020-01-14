@@ -9,7 +9,7 @@
           <button mat-raised-button i18n *ngIf="!isLoggedIn()" (click)="showLogin()">Login</button>
           <button mat-raised-button i18n *ngIf="!isLoggedIn()" (click)="showRegister()">Register</button>
 
-          <span class="username" *ngIf="isLoggedIn()">{{getUser().name}}</span>
+          <a button mat-button *ngIf="isLoggedIn()" [routerLink]="'/user/'+getUser().id">{{getUser().name}}</a>
           <button mat-raised-button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
         </span>
     </mat-toolbar-row>
