@@ -9,7 +9,24 @@
       <mat-tab label="Profile">
         <ng-template matTabContent>
           <p>Joined on: xxx</p>
+          <p>Bio:</p>
           <p>{{user.bio}}</p>
+          <p>
+            I've submitted:<br>
+            195 Ratings!<br>
+            179 Reviews!<br>
+            1126 Screenshots!			
+          </p>
+          <a *ngIf="user.twitchLink" [href]="'https://www.twitch.tv/'+user.twitchLink">
+            <img src="assets/images/twitch16.png"> Twitch Stream
+          </a><br>
+          <a *ngIf="user.youtubeLink" [href]="'https://www.youtube.com/user/'+user.youtubeLink">
+            <img src="assets/images/youtube16.png"> Youtube Channel
+          </a><br>
+          <a *ngIf="user.twitterLink" [href]="'https://www.twitter.com/'+user.twitterLink">
+            <img src="assets/images/twitter16.png"> Twitter
+          </a><br>
+          <a href="/report.php?t=user&amp;id=746">Report this user</a>
         </ng-template>
       </mat-tab>
       <mat-tab label="Ratings">
