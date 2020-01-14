@@ -2,29 +2,18 @@
   <mat-toolbar-row>
       <span>
         Delicious-Fruit - Site Design © Klazen 2015-2020
-        <a mat-button target="_blank" href="https://iwannacommunity.com/forum/index.php@topic=1386.0.html">Contact Us</a> |
-        <a mat-button href="/guidelines.php">Site Guidelines</a>
-        <ng-container *ngIf="!production">((Dev))</ng-container>
       </span>
-      <span class="fill-remaining-space"></span>
-      <span>
-          <a mat-button routerLink="/admin" 
-            *ngIf="showAdmin()">Admin Portal</a>
-      </span>
+      <ng-container *ngIf="!production">&nbsp;((Dev))</ng-container>
   </mat-toolbar-row>
-  <mat-toolbar-row class="special-thanks">
-    Special Thanks:
-    <a mat-button target="_blank" href="https://www.twitch.tv/tehjman1993">Tehjman1993</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/patrickgh3">Patrickgh3</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/thenader2">Thenader2</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/TheRandomErik">Erik</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/onynekyu">Onynekyu</a>
-    <a mat-button target="_blank" href="https://delicious-fruit.com/profile.php?u=411">ElZorgo</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/lss40">Lss</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/quentinjanuel">QuentinJanuel</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/artardss">Artardss</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/norrnal">Normal</a>
-    <a mat-button target="_blank" href="https://twitter.com/shinobu_iw">Shinobu</a>
-    <a mat-button target="_blank" href="https://www.twitch.tv/sudnep">Sudnep</a>
+  <mat-toolbar-row>
+    <span>
+      <a mat-button routerLink="/special-thanks">Special Thanks</a>
+      <a mat-button href="/guidelines.php">Site Guidelines</a>
+    </span>
+    <span class="fill-remaining-space"></span>
+    <span>
+        <a mat-button routerLink="/admin" 
+          *ngIf="showAdmin()">Admin Portal</a>
+    </span>
   </mat-toolbar-row>
 </mat-toolbar>

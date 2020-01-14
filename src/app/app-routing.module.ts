@@ -5,6 +5,7 @@ import { GameComponent } from './game/game.component';
 import { GamesComponent } from './games/games.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
+import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'games', component: GamesComponent },
   { path: 'user/:id', component: UserComponent },
   { path: 'admin', component: AdminComponent },
+  { path: 'special-thanks', component: SpecialThanksComponent },
 ];
 
 @NgModule({

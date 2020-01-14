@@ -55,6 +55,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReportComponent } from './report/report.component';
+import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { ReportComponent } from './report/report.component';
     RegisterDialogComponent,
     FooterComponent,
     AdminComponent,
-    ReportComponent
+    ReportComponent,
+    SpecialThanksComponent
   ],
   imports: [
     BrowserModule,
