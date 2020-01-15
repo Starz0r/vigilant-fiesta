@@ -23,7 +23,7 @@ export class GameService {
     private userService: UserService
   ) { }
 
-  getGames(query: string, 
+  getGames(query: string, reviewedByUserId: number,
     page: number, limit: number,
     sort: string = '', sortdir: string = ''): Observable<Game[]> {
     let p = new HttpParams();
@@ -32,6 +32,7 @@ export class GameService {
     if (sort) p = p.append("order_col", sort);
     if (sortdir) p = p.append("order_dir", sortdir);
     if (query) p = p.append("q", query);
+    if (reviewedByUserId) p = p.append("reviewedByUserId", ""+reviewedByUserId);
     return this.http.get<Game[]>(this.gamesUrl, {params: p});
   }
 
@@ -86,6 +87,6 @@ export class GameService {
   }
 
   submitReview(gameId: number, review: Review): Observable<any> {
-    return this.http.post<Review>(`/api/games/${gameId}/reviews`,review);
+    return this.http.put<Review>(`/api/games/${gameId}/reviews`,review);
   }
 }

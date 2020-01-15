@@ -13,6 +13,7 @@ import { UserService } from '../user.service';
 
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, 
   NgxGalleryImageSize } from 'ngx-gallery';
+import { Review } from '../review';
 
 
 @Component({
@@ -170,6 +171,12 @@ export class GameComponent implements OnInit {
 
   isLoggedIn(): boolean {
     return this.userService.isLoggedIn();
+  }
+
+  submitReview(review: Review) {
+    this.gameService.submitReview(this.game.id,review).subscribe(_ => {
+      console.log("submitted")
+    });
   }
 
 }

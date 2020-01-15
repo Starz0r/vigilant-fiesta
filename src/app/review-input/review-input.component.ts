@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 import { Review } from '../review';
 import { MatSliderChange } from '@angular/material/slider';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-review-input',
@@ -11,8 +12,12 @@ import { MatSliderChange } from '@angular/material/slider';
 export class ReviewInputComponent implements OnInit {
 
   @Input() review: Review = null;
+  
+  @Output() onSubmit: EventEmitter<Review> = new EventEmitter();
 
-  constructor() { }
+  constructor(
+    private gameService: GameService
+  ) { }
 
   ngOnInit() {
     if (this.review === null) {
@@ -24,7 +29,7 @@ export class ReviewInputComponent implements OnInit {
   }
 
   update() {
-    console.log(this.review);
+    this.onSubmit.emit(this.review);
   }
 
   refreshDiff(event: MatSliderChange) {

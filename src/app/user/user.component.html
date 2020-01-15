@@ -30,9 +30,9 @@
         </ng-template>
       </mat-tab>
       <mat-tab label="Ratings">
-        <ng-template matTabContent>
-          Ratings
-        </ng-template>
+          <ng-template matTabContent>
+            <app-dashboard-games [reviewedByUserId]="user.id"></app-dashboard-games>
+          </ng-template>
       </mat-tab>
       <mat-tab label="Reviews">
         <ng-template matTabContent>

@@ -69,7 +69,7 @@
             Write a Review
         </mat-panel-title>
     </mat-expansion-panel-header>
-  <app-review-input></app-review-input>
+  <app-review-input (onSubmit)="submitReview($event)"></app-review-input>
   </mat-expansion-panel>
   <app-review-list 
   *ngIf="this.game" 

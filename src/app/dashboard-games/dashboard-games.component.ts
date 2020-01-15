@@ -27,6 +27,9 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
   @Input()
   direction: string = "DESC";
 
+  @Input()
+  reviewedByUserId: number = null;
+
   debounceSearch: Subject<SimpleChanges> = new Subject<SimpleChanges>();
 
   constructor(
@@ -52,7 +55,7 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   getGames(): void {
-    this.gameService.getGames(this.filter,this.start,this.limit,this.sort,this.direction)
+    this.gameService.getGames(this.filter,this.reviewedByUserId,this.start,this.limit,this.sort,this.direction)
       .subscribe(games => {
         this.games = games;
         this.loading = false;
