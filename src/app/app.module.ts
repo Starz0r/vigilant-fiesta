@@ -57,6 +57,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReportComponent } from './report/report.component';
 import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
+import { UserAdminControlComponent } from './user-admin-control/user-admin-control.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { SpecialThanksComponent } from './special-thanks/special-thanks.componen
     FooterComponent,
     AdminComponent,
     ReportComponent,
-    SpecialThanksComponent
+    SpecialThanksComponent,
+    UserAdminControlComponent
   ],
   imports: [
     BrowserModule,

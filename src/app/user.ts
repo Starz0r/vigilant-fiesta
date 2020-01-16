@@ -10,4 +10,10 @@ export class User {
   email: string;
   isAdmin: boolean;
   token: string;
+
+  canReport: boolean;
+  canSubmit: boolean;
+  canReview: boolean;
+  canScreenshot: boolean;
+  banned: boolean;
 }
