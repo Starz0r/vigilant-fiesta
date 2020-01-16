@@ -33,6 +33,7 @@ export class GameComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getGame();
+    this.getUserReview();
   }
 
   diffNames: string[] = [
@@ -69,6 +70,8 @@ export class GameComponent implements OnInit {
   loading: boolean = true;
   notFound: boolean = false;
 
+  userReview: Review = new Review;
+
   galleryOptions: NgxGalleryOptions[] = [
     {
         width: '400px',
@@ -84,6 +87,17 @@ export class GameComponent implements OnInit {
     }
   ];
   galleryImages: NgxGalleryImage[] = [];
+
+  getUserReview(): void {
+    if (this.id && this.isLoggedIn()) {
+      const userId = this.userService.getUser().id;
+      this.gameService.getReviewsForUserGame(+this.id,userId).subscribe(reviews => {
+        if (reviews && reviews.length == 1) {
+          this.userReview = reviews[0];
+        }
+      });
+    }
+  }
 
   getGame(): void {
     this.gameService.getGame(this.id).subscribe(

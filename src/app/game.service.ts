@@ -56,6 +56,12 @@ export class GameService {
     return this.http.get<Review[]>(`/api/games/${gameId}/reviews`);
   }
 
+  getReviewsForUserGame(gameId: number, userId: number): Observable<Review[]> {
+    let params = new HttpParams();
+    params = params.append("byUserId", ""+userId);
+    return this.http.get<Review[]>(`/api/games/${gameId}/reviews`,{params});
+  }
+
   getScreenshotsForGame(gameId: number): Observable<Screenshot[]> {
     return this.http.get<Screenshot[]>(`/api/games/${gameId}/screenshots`);
   }
