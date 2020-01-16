@@ -7,7 +7,6 @@
     <h2 *ngIf="isMe">My Profile</h2>
   <mat-tab-group>
       <mat-tab label="Profile">
-        <ng-template matTabContent>
           <p>Joined on: xxx</p>
           <p>Bio:</p>
           <p>{{user.bio}}</p>
@@ -27,17 +26,12 @@
             <img src="assets/images/twitter16.png"> Twitter
           </a><br>
           <a href="/report.php?t=user&amp;id=746">Report this user</a>
-        </ng-template>
       </mat-tab>
       <mat-tab label="Ratings">
-          <ng-template matTabContent>
             <app-dashboard-games [reviewedByUserId]="user.id"></app-dashboard-games>
-          </ng-template>
       </mat-tab>
       <mat-tab label="Reviews">
-        <ng-template matTabContent>
           <app-review-list [userId]="user.id"></app-review-list>
-        </ng-template>
       </mat-tab>
       <mat-tab label="Games">
           <ng-template matTabContent>Content</ng-template>
