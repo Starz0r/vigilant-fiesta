@@ -63,7 +63,7 @@
   </div>
 
 
-  <mat-expansion-panel *ngIf="isLoggedIn()">
+  <mat-expansion-panel *ngIf="isLoggedIn()" [(expanded)]="reviewInputExpanded">
     <mat-expansion-panel-header>
         <mat-panel-title>
             Write a Review

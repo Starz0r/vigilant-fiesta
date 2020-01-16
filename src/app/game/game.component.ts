@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { Game } from '../game';
-import { User } from '../user';
-import { List } from '../list';
 import { Screenshot } from '../screenshot';
 
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +12,7 @@ import { UserService } from '../user.service';
 import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, 
   NgxGalleryImageSize } from 'ngx-gallery';
 import { Review } from '../review';
-
+import { ReviewListComponent } from '../review-list/review-list.component';
 
 @Component({
   selector: 'app-game',
@@ -29,6 +27,10 @@ export class GameComponent implements OnInit {
     private userService: UserService,
     private location: Location
   ) { }
+  
+  @ViewChild(ReviewListComponent, {static: false}) reviewList:ReviewListComponent;
+  
+  reviewInputExpanded: boolean = false;
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -189,7 +191,8 @@ export class GameComponent implements OnInit {
 
   submitReview(review: Review) {
     this.gameService.submitReview(this.game.id,review).subscribe(_ => {
-      console.log("submitted")
+      this.reviewList.getReviews();
+      this.reviewInputExpanded = false;
     });
   }
 
