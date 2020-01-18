@@ -8,6 +8,7 @@ div.date {
 div.rate {
   display: inline-block;
   margin-right: 1em;
+  line-height: 16px;
 }
 mat-card {
   margin-bottom: 0.5em;
@@ -19,6 +20,7 @@ span.hearts {
   background: url(/assets/images/hearts.png) 0 0px repeat-x;
   width: 170px;
   height: 16px;
+  vertical-align: middle;
 }
 
 span.hearts span {
@@ -38,4 +40,9 @@ span.stars span {
   display: inline-block;
   background: url(/assets/images/stars.png) 0 -16px repeat-x;
   height: 16px;
+}
+
+.valign {
+  vertical-align: middle;
+  margin-right:0.5em;
 }
