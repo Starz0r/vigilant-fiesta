@@ -12,7 +12,17 @@
   <mat-card-content>
     <div class="comment">{{review.comment}}</div>
 
-    <div class="rate">Rating: {{review.rating/10 || 'N/A'}}</div> 
-    <div class="rate">Difficulty: {{review.difficulty || 'N/A'}}</div>
+    <div class="rate">
+      Rating: {{review.rating/10 || 'N/A'}}
+      <span class="hearts">
+        <span [style.width]="(170*review.rating/100)+'px'"></span>
+      </span>
+    </div> 
+    <div class="rate">
+      Difficulty: {{review.difficulty || 'N/A'}}
+      <span class="stars">
+          <span [style.width]="(170*review.difficulty/100)+'px'"></span>
+      </span>
+    </div>
   </mat-card-content>
 </mat-card>
