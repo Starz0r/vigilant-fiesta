@@ -21,7 +21,7 @@ export class RegisterDialogComponent implements OnInit {
   }
 
   ok(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 }
 

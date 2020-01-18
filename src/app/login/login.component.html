@@ -1,13 +1,20 @@
+<form (ngSubmit)="ok()">
 <h1 mat-dialog-title>Login</h1>
 <div mat-dialog-content>
     <mat-form-field>
-        <input matInput placeholder="Username" type="text" [(ngModel)]="data.username" />
+        <input matInput placeholder="Username" name="username"
+            type="text" [(ngModel)]="data.username" />
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Password"  type="password" [(ngModel)]="data.password" />
+        <input matInput placeholder="Password" name="password"
+            type="password" [(ngModel)]="data.password" />
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="cancel()">Cancel</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="data">Ok</button>
+    <button mat-raised-button 
+        color="primary" 
+        [mat-dialog-close]="data" 
+        type="submit">Ok</button>
 </div>
+</form>

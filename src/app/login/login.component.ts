@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     }
 
     ok(): void {
-      this.dialogRef.close();
+      this.dialogRef.close(this.data);
     }
 }
 

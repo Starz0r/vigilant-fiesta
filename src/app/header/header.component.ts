@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor(
     private userService: UserService,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar, 
   ) { }
 
   ngOnInit() {
@@ -46,20 +48,32 @@ export class HeaderComponent implements OnInit {
 
   login(username: string, password: string) {
     this.userService.login(username,password)
-      .subscribe(user => console.log('logged in'),
+      .subscribe(user => {
+        this.snackBar.open(`Welcome, ${user.name}!`,null,{
+          duration: 5000,
+        });
+      },
       error => {
         if (error.name === 'HttpErrorResponse' 
           && error.status === 401) {
-          //TODO: notify user that login failed
+            this.snackBar.open(`Sorry, we were unable to log you in. Please try again!`,null,{
+              duration: 5000,
+            });
         } else {
-          console.log(error);
+          this.snackBar.open(`We're sorry, login is currently experiencing issues. Please try again later!`,null,{
+            duration: 5000,
+          });
         }
       });
   }
 
   logout() {
     this.userService.logout()
-      .subscribe(()=>console.log('logged out'));
+      .subscribe(()=>{
+        this.snackBar.open(`Logged out. See you again soon!`,null,{
+          duration: 5000,
+        });
+      });
   }
 
   isLoggedIn(): boolean {
@@ -68,13 +82,24 @@ export class HeaderComponent implements OnInit {
 
   register(username:string,password:string,email:string) {
     this.userService.register(username,password,email)
-    .subscribe(user => console.log('logged in'),
+    .subscribe(user => {
+      this.snackBar.open(`Welcome, ${user.name}!`,null,{
+        duration: 5000,
+      });
+    },
     error => {
       if (error.name === 'HttpErrorResponse' 
         && error.status === 400) {
-        //TODO: notify user that login failed
+          console.log('400 on user register:')
+          console.log(error);
+          this.snackBar.open(`Registration Failed!\n${error.error}`,null,{
+            duration: 5000,
+          });
       } else {
         console.log(error);
+        this.snackBar.open(`We're sorry, registration is currently experiencing issues. Please try again later!`,null,{
+          duration: 5000,
+        });
       }
     });
   }

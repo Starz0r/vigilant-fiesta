@@ -1,19 +1,25 @@
+<form (ngSubmit)="ok()">
 <h1 mat-dialog-title>Register</h1>
 <div mat-dialog-content>
     <mat-form-field>
-        <input matInput placeholder="Username" type="text" [(ngModel)]="data.username" />
+        <input matInput placeholder="Username" type="text" 
+            [(ngModel)]="data.username" name="username"/>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Password"  type="password" [(ngModel)]="data.password" />
+        <input matInput placeholder="Password"  type="password" 
+            [(ngModel)]="data.password" name="password"/>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Confirm Password"  type="password" [(ngModel)]="data.passwordConfirm" />
+        <input matInput placeholder="Confirm Password"  type="password" 
+            [(ngModel)]="data.passwordConfirm" name="confirm"/>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Email"  type="text" [(ngModel)]="data.email" />
+        <input matInput placeholder="Email" type="text" 
+            [(ngModel)]="data.email" name="email"/>
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="cancel()">Cancel</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="data">Ok</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="data" type="submit">Ok</button>
 </div>
+</form>
