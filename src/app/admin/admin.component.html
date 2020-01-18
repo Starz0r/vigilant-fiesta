@@ -8,7 +8,5 @@
 </mat-radio-group>
 
 <div *ngIf="loading">Loading...</div>
-<ng-container *ngIf="!loading">
-    <app-report *ngFor="let report of reports" [report]="report"
-        (onResolve)="resolve(report.id)"></app-report>
-</ng-container>
+<app-report *ngFor="let report of reports" [report]="report"
+    (onResolve)="resolve(report.id)"></app-report>
