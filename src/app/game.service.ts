@@ -95,4 +95,16 @@ export class GameService {
   submitReview(gameId: number, review: Review): Observable<any> {
     return this.http.put<Review>(`/api/games/${gameId}/reviews`,review);
   }
+
+  likeReview(reviewId, userId: number): Observable<any> {
+    return this.http.put(`/api/reviews/${reviewId}/likes/${userId}`,{})
+  }
+
+  unlikeReview(reviewId, userId: number): Observable<any> {
+    return this.http.delete(`/api/reviews/${reviewId}/likes/${userId}`)
+  }
+
+  isLiked(reviewId, userId: number): Observable<any> {
+    return this.http.get(`/api/reviews/${reviewId}/likes/${userId}`)
+  }
 }

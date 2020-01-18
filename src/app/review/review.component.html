@@ -25,4 +25,13 @@
       </span>
     </div>
   </mat-card-content>
+  <mat-card-actions *ngIf="isLoggedIn()">
+      <button mat-button *ngIf="!isLiked" (click)="likeReview()">
+        <i class="material-icons">thumb_up</i> {{review.like_count}}
+      </button>
+      <button mat-raised-button color="primary" *ngIf="isLiked" (click)="unlikeReview()">
+        <i class="material-icons">thumb_up</i> {{review.like_count}}
+      </button>
+      <button mat-button>Reply</button>
+  </mat-card-actions>
 </mat-card>
