@@ -86,6 +86,10 @@ export class GameComponent implements OnInit {
         imageAutoPlay: true,
         imageAutoPlayInterval: 5000,
         imageAutoPlayPauseOnHover: true
+    },
+    {
+      breakpoint: 420,
+      width: '100%'
     }
   ];
   galleryImages: NgxGalleryImage[] = [];

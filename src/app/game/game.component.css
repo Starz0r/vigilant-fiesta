@@ -11,7 +11,7 @@ ngx-gallery ::ng-deep .ngx-gallery-image-text[_ngcontent-c4] {
 
 div.rating {
   border: 1px solid black;
-  width: 200px;
+  width: 180px;
   font-weight: bold;
   display: inline-block;
   color: #000;
@@ -36,6 +36,12 @@ div.rating > div.value {
 div.gallery {
   display: inline-block;
   margin: 0.5em;
+}
+
+@media only screen and (max-width: 420px) {
+  div.gallery {
+    width: 95%;
+  }
 }
 
 div.game-content {
