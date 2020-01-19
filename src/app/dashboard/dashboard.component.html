@@ -1,4 +1,12 @@
+<h2>News</h2>
+<mat-tab-group [selectedIndex]="newsIndex">
+  <mat-tab *ngFor="let curNews of news; index as i">
+        <app-news
+            [news]="curNews" [hasPrev]="i>0"
+            (prev)="prev()" (next)="next()"></app-news>
+  </mat-tab>
+</mat-tab-group>
+
 <h2>Newest 25 Games</h2>
 <app-dashboard-games></app-dashboard-games>
-
 <app-review-list></app-review-list>

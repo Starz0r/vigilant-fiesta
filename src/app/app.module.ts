@@ -58,6 +58,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ReportComponent } from './report/report.component';
 import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
 import { UserAdminControlComponent } from './user-admin-control/user-admin-control.component';
+import { NewsComponent } from './news/news.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { UserAdminControlComponent } from './user-admin-control/user-admin-contr
     AdminComponent,
     ReportComponent,
     SpecialThanksComponent,
-    UserAdminControlComponent
+    UserAdminControlComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,

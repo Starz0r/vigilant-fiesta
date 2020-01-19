@@ -107,4 +107,8 @@ export class GameService {
   isLiked(reviewId, userId: number): Observable<any> {
     return this.http.get(`/api/reviews/${reviewId}/likes/${userId}`)
   }
+
+  getNews(): Observable<any> {
+    return this.http.get(`/api/news`)
+  }
 }
