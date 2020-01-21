@@ -25,7 +25,7 @@
       </span>
     </div>
   </mat-card-content>
-  <mat-card-actions *ngIf="isLoggedIn()">
+  <mat-card-actions *ngIf="user">
       <button mat-button *ngIf="!isLiked" (click)="likeReview()">
         <i class="material-icons">thumb_up</i> {{review.like_count}}
       </button>

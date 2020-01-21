@@ -4,6 +4,7 @@ import { Review } from '../review';
 import { UserService } from '../user.service';
 import { GameService } from '../game.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../user';
 
 @Component({
   selector: 'app-review',
@@ -17,24 +18,23 @@ export class ReviewComponent implements OnInit {
   constructor(
     private userService: UserService, 
     private gameService: GameService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar) {
+      this.userService.userChange.subscribe(user=>this.user=user);
+    }
 
+  user: User;
   isLiked: boolean = false;
 
   ngOnInit() {
-    if (this.isLoggedIn()) {
-      this.gameService.isLiked(this.review.id,this.userService.getUser().id).subscribe(l => {
+    if (this.user) {
+      this.gameService.isLiked(this.review.id,this.user.id).subscribe(l => {
         this.isLiked = l.liked;
       });
     }
   }
 
-  isLoggedIn() {
-    return this.userService.isLoggedIn();
-  }
-
   likeReview() {
-    this.gameService.likeReview(this.review.id,this.userService.getUser().id).subscribe(
+    this.gameService.likeReview(this.review.id,this.user.id).subscribe(
       result => {
         this.review.like_count++;
         this.isLiked = true;
@@ -49,7 +49,7 @@ export class ReviewComponent implements OnInit {
   }
 
   unlikeReview() {
-    this.gameService.unlikeReview(this.review.id,this.userService.getUser().id).subscribe(
+    this.gameService.unlikeReview(this.review.id,this.user.id).subscribe(
       result => {
         this.review.like_count--;
         this.isLiked = false;

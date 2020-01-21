@@ -6,11 +6,11 @@
         </h1></span>
         <span class="fill-remaining-space"></span>
         <span>
-          <button mat-raised-button i18n *ngIf="!isLoggedIn()" (click)="showLogin()">Login</button>
-          <button mat-raised-button i18n *ngIf="!isLoggedIn()" (click)="showRegister()">Register</button>
+          <button mat-raised-button i18n *ngIf="!user" (click)="showLogin()">Login</button>
+          <button mat-raised-button i18n *ngIf="!user" (click)="showRegister()">Register</button>
 
-          <a button mat-button *ngIf="isLoggedIn()" [routerLink]="'/user/'+getUser().id">{{getUser().name}}</a>
-          <button mat-raised-button i18n *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+          <a button mat-button *ngIf="user" [routerLink]="'/user/'+user.id">{{user.name}}</a>
+          <button mat-raised-button i18n *ngIf="user" (click)="logout()">Logout</button>
         </span>
     </mat-toolbar-row>
     <mat-toolbar-row>

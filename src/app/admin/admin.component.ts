@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReportService } from '../report.service';
 import { Report } from '../report';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-admin',
@@ -15,16 +16,21 @@ export class AdminComponent implements OnInit {
 
   answered: boolean = false;
 
+  user: User;
+
   constructor(
     private userService: UserService,
-    private reportService: ReportService,) { }
+    private reportService: ReportService,) {
+      //TODO: if !user, route to home
+      this.userService.userChange.subscribe(user=>this.user=user);
+    }
 
   ngOnInit() {
     this.getReports();
   }
 
   resolve(reportId: number) {
-    const answererId = this.userService.getUser().id;
+    const answererId = this.user.id;
     this.reportService.resolveReport(reportId,answererId).subscribe(report => {
       const rInd = this.reports.findIndex(r => r.id == report.id);
       this.reports[rInd] = report;

@@ -5,6 +5,7 @@ import { PublicUser } from '../public-user';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../user.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-user',
@@ -20,11 +21,15 @@ export class UserComponent implements OnInit {
 
   isMe: boolean = false;
 
+  meUser: User;
+
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
     private userService: UserService
-  ) { }
+  ) {
+    this.userService.userChange.subscribe(user=>this.meUser=user);
+  }
 
   ngOnInit() {
     if (!this.user) {
@@ -41,8 +46,7 @@ export class UserComponent implements OnInit {
         this.user = user;
         this.loading = false;
 
-        if (this.userService.isLoggedIn() 
-            && this.userService.getUser().id==this.user.id) {
+        if (this.meUser && this.meUser.id==this.user.id) {
           this.isMe = true;
         }
       },

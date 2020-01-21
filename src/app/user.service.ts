@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './user';
-import { Observable ,  of } from 'rxjs';
+import { Observable ,  of, BehaviorSubject, Subject, ReplaySubject } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
 import { tap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -17,7 +17,10 @@ const TOKEN_REFRESH_THRESHOLD_S = 60*60*12; //12 hours
 export class UserService {
 
   tokenWatchdog;
-  token;
+
+  user: User;
+
+  public userChange: ReplaySubject<User> = new ReplaySubject(1);
 
   constructor(
     private http: HttpClient,
@@ -28,11 +31,15 @@ export class UserService {
     //If the token is about to expire, then it will be refreshed
     this.checkStatus();
     this.tokenWatchdog = setInterval(this.checkStatus,TOKEN_CHECK_INTERVAL_MS);
+    this.userChange.next(this.getUser());
   }
 
   checkStatus() {
-    if (!this.token) return;
-    const exp = this.token.exp;
+    this.getUser();
+    if (!this.user) return;
+    const token = jwt_decode(this.user.token);
+
+    const exp = token.exp;
     const now = new Date().getTime()/1000;
     const rem = exp-now;
 
@@ -42,7 +49,7 @@ export class UserService {
       console.log("refreshing token")
       this.refresh().subscribe();
     } else if (rem <= 0) {
-      console.log('user exipred %s <= %s',this.token.exp,new Date().getTime());
+      console.log('user exipred %s <= %s',token.exp,new Date().getTime());
       this.deauthLogout();
       return null;
     }
@@ -58,56 +65,44 @@ export class UserService {
   login(username: string, password: string): Observable<User> {
     return this.http.post<User>('/api/auth/login',{
       username,password
-    }).pipe(tap(user => {
-      this.token = jwt_decode(user.token);
-      localStorage.setItem('user',JSON.stringify(user));
-      return Object.assign(new User(), user);
-    }));
+    }).pipe(tap(user => this.setUser(user)));
   }
 
   refresh() {
     return this.http.post<User>('/api/auth/refresh',{})
-    .pipe(tap(user => {
-      this.token = jwt_decode(user.token);
-      localStorage.setItem('user',JSON.stringify(user));
-      return Object.assign(new User(), user);
-    }));
+    .pipe(tap(user => this.setUser(user)));
   }
 
   register(username: string, password: string, email: string): Observable<User> {
     return this.http.post<User>('/api/users',{
       username,password,email
-    }).pipe(tap(user => {
-      this.token = jwt_decode(user.token);
+    }).pipe(tap(user => this.setUser(user)));
+  }
+
+  setUser(user: any) {
+    if (!!user) {
+      user = Object.assign(new User(), user);
       localStorage.setItem('user',JSON.stringify(user));
-      return Object.assign(new User(), user);
-    }));
-  }
-
-  logout(): Observable<any> {
-    localStorage.removeItem('user');
-    return of(null);
-  }
-
-  getUser(): User {
-    const u = JSON.parse(localStorage.getItem('user'));
-    const user = Object.assign(new User(),u);
-
-    if (user && !this.token) {
-      this.token = jwt_decode(user.token);
     }
-
+    else localStorage.removeItem('user');
+    this.user = user
+    this.userChange.next(user);
     return user;
   }
 
-  isLoggedIn(): boolean {
-    if (localStorage.getItem('user') === null) return false;
-    else return this.getUser() !== null;
+  logout(): Observable<any> {
+    return of(this.setUser(null));
   }
 
-  getToken(): string {
-    if (!this.isLoggedIn()) return null;
-    return this.getUser().token;
-  }
+  private getUser(): User {
+    if (this.user !== null) this.user;
 
+    if (localStorage.getItem('user') !== null) {
+      const uj = JSON.parse(localStorage.getItem('user'));
+      this.user = Object.assign(new User(), uj);
+      return this.user;
+    }
+
+    return null;
+  }
 }

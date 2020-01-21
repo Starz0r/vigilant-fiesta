@@ -13,16 +13,21 @@ import { tap } from 'rxjs/operators';
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
-  constructor(private inj: Injector) {}
+  token: string = "";
+  us: UserService;
+
+  constructor(private inj: Injector) {
+    this.us = this.inj.get(UserService);
+    this.us.userChange.subscribe(user => this.token == (!!user?user.token:null));
+  }
 
   intercept(
       request: HttpRequest<any>, 
       next: HttpHandler): Observable<HttpEvent<any>> {
-    const us = this.inj.get(UserService);
-    if (us.isLoggedIn()) {
+    if (!!this.token) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${us.getToken()}`
+          Authorization: `Bearer ${this.token}`
         }
       });
     }
@@ -32,7 +37,7 @@ export class TokenInterceptor implements HttpInterceptor {
       if (err.status !== 401) {
        return;
       }
-      us.deauthLogout();
+      this.us.deauthLogout();
     }
   }));
   }

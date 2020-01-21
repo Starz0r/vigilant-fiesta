@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../user';
 
 @Component({
   selector: 'app-header',
@@ -18,12 +19,10 @@ export class HeaderComponent implements OnInit {
     private snackBar: MatSnackBar, 
   ) { }
 
+  user: User;
+
   ngOnInit() {
-
-  }
-
-  getUser() {
-    return this.userService.getUser();
+    this.userService.userChange.subscribe(user=>this.user=user);
   }
 
   showLogin() {
@@ -60,6 +59,7 @@ export class HeaderComponent implements OnInit {
               duration: 5000,
             });
         } else {
+          console.log(error);
           this.snackBar.open(`We're sorry, login is currently experiencing issues. Please try again later!`,null,{
             duration: 5000,
           });
@@ -74,10 +74,6 @@ export class HeaderComponent implements OnInit {
           duration: 5000,
         });
       });
-  }
-
-  isLoggedIn(): boolean {
-    return this.userService.isLoggedIn();
   }
 
   register(username:string,password:string,email:string) {

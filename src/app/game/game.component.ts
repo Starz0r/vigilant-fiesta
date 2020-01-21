@@ -13,6 +13,7 @@ import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation,
   NgxGalleryImageSize } from 'ngx-gallery';
 import { Review } from '../review';
 import { ReviewListComponent } from '../review-list/review-list.component';
+import { User } from '../user';
 
 @Component({
   selector: 'app-game',
@@ -26,7 +27,9 @@ export class GameComponent implements OnInit {
     private gameService: GameService,
     private userService: UserService,
     private location: Location
-  ) { }
+  ) {
+    this.userService.userChange.subscribe(user=>this.user=user);
+  }
   
   @ViewChild(ReviewListComponent, {static: false}) reviewList:ReviewListComponent;
   
@@ -77,6 +80,8 @@ export class GameComponent implements OnInit {
 
   tags: any[] = [];
 
+  user: User;
+
   galleryOptions: NgxGalleryOptions[] = [
     {
         width: '400px',
@@ -98,8 +103,8 @@ export class GameComponent implements OnInit {
   galleryImages: NgxGalleryImage[] = [];
 
   getUserReview(): void {
-    if (this.id && this.isLoggedIn()) {
-      const userId = this.userService.getUser().id;
+    if (this.id && this.user) {
+      const userId = this.user.id;
       this.gameService.getReviewsForUserGame(+this.id,userId).subscribe(reviews => {
         if (reviews && reviews.length == 1) {
           this.userReview = reviews[0];
@@ -196,10 +201,6 @@ export class GameComponent implements OnInit {
     }
 
     return array;
-  }
-
-  isLoggedIn(): boolean {
-    return this.userService.isLoggedIn();
   }
 
   submitReview(review: Review) {
