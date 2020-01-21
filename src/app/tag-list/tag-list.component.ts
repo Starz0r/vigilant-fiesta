@@ -21,7 +21,7 @@ export class TagListComponent implements OnInit {
     }
   }
 
-  tagMap() {
+  /*tagMap() {
     return this.tags.reduce((acc,cur) => {
       let res = acc || [];
       let obj = res.find(val => val.tag_id === cur.tag_id);
@@ -34,6 +34,6 @@ export class TagListComponent implements OnInit {
       return acc;
     },[])
     .sort((a,b)=>b.count-a.count);
-  }
+  }*/
 
 }

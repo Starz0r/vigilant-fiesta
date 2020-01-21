@@ -111,4 +111,18 @@ export class GameService {
   getNews(): Observable<any> {
     return this.http.get(`/api/news`)
   }
+
+  getTagSuggestions(q: string): Observable<any> {
+    let params = new HttpParams();
+    params = params.append("q", q);
+    return this.http.get<Tag[]>(`/api/tags/`,{params});
+  }
+
+  getTags(gameId: number): Observable<any> {
+    return this.http.get(`/api/games/${gameId}/tags`)
+  }
+
+  setTags(gameId, tagIds: number[]): Observable<any> {
+    return this.http.post(`/api/games/${gameId}/tags`,tagIds)
+  }
 }

@@ -36,6 +36,7 @@ export class GameComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     this.getGame();
     this.getUserReview();
+    this.getTags();
   }
 
   diffNames: string[] = [
@@ -73,6 +74,8 @@ export class GameComponent implements OnInit {
   notFound: boolean = false;
 
   userReview: Review = new Review;
+
+  tags: any[] = [];
 
   galleryOptions: NgxGalleryOptions[] = [
     {
@@ -141,6 +144,12 @@ export class GameComponent implements OnInit {
         ));
       }
     );
+  }
+
+  getTags(): void {
+    this.gameService.getTags(+this.id).subscribe(tags => {
+      this.tags = tags;
+    })
   }
 
   goBack(): void {
