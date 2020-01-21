@@ -30,7 +30,7 @@ export class UserService {
     //If invalid, it will log them out automatically
     //If the token is about to expire, then it will be refreshed
     this.checkStatus();
-    this.tokenWatchdog = setInterval(this.checkStatus,TOKEN_CHECK_INTERVAL_MS);
+    this.tokenWatchdog = setInterval(()=>this.checkStatus(),TOKEN_CHECK_INTERVAL_MS);
     this.userChange.next(this.getUser());
   }
 
