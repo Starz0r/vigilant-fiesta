@@ -2,10 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Game } from './game';
 import { Review } from './review';
-import { User } from './user';
 import { List } from './list';
 import { Tag } from './tag';
-import { UserService } from './user.service';
 import { PublicUser } from './public-user';
 import { Screenshot } from './screenshot';
 import { Observable ,  of } from 'rxjs';
@@ -19,8 +17,7 @@ export class GameService {
   private gamesUrl = '/api/games';
 
   constructor(
-    private http: HttpClient,
-    private userService: UserService
+    private http: HttpClient
   ) { }
 
   getGames(query: string, reviewedByUserId: number,

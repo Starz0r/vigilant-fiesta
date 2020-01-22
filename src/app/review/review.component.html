@@ -1,3 +1,4 @@
+<ng-container *ngIf="review">
 <mat-card [routerLink]="'/game/'+review.game_id">
   <mat-card-title>
       {{review.game_name}}
@@ -35,3 +36,7 @@
       <button mat-button>Reply</button>
   </mat-card-actions>
 </mat-card>
+</ng-container>
+<ng-container *ngIf="!review">
+  No review
+</ng-container>

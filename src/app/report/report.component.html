@@ -1,3 +1,4 @@
+<ng-container *ngIf="report">
 <mat-card>
   <mat-card-title>
     [{{report.id}}] {{report.type}}
@@ -20,3 +21,5 @@
     <button mat-button *ngIf="!report.answeredById" (click)="resolve()">Mark Resolved</button>
   </mat-card-actions>
 </mat-card>
+</ng-container>
+<ng-container *ngIf="!report"></ng-container>

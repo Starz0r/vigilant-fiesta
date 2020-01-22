@@ -1,3 +1,4 @@
+<ng-container *ngIf="news">
 <mat-card
     *ngFor="let news of [news]"
     [@simpleFadeAnimation]="'in'" >
@@ -18,3 +19,7 @@
       <span><button mat-button (click)="next.emit()"><i class="material-icons">navigate_next</i></button></span>
     </mat-card-actions>
 </mat-card>
+</ng-container>
+<ng-container *ngIf="!news">
+    No news to display.
+</ng-container>

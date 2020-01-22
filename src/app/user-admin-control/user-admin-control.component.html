@@ -1,6 +1,11 @@
-<section><mat-checkbox [(ngModel)]="user.canReport">Can Report</mat-checkbox></section>
-<section><mat-checkbox [(ngModel)]="user.canSubmit">Can Submit</mat-checkbox></section>
-<section><mat-checkbox [(ngModel)]="user.canReview">Can Review</mat-checkbox></section>
-<section><mat-checkbox [(ngModel)]="user.canScreenshot">Can Screenshot</mat-checkbox></section>
-<section><mat-checkbox [(ngModel)]="user.banned">Banned</mat-checkbox></section>
-<button mat-raised-button>Update</button>
+<ng-container *ngIf="user">
+    <section><mat-checkbox [(ngModel)]="user.canReport">Can Report</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.canSubmit">Can Submit</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.canReview">Can Review</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.canScreenshot">Can Screenshot</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.banned">Banned</mat-checkbox></section>
+    <button mat-raised-button>Update</button>
+</ng-container>
+<ng-container *ngIf="!user">
+    No user!
+</ng-container>

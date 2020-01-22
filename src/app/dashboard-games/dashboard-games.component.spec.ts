@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardGamesComponent } from './dashboard-games.component';
+import { MatTableModule } from '@angular/material/table';
+import { RouterTestingModule } from '@angular/router/testing';
+import { GameService } from '../game.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('DashboardGamesComponent', () => {
   let component: DashboardGamesComponent;
@@ -8,7 +12,9 @@ describe('DashboardGamesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashboardGamesComponent ]
+      declarations: [ DashboardGamesComponent ],
+      imports: [MatTableModule,RouterTestingModule,HttpClientTestingModule],
+      providers: [GameService]
     })
     .compileComponents();
   }));

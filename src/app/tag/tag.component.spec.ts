@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagComponent } from './tag.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 describe('TagComponent', () => {
   let component: TagComponent;
@@ -8,7 +9,10 @@ describe('TagComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagComponent ]
+      declarations: [ TagComponent ],
+      imports: [
+        MatChipsModule
+      ]
     })
     .compileComponents();
   }));
