@@ -21,6 +21,7 @@ import { GameService } from '../game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserService } from '../user.service';
+import { GameScreenshotsComponent } from '../game-screenshots/game-screenshots.component';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -35,7 +36,8 @@ describe('GameComponent', () => {
         TagListComponent,
         ReviewInputComponent,
         ReviewListComponent,
-        ReviewComponent
+        ReviewComponent,
+        GameScreenshotsComponent
       ],
       imports: [
         NgxGalleryModule,MatExpansionModule,

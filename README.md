@@ -1,5 +1,7 @@
 # Delfruit2
 
+[![Build Status](https://travis-ci.com/Klazen108/delfruit2-client.svg?branch=master)](https://travis-ci.com/Klazen108/delfruit2-client)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.4.
 
 ## Development server

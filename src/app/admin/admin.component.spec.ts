@@ -10,6 +10,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { UserService } from '../user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { GameComponent } from '../game/game.component';
+import { NgxGalleryModule } from 'ngx-gallery';
+import { UserComponent } from '../user/user.component';
+import { ReviewComponent } from '../review/review.component';
+import { DecimalPipe } from '@angular/common';
+import { DifficultyPipe } from '../difficulty.pipe';
+import { RatingPipe } from '../rating.pipe';
+import { ListComponent } from '../list/list.component';
+import { TagListComponent } from '../tag-list/tag-list.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ReviewListComponent } from '../review-list/review-list.component';
+import { GameScreenshotsComponent } from '../game-screenshots/game-screenshots.component';
+import { ReviewInputComponent } from '../review-input/review-input.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { DashboardGamesComponent } from '../dashboard-games/dashboard-games.component';
+import { UserAdminControlComponent } from '../user-admin-control/user-admin-control.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -17,7 +38,20 @@ describe('AdminComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent,ReportComponent ],
+      declarations: [ AdminComponent,ReportComponent,
+        GameComponent,
+        UserComponent,
+        ReviewComponent,
+        RatingPipe,
+        DifficultyPipe,
+        ListComponent,
+        TagListComponent,
+        ReviewListComponent,
+        GameScreenshotsComponent,
+        ReviewInputComponent,
+        DashboardGamesComponent,
+        UserAdminControlComponent
+      ],
       imports: [
         MatSnackBarModule,
         HttpClientTestingModule,
@@ -25,9 +59,18 @@ describe('AdminComponent', () => {
         MatRadioModule,
         MatCardModule,
         RouterModule,
-        MatButtonModule
+        MatButtonModule,
+        MatToolbarModule,
+        NgxGalleryModule,
+        MatExpansionModule,
+        MatTabsModule,
+        MatCheckboxModule,
+        MatSliderModule,
+        MatFormFieldModule,
+        MatTableModule
       ],
-      providers: [UserService]
+      providers: [UserService,
+        DecimalPipe]
     })
     .compileComponents();
   }));
