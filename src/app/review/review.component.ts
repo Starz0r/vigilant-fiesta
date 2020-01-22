@@ -14,6 +14,7 @@ import { User } from '../user';
 export class ReviewComponent implements OnInit {
 
   @Input() review: Review;
+  @Input() id: string;
 
   constructor(
     private userService: UserService, 
@@ -26,6 +27,22 @@ export class ReviewComponent implements OnInit {
   isLiked: boolean = false;
 
   ngOnInit() {
+    if (this.id) {
+      this.getReview(+this.id);
+    } else if (this.review) {
+      this.id = ""+this.review.id;
+      this.reviewLoaded();
+    }
+  }
+
+  getReview(id: number) {
+    this.gameService.getReview(id).subscribe(r => {
+      this.review = r;
+      this.reviewLoaded();
+    })
+  }
+
+  reviewLoaded() {
     if (this.user) {
       this.gameService.isLiked(this.review.id,this.user.id).subscribe(l => {
         this.isLiked = l.liked;

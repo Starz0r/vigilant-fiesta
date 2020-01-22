@@ -1,5 +1,38 @@
 <h1>Admin Portal</h1>
 
+<h2>Report Queue</h2>
+
+
+<div *ngIf="!currentReport">No new reports! Take a break :)</div>
+<app-report *ngIf="currentReport" [report]="currentReport"
+    (onResolve)="resolve(report.id)"></app-report>
+
+<ng-container *ngIf="currentReport">
+    <mat-toolbar>
+        <span class="fill-remaining-space"></span>
+        <span>Reported Content</span>
+        <span class="fill-remaining-space"></span>
+    </mat-toolbar>
+
+    <ng-container [ngSwitch]="currentReport.type">
+        <app-game *ngSwitchCase="'game'" [id]="currentReport.id"></app-game>
+        <app-game *ngSwitchCase="'game_add'" [id]="currentReport.id"></app-game>
+        <app-game *ngSwitchCase="'game_remove'" [id]="currentReport.id"></app-game>
+        <app-game *ngSwitchCase="'game_update_url'" [id]="currentReport.id"></app-game>
+        <app-game *ngSwitchCase="'game_update_owner'" [id]="currentReport.id"></app-game>
+        <app-game *ngSwitchCase="'game_update_creator'" [id]="currentReport.id"></app-game>
+
+        <app-user *ngSwitchCase="'user'" [id]="currentReport.id"></app-user>
+        <app-user *ngSwitchCase="'user_register'" [id]="currentReport.id"></app-user>
+        <app-user *ngSwitchCase="'user_password_change'" [id]="currentReport.id"></app-user>
+
+        <app-review *ngSwitchCase="'review'" [id]="currentReport.id"></app-review>
+        <app-review *ngSwitchCase="'review_restore'" [id]="currentReport.id"></app-review>
+
+        <div *ngSwitchDefault>Unable to preview report type: {{currentReport.type}}</div>
+    </ng-container>
+</ng-container>
+    <!--
 <mat-radio-group 
     [(ngModel)]="answered" (change)="getReports()">
     <mat-radio-button [value]="false">Unanswered</mat-radio-button>
@@ -10,3 +43,4 @@
 <div *ngIf="loading">Loading...</div>
 <app-report *ngFor="let report of reports" [report]="report"
     (onResolve)="resolve(report.id)"></app-report>
+    -->

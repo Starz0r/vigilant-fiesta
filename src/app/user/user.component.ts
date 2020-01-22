@@ -15,7 +15,7 @@ import { User } from '../user';
 export class UserComponent implements OnInit {
 
   @Input() user: PublicUser;
-  id: number;
+  @Input() id: number;
   loading: boolean = true;
   notFound: boolean = false;
 
@@ -32,11 +32,13 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.user) {
+    if (this.id) {
+      this.getUser();
+    } else if (this.user) {
+      this.id = this.user.id;
+    } else if (!!this.route.snapshot.paramMap.get('id')) {
       this.id = +this.route.snapshot.paramMap.get('id');
       this.getUser();
-    } else {
-      this.id = this.user.id;
     }
   }
 

@@ -49,6 +49,10 @@ export class GameService {
     return this.http.get<Review[]>(`/api/reviews`,{params: p});
   }
 
+  getReview(id: number): Observable<Review> {
+    return this.http.get<Review>(`/api/reviews/${id}`);
+  }
+
   getReviewsForGame(gameId: number): Observable<Review[]> {
     return this.http.get<Review[]>(`/api/games/${gameId}/reviews`);
   }

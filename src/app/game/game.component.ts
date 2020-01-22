@@ -36,10 +36,15 @@ export class GameComponent implements OnInit {
   reviewInputExpanded: boolean = false;
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.getGame();
-    this.getUserReview();
-    this.getTags();
+    if (this.id) {
+      this.getGame(false);
+    } else if (this.game) {
+      this.id = ""+this.game.id;
+      this.gameLoaded();
+    } else if (!!this.route.snapshot.paramMap.get('id')) {
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.getGame(true);
+    }
   }
 
   diffNames: string[] = [
@@ -72,7 +77,7 @@ export class GameComponent implements OnInit {
 
   @Input() game: Game;
 
-  id: string;
+  @Input() id: string;
   loading: boolean = true;
   notFound: boolean = false;
 
@@ -113,15 +118,21 @@ export class GameComponent implements OnInit {
     }
   }
 
-  getGame(): void {
+  gameLoaded() {
+    this.getScreenshots();
+    this.getUserReview();
+    this.getTags();
+  }
+
+  getGame(fromRoute: boolean): void {
     this.gameService.getGame(this.id).subscribe(
       game => {
         this.game = game;
         this.loading = false;
-        this.getScreenshots();
         //if we randomed, change the url so a copy-paste job will let
         //others come to the same game
-        this.location.replaceState(`/game/${game.id}`);
+        if (fromRoute) this.location.replaceState(`/game/${game.id}`);
+        this.gameLoaded();
       },
       error => {
         this.loading = false;

@@ -11,6 +11,8 @@ import { User } from '../user';
 })
 export class AdminComponent implements OnInit {
 
+  currentReport: Report;
+
   reports: Report[] = [];
   loading: boolean = true;
 
@@ -27,6 +29,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     this.getReports();
+    this.getNextReport();
   }
 
   resolve(reportId: number) {
@@ -42,6 +45,16 @@ export class AdminComponent implements OnInit {
     this.reportService.getReports(this.answered,0,10).subscribe(reports => {
       this.reports = reports;
       this.loading = false;
+    });
+  }
+
+  getNextReport() {
+    this.reportService.getReports(false,0,1).subscribe(reports => {
+      if (reports.length==0) {
+        this.currentReport = null;
+      } else {
+        this.currentReport = reports[0];
+      }
     });
   }
 
