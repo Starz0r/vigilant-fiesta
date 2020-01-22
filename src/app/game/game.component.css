@@ -2,13 +2,6 @@ div.reviews {
   margin-top: 1em;
 }
 
-ngx-gallery ::ng-deep .ngx-gallery-image-text[_ngcontent-c4] {
-  padding: 0px 10px;
-  width: auto;
-  background: rgba(0, 0, 0, 0.5);
-  bottom: 8px;
-}
-
 div.rating {
   border: 1px solid black;
   width: 180px;

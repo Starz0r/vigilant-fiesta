@@ -57,9 +57,9 @@
   </div>
 
   <div class="gallery">
-    <ngx-gallery 
-      [options]="galleryOptions" 
-      [images]="galleryImages"></ngx-gallery>
+    <app-game-screenshots 
+      *ngIf="game" 
+      [gameId]="game.id"></app-game-screenshots>
   </div>
 
   <mat-expansion-panel *ngIf="user" [(expanded)]="reviewInputExpanded">

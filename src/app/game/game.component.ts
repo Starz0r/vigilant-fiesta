@@ -87,26 +87,6 @@ export class GameComponent implements OnInit {
 
   user: User;
 
-  galleryOptions: NgxGalleryOptions[] = [
-    {
-        width: '400px',
-        height: '400px',
-        thumbnailsColumns: 4,
-        imageAnimation: NgxGalleryAnimation.Slide,
-        imageSize: NgxGalleryImageSize.Contain,
-        imagePercent: 100,
-        imageDescription: true,
-        imageAutoPlay: true,
-        imageAutoPlayInterval: 5000,
-        imageAutoPlayPauseOnHover: true
-    },
-    {
-      breakpoint: 420,
-      width: '100%'
-    }
-  ];
-  galleryImages: NgxGalleryImage[] = [];
-
   getUserReview(): void {
     if (this.id && this.user) {
       const userId = this.user.id;
@@ -119,7 +99,6 @@ export class GameComponent implements OnInit {
   }
 
   gameLoaded() {
-    this.getScreenshots();
     this.getUserReview();
     this.getTags();
   }
@@ -142,22 +121,6 @@ export class GameComponent implements OnInit {
         } else {
           console.log(error);
         }
-      }
-    );
-  }
-
-  getScreenshots(): void {
-    this.gameService.getScreenshotsForGame(this.game.id).subscribe(
-      screenshots => {
-        this.galleryImages = this.shuffle(screenshots
-        .map(screenshot => Object.assign(new Screenshot(), screenshot))
-        .map(ss => new NgxGalleryImage({
-            small: ss.getUrl(),
-            medium: ss.getUrl(),
-            big: ss.getUrl(),
-            description: ss.user_name + (ss.description?": " + ss.description:"")
-          })
-        ));
       }
     );
   }
@@ -195,30 +158,10 @@ export class GameComponent implements OnInit {
       .toString(16).padStart(6,'0');
   }
 
-  shuffle(array: any[]): any[] {
-    let currentIndex = array.length, temporaryValue, randomIndex;
-
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-  }
-
   submitReview(review: Review) {
     this.gameService.submitReview(this.game.id,review).subscribe(_ => {
       this.reviewList.getReviews();
       this.reviewInputExpanded = false;
     });
   }
-
 }

@@ -59,6 +59,7 @@ import { ReportComponent } from './report/report.component';
 import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
 import { UserAdminControlComponent } from './user-admin-control/user-admin-control.component';
 import { NewsComponent } from './news/news.component';
+import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { NewsComponent } from './news/news.component';
     ReportComponent,
     SpecialThanksComponent,
     UserAdminControlComponent,
-    NewsComponent
+    NewsComponent,
+    GameScreenshotsComponent
   ],
   imports: [
     BrowserModule,

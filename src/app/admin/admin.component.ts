@@ -3,6 +3,7 @@ import { ReportService } from '../report.service';
 import { Report } from '../report';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { Screenshot } from '../screenshot';
 
 @Component({
   selector: 'app-admin',
@@ -57,6 +58,12 @@ export class AdminComponent implements OnInit {
         this.currentReport = reports[0];
       }
     });
+  }
+
+  screenshotUrl(id: string): string {
+    const screenshot = new Screenshot();
+    screenshot.id = +id;
+    return screenshot.getUrl();
   }
 
 }

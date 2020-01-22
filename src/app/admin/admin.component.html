@@ -29,6 +29,13 @@
         <app-review *ngSwitchCase="'review'" [id]="currentReport.id"></app-review>
         <app-review *ngSwitchCase="'review_restore'" [id]="currentReport.id"></app-review>
 
+        <div *ngSwitchCase="'screenshot'">
+            <img [src]="screenshotUrl(currentReport.id)" />
+        </div>
+        <div *ngSwitchCase="'screenshot_remove'">
+            <img [src]="screenshotUrl(currentReport.id)" />
+        </div>
+
         <div *ngSwitchDefault>Unable to preview report type: {{currentReport.type}}</div>
     </ng-container>
 </ng-container>
