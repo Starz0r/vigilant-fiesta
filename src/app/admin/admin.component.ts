@@ -37,6 +37,7 @@ export class AdminComponent implements OnInit {
     this.reportService.resolveReport(reportId,answererId).subscribe(report => {
       const rInd = this.reports.findIndex(r => r.id == report.id);
       this.reports[rInd] = report;
+      this.getNextReport();
     })
   }
 
