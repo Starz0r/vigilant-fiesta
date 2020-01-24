@@ -49,6 +49,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
@@ -110,7 +111,8 @@ import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.co
     MatTableModule,
     MatExpansionModule,
     MatRadioModule,
-    MatTabsModule
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

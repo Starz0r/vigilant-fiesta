@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
 import { Game } from '../game';
-import { Screenshot } from '../screenshot';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -9,11 +8,12 @@ import { Location } from '@angular/common';
 import { GameService } from '../game.service';
 import { UserService } from '../user.service';
 
-import { NgxGalleryOptions, NgxGalleryImage, NgxGalleryAnimation, 
-  NgxGalleryImageSize } from 'ngx-gallery';
 import { Review } from '../review';
 import { ReviewListComponent } from '../review-list/review-list.component';
 import { User } from '../user';
+import { ReviewSubmission } from '../review-input/review-submission';
+import { of, forkJoin } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game',
@@ -158,10 +158,34 @@ export class GameComponent implements OnInit {
       .toString(16).padStart(6,'0');
   }
 
-  submitReview(review: Review) {
-    this.gameService.submitReview(this.game.id,review).subscribe(_ => {
-      this.reviewList.getReviews();
-      this.reviewInputExpanded = false;
+  async submitReview(review: ReviewSubmission) {
+    console.log('test')
+    const tags = review.tags;
+
+    //create any non-existant tags
+    const tagCreations = tags.filter(t=>!t.id).map(tag=>{
+      return this.gameService.addTag(tag)
     });
+    const createdTags = await forkJoin(tagCreations).toPromise();
+
+    //replace all pending tags with created tags
+    if (createdTags) {
+      createdTags.forEach(ct=>{
+        const index = tags.findIndex(t=>t.name==ct.name);
+        if (index != -1) tags[index]=ct;
+      });
+    }
+
+    //TODO: submit tags for game
+    await this.gameService.setTags(this.game.id,tags.map(t=>t.id)).toPromise();
+
+    //submit the review
+    await this.gameService.submitReview(this.game.id,review.review).toPromise();
+    
+    //update tags
+    this.gameService.getTagsForGame(this.game.id).subscribe(t => this.tags=t);
+    //update reviews
+    this.reviewList.getReviews();
+    this.reviewInputExpanded = false;
   }
 }

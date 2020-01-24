@@ -7,6 +7,7 @@ import { Tag } from './tag';
 import { PublicUser } from './public-user';
 import { Screenshot } from './screenshot';
 import { Observable ,  of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -123,7 +124,22 @@ export class GameService {
     return this.http.get(`/api/games/${gameId}/tags`)
   }
 
+  getTag(tagId: number): Observable<Tag> {
+    return this.http.get<Tag>(`/api/tags/${tagId}`)
+  }
+
+  getTagByName(tagName: string): Observable<Tag> {
+    let params = new HttpParams();
+    params = params.append("name", tagName);
+    return this.http.get<Tag[]>(`/api/tags`,{params})
+      .pipe(map(tags => tags.length==1?tags[0]:null));
+  }
+
   setTags(gameId, tagIds: number[]): Observable<any> {
     return this.http.post(`/api/games/${gameId}/tags`,tagIds)
+  }
+
+  addTag(tag: Tag): Observable<Tag> {
+    return this.http.post<Tag>(`/api/tags`,tag)
   }
 }

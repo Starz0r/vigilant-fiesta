@@ -1,5 +1,5 @@
 export class Tag {
-    id: number;
+    id?: number;
     name: string;
-    date_created: Date;
+    date_created?: Date;
 }

@@ -1,10 +1,10 @@
-tags currently disabled
-<!--
+<ng-container *ngIf="tags">
+<p>Tags:</p>
 <mat-chip-list>
     <app-tag *ngFor="let tag of tagMap()"
-    [id]="tag.tags[0].tag_id"
-    [name]="tag.tags[0].name"
+    [id]="tag.id"
+    [name]="tag.name"
     [count]="tag.count"
   ></app-tag>
 </mat-chip-list>
--->
+</ng-container>

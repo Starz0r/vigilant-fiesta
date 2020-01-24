@@ -21,12 +21,12 @@ export class TagListComponent implements OnInit {
     }
   }
 
-  /*tagMap() {
+  tagMap() {
     return this.tags.reduce((acc,cur) => {
       let res = acc || [];
-      let obj = res.find(val => val.tag_id === cur.tag_id);
+      let obj = res.find(val => val.tag_id === cur.id);
       if (!obj) {
-        obj = {tag_id: cur.tag_id, count: 0, tags: []};
+        obj = {tag_id: cur.id, name: cur.name, count: 0, tags: []};
         acc.push(obj);
       }
       obj.tags.push(cur);
@@ -34,6 +34,6 @@ export class TagListComponent implements OnInit {
       return acc;
     },[])
     .sort((a,b)=>b.count-a.count);
-  }*/
+  }
 
 }
