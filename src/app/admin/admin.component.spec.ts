@@ -31,6 +31,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
+import { TagComponent } from '../tag/tag.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -50,7 +53,8 @@ describe('AdminComponent', () => {
         GameScreenshotsComponent,
         ReviewInputComponent,
         DashboardGamesComponent,
-        UserAdminControlComponent
+        UserAdminControlComponent,
+        TagComponent
       ],
       imports: [
         MatSnackBarModule,
@@ -67,7 +71,9 @@ describe('AdminComponent', () => {
         MatCheckboxModule,
         MatSliderModule,
         MatFormFieldModule,
-        MatTableModule
+        MatTableModule,
+        MatChipsModule,
+        MatIconModule
       ],
       providers: [UserService,
         DecimalPipe]

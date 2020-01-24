@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('ReviewInputComponent', () => {
   let component: ReviewInputComponent;
@@ -34,6 +36,8 @@ describe('ReviewInputComponent', () => {
         MatFormFieldModule,
         MatSliderModule,
         MatSnackBarModule,
+        MatChipsModule,
+        MatIconModule
        ],
       providers: [DecimalPipe,GameService,UserService]
     })

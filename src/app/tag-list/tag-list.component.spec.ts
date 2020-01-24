@@ -5,6 +5,8 @@ import { GameService } from '../game.service';
 import { UserService } from '../user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TagComponent } from '../tag/tag.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 describe('TagListComponent', () => {
   let component: TagListComponent;
@@ -12,8 +14,8 @@ describe('TagListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagListComponent, ],
-      imports: [HttpClientTestingModule,MatSnackBarModule],
+      declarations: [ TagListComponent,TagComponent ],
+      imports: [HttpClientTestingModule,MatSnackBarModule,MatChipsModule],
       providers: [GameService,UserService]
     })
     .compileComponents();

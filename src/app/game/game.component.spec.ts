@@ -22,6 +22,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserService } from '../user.service';
 import { GameScreenshotsComponent } from '../game-screenshots/game-screenshots.component';
+import { TagComponent } from '../tag/tag.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -37,7 +40,8 @@ describe('GameComponent', () => {
         ReviewInputComponent,
         ReviewListComponent,
         ReviewComponent,
-        GameScreenshotsComponent
+        GameScreenshotsComponent,
+        TagComponent
       ],
       imports: [
         NgxGalleryModule,MatExpansionModule,
@@ -48,7 +52,9 @@ describe('GameComponent', () => {
         RouterTestingModule,
         MatCardModule,
         HttpClientTestingModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        MatChipsModule,
+        MatIconModule
       ],
       providers: [
         DecimalPipe,
