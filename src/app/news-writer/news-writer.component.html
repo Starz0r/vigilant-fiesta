@@ -7,7 +7,7 @@
     (change)="recompile()" (keyup)="recompile()" 
     [(ngModel)]="input"></textarea>
 </mat-form-field>
-<button mat-button (click)="submitNews.emit(news)">Submit News</button>
+<button mat-button (click)="submitNews.emit(news)">Submit News</button><a mat-button target="_blank" href="https://spec.commonmark.org/0.29">Read Markdown Specification</a>
 <p>Preview:</p>
 <app-news-card
     [news]="news"
