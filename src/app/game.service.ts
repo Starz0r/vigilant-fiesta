@@ -90,8 +90,10 @@ export class GameService {
     });
   }
 
-  getTagsForGame(gameId: number): Observable<Tag[]> {
-    return this.http.get<Tag[]>(`/api/games/${gameId}/tags`);
+  getTagsForGame(gameId: number, userId?: number): Observable<Tag[]> {
+    let params = new HttpParams();
+    if (userId) params = params.append("uid", ""+userId);
+    return this.http.get<Tag[]>(`/api/games/${gameId}/tags`,{params});
   }
 
   submitReview(gameId: number, review: Review): Observable<any> {
@@ -118,10 +120,6 @@ export class GameService {
     let params = new HttpParams();
     params = params.append("q", q);
     return this.http.get<Tag[]>(`/api/tags/`,{params});
-  }
-
-  getTags(gameId: number): Observable<any> {
-    return this.http.get(`/api/games/${gameId}/tags`)
   }
 
   getTag(tagId: number): Observable<Tag> {

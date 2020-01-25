@@ -12,8 +12,8 @@ import { Review } from '../review';
 import { ReviewListComponent } from '../review-list/review-list.component';
 import { User } from '../user';
 import { ReviewSubmission } from '../review-input/review-submission';
-import { of, forkJoin } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
+import { Tag } from '../tag';
 
 @Component({
   selector: 'app-game',
@@ -82,6 +82,7 @@ export class GameComponent implements OnInit {
   notFound: boolean = false;
 
   userReview: Review = new Review;
+  userTags: Tag[];
 
   tags: any[] = [];
 
@@ -90,11 +91,17 @@ export class GameComponent implements OnInit {
   getUserReview(): void {
     if (this.id && this.user) {
       const userId = this.user.id;
+
       this.gameService.getReviewsForUserGame(+this.id,userId).subscribe(reviews => {
         if (reviews && reviews.length == 1) {
           this.userReview = reviews[0];
         }
       });
+
+      this.gameService.getTagsForGame(+this.id,userId).subscribe(tags=>{
+        this.userTags = tags;
+      })
+
     }
   }
 
@@ -126,7 +133,7 @@ export class GameComponent implements OnInit {
   }
 
   getTags(): void {
-    this.gameService.getTags(+this.id).subscribe(tags => {
+    this.gameService.getTagsForGame(+this.id).subscribe(tags => {
       this.tags = tags;
     })
   }

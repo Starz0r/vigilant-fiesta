@@ -17,7 +17,7 @@ export class ReviewInputComponent implements OnInit {
 
   @Input() review: Review = null;
 
-  tags: Tag[] = [];
+  @Input() tags: Tag[] = [];
   
   @Output() onSubmit: EventEmitter<ReviewSubmission> = new EventEmitter();
 
