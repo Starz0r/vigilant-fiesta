@@ -4,6 +4,8 @@ import { Report } from '../report';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { Screenshot } from '../screenshot';
+import { GameService } from '../game.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +25,9 @@ export class AdminComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private reportService: ReportService,) {
+    private reportService: ReportService,
+    private gameService: GameService,
+    private snackBar: MatSnackBar) {
       //TODO: if !user, route to home
       this.userService.userChange.subscribe(user=>this.user=user);
     }
@@ -66,4 +70,11 @@ export class AdminComponent implements OnInit {
     return screenshot.getUrl();
   }
 
+  submitNews(news: any) {
+    this.gameService.addNews(news).subscribe(n => {
+      this.snackBar.open("News Submitted!",null,{
+        duration: 5000,
+      })
+    });
+  }
 }

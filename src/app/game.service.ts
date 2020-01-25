@@ -140,4 +140,8 @@ export class GameService {
   addTag(tag: Tag): Observable<Tag> {
     return this.http.post<Tag>(`/api/tags`,tag)
   }
+
+  addNews(news: any): Observable<any> {
+    return this.http.post<Tag>(`/api/news`,news)
+  }
 }

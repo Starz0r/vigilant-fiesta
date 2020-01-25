@@ -12,6 +12,10 @@ import { ReviewComponent } from '../review/review.component';
 import { GameService } from '../game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NewsCardComponent } from '../news-card/news-card.component';
+import { NewsWriterComponent } from '../news-writer/news-writer.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -24,7 +28,9 @@ describe('DashboardComponent', () => {
         NewsComponent,
         DashboardGamesComponent,
         ReviewListComponent,
-        ReviewComponent
+        ReviewComponent,
+        NewsCardComponent,
+        NewsWriterComponent
       ],
       imports: [
         MatTabsModule,
@@ -32,7 +38,10 @@ describe('DashboardComponent', () => {
         MatTableModule,
         RouterTestingModule,
         HttpClientTestingModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        //????
+        MatFormFieldModule,
+        FormsModule
       ],
       providers: [GameService]
     })

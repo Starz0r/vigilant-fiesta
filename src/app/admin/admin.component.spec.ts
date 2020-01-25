@@ -34,6 +34,12 @@ import { MatTableModule } from '@angular/material/table';
 import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { NewsWriterComponent } from '../news-writer/news-writer.component';
+import { NewsCardComponent } from '../news-card/news-card.component';
+import { GameService } from '../game.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { MatInputModule } from '@angular/material/input';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -54,7 +60,9 @@ describe('AdminComponent', () => {
         ReviewInputComponent,
         DashboardGamesComponent,
         UserAdminControlComponent,
-        TagComponent
+        TagComponent,
+        NewsWriterComponent,
+        NewsCardComponent
       ],
       imports: [
         MatSnackBarModule,
@@ -73,9 +81,13 @@ describe('AdminComponent', () => {
         MatFormFieldModule,
         MatTableModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        MatInputModule
       ],
       providers: [UserService,
+        GameService,
         DecimalPipe]
     })
     .compileComponents();

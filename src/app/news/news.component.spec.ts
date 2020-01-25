@@ -4,6 +4,7 @@ import { NewsComponent } from './news.component';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewsCardComponent } from '../news-card/news-card.component';
 
 describe('NewsComponent', () => {
   let component: NewsComponent;
@@ -11,7 +12,7 @@ describe('NewsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsComponent ],
+      declarations: [ NewsComponent, NewsCardComponent ],
       imports: [
         MatCardModule,
         BrowserModule,

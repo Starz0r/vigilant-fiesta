@@ -61,6 +61,8 @@ import { SpecialThanksComponent } from './special-thanks/special-thanks.componen
 import { UserAdminControlComponent } from './user-admin-control/user-admin-control.component';
 import { NewsComponent } from './news/news.component';
 import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.component';
+import { NewsWriterComponent } from './news-writer/news-writer.component';
+import { NewsCardComponent } from './news-card/news-card.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.co
     SpecialThanksComponent,
     UserAdminControlComponent,
     NewsComponent,
-    GameScreenshotsComponent
+    GameScreenshotsComponent,
+    NewsWriterComponent,
+    NewsCardComponent
   ],
   imports: [
     BrowserModule,

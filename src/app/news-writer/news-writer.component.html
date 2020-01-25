@@ -1,0 +1,15 @@
+<mat-form-field>
+    <input matInput placeholder="Title" 
+    [(ngModel)]="news.title" name="title"/>
+</mat-form-field>
+<mat-form-field>
+<textarea matInput placeholder="News"
+    (change)="recompile()" (keyup)="recompile()" 
+    [(ngModel)]="input"></textarea>
+</mat-form-field>
+<button mat-button (click)="submitNews.emit(news)">Submit News</button>
+<p>Preview:</p>
+<app-news-card
+    [news]="news"
+    [hasPrev]="false">
+</app-news-card>
