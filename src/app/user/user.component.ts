@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserService } from '../user.service';
 import { User } from '../user';
+import { GameSearchParams } from '../game-search-params';
 
 @Component({
   selector: 'app-user',
@@ -23,6 +24,11 @@ export class UserComponent implements OnInit {
 
   meUser: User;
 
+  gameListParams: GameSearchParams = {
+    page: 0,
+    limit: 25
+  };
+
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
@@ -36,10 +42,19 @@ export class UserComponent implements OnInit {
       this.getUser();
     } else if (this.user) {
       this.id = this.user.id;
+      this.userReady();
     } else if (!!this.route.snapshot.paramMap.get('id')) {
       this.id = +this.route.snapshot.paramMap.get('id');
       this.getUser();
     }
+  }
+
+  userReady() {
+    this.gameListParams = {
+      page: 0,
+      limit: 25,
+      reviewedByUserId: this.user?this.user.id:undefined
+    };
   }
 
   getUser(): void {
@@ -51,6 +66,7 @@ export class UserComponent implements OnInit {
         if (this.meUser && this.meUser.id==this.user.id) {
           this.isMe = true;
         }
+        this.userReady();
       },
       error => {
         this.loading = false;

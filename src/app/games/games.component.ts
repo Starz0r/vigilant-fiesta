@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Game } from '../game';
+import { GameSearchParams } from '../game-search-params';
 
 @Component({
   selector: 'app-games',
@@ -7,15 +8,22 @@ import { Game } from '../game';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent implements OnInit {
-  filter: string;
+  searchParams: GameSearchParams = {
+    page: 0,
+    limit: 1000
+  }
+
+  set filter(value: string) {
+    this.searchParams = {...this.searchParams, q: value};
+  }
+
+  get filter() {
+    return this.searchParams.q;
+  }
 
   constructor() { }
 
   ngOnInit() {
-  }
 
-  /*filter(query: string): void {
-    this.nextPage=0;
-    this.getGames(this.nextPage,true,query);
-  }*/
+  }
 }

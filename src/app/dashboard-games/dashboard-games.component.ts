@@ -3,6 +3,7 @@ import { Game } from '../game';
 import { GameService } from '../game.service';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
+import { GameSearchParams } from '../game-search-params';
 
 @Component({
   selector: 'app-dashboard-games',
@@ -16,19 +17,9 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
 
   columnsToDisplay=['game','released','rating','difficulty'];
 
-  @Input()
-  filter: string = null;
-  @Input()
-  start: number = 0;
-  @Input()
-  limit: number = 25;
-  @Input()
-  sort: string = "date_created";
-  @Input()
-  direction: string = "DESC";
-
-  @Input()
-  reviewedByUserId: number = null;
+  @Input() params: GameSearchParams = {
+    page:0,limit:25
+  };
 
   debounceSearch: Subject<SimpleChanges> = new Subject<SimpleChanges>();
 
@@ -55,8 +46,7 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   getGames(): void {
-    this.gameService.getGames(this.filter,this.reviewedByUserId,this.start,this.limit,this.sort,this.direction)
-      .subscribe(games => {
+    this.gameService.getGames(this.params).subscribe(games => {
         this.games = games;
         this.loading = false;
       });

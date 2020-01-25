@@ -28,7 +28,7 @@
           <a href="/report.php?t=user&amp;id=746">Report this user</a>
       </mat-tab>
       <mat-tab label="Ratings">
-            <app-dashboard-games [reviewedByUserId]="user.id"></app-dashboard-games>
+            <app-dashboard-games [params]="gameListParams"></app-dashboard-games>
       </mat-tab>
       <mat-tab label="Reviews">
           <app-review-list [userId]="user.id"></app-review-list>

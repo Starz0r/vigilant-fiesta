@@ -8,6 +8,7 @@ import { PublicUser } from './public-user';
 import { Screenshot } from './screenshot';
 import { Observable ,  of } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { GameSearchParams } from './game-search-params';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -21,16 +22,29 @@ export class GameService {
     private http: HttpClient
   ) { }
 
-  getGames(query: string, reviewedByUserId: number,
-    page: number, limit: number,
-    sort: string = '', sortdir: string = ''): Observable<Game[]> {
+  getGames(params: GameSearchParams): Observable<Game[]> {
     let p = new HttpParams();
-    p = p.append("page", page.toString());
-    p = p.append("limit", limit.toString());
-    if (sort) p = p.append("order_col", sort);
-    if (sortdir) p = p.append("order_dir", sortdir);
-    if (query) p = p.append("q", query);
-    if (reviewedByUserId) p = p.append("reviewedByUserId", ""+reviewedByUserId);
+    p = p.append("page", (""+params.page)||"0");
+    p = p.append("limit", (""+params.limit)||"25");
+    if (params.orderCol) p = p.append("order_col", params.orderCol);
+    if (params.orderDir) p = p.append("order_dir", params.orderDir);
+
+    if (params.q) p = p.append("q", params.q);
+    if (params.id) p = p.append("id", ""+params.id);
+    if (params.name) p = p.append("name", params.name);
+    
+    if (params.tags) p = p.append("tags", JSON.stringify(params.tags));
+    if (params.author) p = p.append("author", params.author);
+    if (params.hasDownload) p = p.append("hasDownload", params.hasDownload?"1":"0");
+    if (params.createdFrom) p = p.append("createdFrom", params.createdFrom);
+    if (params.createdTo) p = p.append("createdTo", params.createdTo);
+    if (params.clearedByUserId) p = p.append("clearedByUserId", ""+params.clearedByUserId);
+    if (params.reviewedByUserId) p = p.append("reviewedByUserId", ""+params.reviewedByUserId);
+    if (params.ratingFrom) p = p.append("ratingFrom", ""+params.ratingFrom);
+    if (params.ratingTo) p = p.append("ratingTo", ""+params.ratingTo);
+    if (params.difficultyFrom) p = p.append("difficultyFrom", ""+params.difficultyFrom);
+    if (params.difficultyTo) p = p.append("difficultyTo", ""+params.difficultyTo);
+
     return this.http.get<Game[]>(this.gamesUrl, {params: p});
   }
 
