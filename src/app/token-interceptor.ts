@@ -4,7 +4,9 @@ import {
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpHeaderResponse,
+  HttpResponse
 } from '@angular/common/http';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
@@ -25,14 +27,22 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(
       request: HttpRequest<any>, 
       next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.user) {
+    if (this.user && this.user.token) {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${this.user.token}`
         }
       });
     }
-    return next.handle(request).pipe( tap(() => {},
+    return next.handle(request).pipe( tap(res => {
+      if (res instanceof HttpResponse) {
+        const newToken = res.headers.get('token');
+        if (newToken) {
+          this.us.updateToken(newToken);
+        }
+      }
+      return res;
+    },
     (err: any) => {
     if (err instanceof HttpErrorResponse) {
       if (err.status !== 401) {

@@ -105,4 +105,9 @@ export class UserService {
 
     return null;
   }
+
+  updateToken(token: string) {
+    this.user.token = token;
+    this.userChange.next(this.user);
+  }
 }
