@@ -25,6 +25,7 @@ import { GameScreenshotsComponent } from '../game-screenshots/game-screenshots.c
 import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { TagInputComponent } from '../tag-input/tag-input.component';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -41,7 +42,8 @@ describe('GameComponent', () => {
         ReviewListComponent,
         ReviewComponent,
         GameScreenshotsComponent,
-        TagComponent
+        TagComponent,
+        TagInputComponent
       ],
       imports: [
         NgxGalleryModule,MatExpansionModule,
@@ -54,7 +56,7 @@ describe('GameComponent', () => {
         HttpClientTestingModule,
         MatSnackBarModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
       ],
       providers: [
         DecimalPipe,

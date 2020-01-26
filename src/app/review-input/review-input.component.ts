@@ -46,38 +46,19 @@ export class ReviewInputComponent implements OnInit {
     this.review.rating = event.value;
   }
 
-  addTag(event: MatChipInputEvent): void {
-    const input = event.input;
-    let value = event.value;
-
-    value = (value || '').trim();
-    if (!value) return;
-
-    //prevent dupes
-    let found = false;
-    for (let i = 0; i < this.tags.length; i++) {
-      if (this.tags[i].name.toLowerCase() === input.value.toLowerCase()) {
-        found = true;
-        break;
-      }
-    }
-    if (found) return;
-
+  addTag(tagName: string): void {
     //attempt to look up the tag to get the id
-    this.gameService.getTagByName(value).subscribe(tag => {
+    this.gameService.getTagByName(tagName).subscribe(tag => {
       if (tag) { //add the tag from the server
         this.tags.push(tag);
       } else { //add tag with no id, we'll get one later
-        this.tags.push({name: value.trim()});
+        this.tags.push({name: tagName.trim()});
       }
     });
-
-    // Reset the input value
-    if (input) input.value = '';
   }
 
-  removeTag(fruit: Tag): void {
-    const index = this.tags.indexOf(fruit);
+  removeTag(tag: Tag): void {
+    const index = this.tags.indexOf(tag);
 
     if (index >= 0) {
       this.tags.splice(index, 1);

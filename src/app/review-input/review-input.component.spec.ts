@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { TagInputComponent } from '../tag-input/tag-input.component';
 
 describe('ReviewInputComponent', () => {
   let component: ReviewInputComponent;
@@ -26,6 +27,7 @@ describe('ReviewInputComponent', () => {
       declarations: [ ReviewInputComponent,
         DifficultyPipe,
         RatingPipe,
+        TagInputComponent
        ],
        imports: [
         BrowserModule,
@@ -37,7 +39,7 @@ describe('ReviewInputComponent', () => {
         MatSliderModule,
         MatSnackBarModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
        ],
       providers: [DecimalPipe,GameService,UserService]
     })

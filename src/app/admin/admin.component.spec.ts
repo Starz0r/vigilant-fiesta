@@ -40,6 +40,7 @@ import { GameService } from '../game.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
+import { TagInputComponent } from '../tag-input/tag-input.component';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -62,7 +63,8 @@ describe('AdminComponent', () => {
         UserAdminControlComponent,
         TagComponent,
         NewsWriterComponent,
-        NewsCardComponent
+        NewsCardComponent,
+        TagInputComponent
       ],
       imports: [
         MatSnackBarModule,

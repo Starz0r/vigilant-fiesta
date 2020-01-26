@@ -15,22 +15,11 @@
       [(ngModel)]="review.comment" name="comment"></textarea><br>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-      <mat-chip-list #tagsList aria-label="Tags">
-        <mat-chip *ngFor="let tag of tags" 
-            [selectable]="true" [removable]="true" selected
-            (removed)="removeTag(tag)"
-            [color]="tag.id?'':'accent'">
-          {{tag.name}}
-          <mat-icon matChipRemove>cancel</mat-icon>
-        </mat-chip>
-        <input placeholder="Tags"
-                [matChipInputFor]="tagsList"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                [matChipInputAddOnBlur]="true"
-                (matChipInputTokenEnd)="addTag($event)">
-      </mat-chip-list>
-    </mat-form-field>
+    <app-tag-input 
+      [tags]="tags"
+      (remove)="removeTag($event)"
+      (tagStaged)="addTag($event)"
+    ></app-tag-input>
 
     <button mat-raised-button i18n (click)="update()">Update</button>
 

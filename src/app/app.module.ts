@@ -53,6 +53,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
@@ -63,6 +65,7 @@ import { NewsComponent } from './news/news.component';
 import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.component';
 import { NewsWriterComponent } from './news-writer/news-writer.component';
 import { NewsCardComponent } from './news-card/news-card.component';
+import { TagInputComponent } from './tag-input/tag-input.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +95,8 @@ import { NewsCardComponent } from './news-card/news-card.component';
     NewsComponent,
     GameScreenshotsComponent,
     NewsWriterComponent,
-    NewsCardComponent
+    NewsCardComponent,
+    TagInputComponent
   ],
   imports: [
     BrowserModule,
@@ -116,7 +120,9 @@ import { NewsCardComponent } from './news-card/news-card.component';
     MatExpansionModule,
     MatRadioModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

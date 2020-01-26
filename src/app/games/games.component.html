@@ -1,8 +1,63 @@
 <h2>Game List</h2>
 
-<div class="filter">
-  Filter: <input type="text" [(ngModel)]="filter">
-</div>  
+<mat-form-field>
+  <input matInput type="text" placeholder="Filter" [(ngModel)]="filter">
+</mat-form-field>
+
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Advanced Search
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <mat-form-field class="full-width">
+    <input matInput type="text" placeholder="Title" [(ngModel)]="title">
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <input matInput type="text" placeholder="Author" [(ngModel)]="author">
+  </mat-form-field>
+
+  Minimum Rating: {{minrate | rating}}<br>
+  <mat-slider min="-1" max="100" step="1" [(ngModel)]="minrate" class="full-width"></mat-slider>
+  Maximum Rating: {{maxrate | rating}}<br>
+  <mat-slider min="-1" max="100" step="1" [(ngModel)]="maxrate" class="full-width"></mat-slider>
+
+  Minimum Difficulty: {{mindiff | difficulty}}<br>
+  <mat-slider min="-1" max="100" step="1" [(ngModel)]="mindiff" class="full-width"></mat-slider>
+  Maximum Difficulty: {{maxdiff | difficulty}}<br>
+  <mat-slider min="-1" max="100" step="1" [(ngModel)]="maxdiff" class="full-width"></mat-slider>
+
+  <app-tag-input 
+    [tags]="tags"
+    (remove)="removeTag($event)"
+    (tagStaged)="addTag($event)"
+  ></app-tag-input>
+
+  Has Download:
+  <mat-radio-group [(ngModel)]="hasDownload" class="full-width">
+    <mat-radio-button value="null">Either</mat-radio-button>
+    <mat-radio-button value="true">Yes</mat-radio-button>
+    <mat-radio-button value="false">No</mat-radio-button>
+  </mat-radio-group>
+
+  <div>
+  Released Between
+  <mat-form-field>
+    <input matInput [matDatepicker]="startPicker" [(ngModel)]="startdate" placeholder="Start Date">
+    <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+    <mat-datepicker #startPicker></mat-datepicker>
+  </mat-form-field>
+  to
+  <mat-form-field>
+    <input matInput [matDatepicker]="endPicker" [(ngModel)]="enddate" placeholder="End Date">
+    <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+    <mat-datepicker #endPicker></mat-datepicker>
+  </mat-form-field>
+  </div>
+
+</mat-expansion-panel>
 
 <app-dashboard-games
 [params]="searchParams"
