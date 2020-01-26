@@ -7,7 +7,7 @@
 <mat-expansion-panel>
   <mat-expansion-panel-header>
     <mat-panel-title>
-      Advanced Search
+      Advanced Search <ng-container *ngIf="!deepEqual(searchParams,defaultParams)">(Filters Applied)</ng-container>
     </mat-panel-title>
   </mat-expansion-panel-header>
 
@@ -37,9 +37,9 @@
 
   Has Download:
   <mat-radio-group [(ngModel)]="hasDownload" class="full-width">
-    <mat-radio-button value="null">Either</mat-radio-button>
-    <mat-radio-button value="true">Yes</mat-radio-button>
-    <mat-radio-button value="false">No</mat-radio-button>
+    <mat-radio-button value="either">Either</mat-radio-button>
+    <mat-radio-button value="yes">Yes</mat-radio-button>
+    <mat-radio-button value="no">No</mat-radio-button>
   </mat-radio-group>
 
   <div>
@@ -56,6 +56,8 @@
     <mat-datepicker #endPicker></mat-datepicker>
   </mat-form-field>
   </div>
+
+  <button mat-button (click)="clearAll()">Clear Filters</button>
 
 </mat-expansion-panel>
 
