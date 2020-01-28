@@ -1,4 +1,4 @@
-<ng-container *ngIf="tags">
+<ng-container *ngIf="tags && tags.length > 0">
 <p class="header">Tags:</p>
 <mat-chip-list>
     <app-tag *ngFor="let tag of tagMap()"
