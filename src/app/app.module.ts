@@ -66,6 +66,7 @@ import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.co
 import { NewsWriterComponent } from './news-writer/news-writer.component';
 import { NewsCardComponent } from './news-card/news-card.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
+import { GuidelinesComponent } from './guidelines/guidelines.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,8 @@ import { TagInputComponent } from './tag-input/tag-input.component';
     GameScreenshotsComponent,
     NewsWriterComponent,
     NewsCardComponent,
-    TagInputComponent
+    TagInputComponent,
+    GuidelinesComponent
   ],
   imports: [
     BrowserModule,
