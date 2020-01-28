@@ -16,6 +16,9 @@ import { NewsCardComponent } from '../news-card/news-card.component';
 import { NewsWriterComponent } from '../news-writer/news-writer.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { TagListComponent } from '../tag-list/tag-list.component';
+import { TagComponent } from '../tag/tag.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -30,7 +33,9 @@ describe('DashboardComponent', () => {
         ReviewListComponent,
         ReviewComponent,
         NewsCardComponent,
-        NewsWriterComponent
+        NewsWriterComponent,
+        TagListComponent,
+        TagComponent
       ],
       imports: [
         MatTabsModule,
@@ -39,6 +44,7 @@ describe('DashboardComponent', () => {
         RouterTestingModule,
         HttpClientTestingModule,
         MatSnackBarModule,
+        MatChipsModule,
         //????
         MatFormFieldModule,
         FormsModule

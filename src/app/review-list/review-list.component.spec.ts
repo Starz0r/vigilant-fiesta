@@ -7,6 +7,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { GameService } from '../game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TagListComponent } from '../tag-list/tag-list.component';
+import { TagComponent } from '../tag/tag.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 describe('ReviewListComponent', () => {
   let component: ReviewListComponent;
@@ -14,12 +17,18 @@ describe('ReviewListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReviewListComponent,ReviewComponent ],
+      declarations: [ 
+        ReviewListComponent,
+        ReviewComponent,
+        TagListComponent,
+        TagComponent
+       ],
       imports: [
         RouterTestingModule,
         MatSnackBarModule,
         MatCardModule,
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        MatChipsModule
       ],
       providers: [
         GameService

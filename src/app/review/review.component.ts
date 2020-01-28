@@ -5,6 +5,7 @@ import { UserService } from '../user.service';
 import { GameService } from '../game.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../user';
+import { Tag } from '../tag';
 
 @Component({
   selector: 'app-review',
@@ -15,6 +16,8 @@ export class ReviewComponent implements OnInit {
 
   @Input() review: Review;
   @Input() id: string;
+
+  tags: Tag[] = [];
 
   constructor(
     private userService: UserService, 
@@ -43,10 +46,18 @@ export class ReviewComponent implements OnInit {
   }
 
   reviewLoaded() {
+    const review = this.review;
     if (this.user) {
-      this.gameService.isLiked(this.review.id,this.user.id).subscribe(l => {
+      this.gameService.isLiked(review.id,this.user.id).subscribe(l => {
         this.isLiked = l.liked;
       });
+    }
+
+    if (review.game_id) {
+      this.gameService.getTagsForGame(review.game_id,review.user_id)
+      .subscribe(tags=>{
+        this.tags = tags;
+      })
     }
   }
 

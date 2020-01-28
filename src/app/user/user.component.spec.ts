@@ -15,6 +15,9 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { GameService } from '../game.service';
 import { UserService } from '../user.service';
+import { TagListComponent } from '../tag-list/tag-list.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { TagComponent } from '../tag/tag.component';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -26,7 +29,9 @@ describe('UserComponent', () => {
         DashboardGamesComponent,
         ReviewListComponent,
         UserAdminControlComponent,
-        ReviewComponent
+        ReviewComponent,
+        TagListComponent,
+        TagComponent
       ],
       imports: [
         MatTabsModule,
@@ -37,7 +42,7 @@ describe('UserComponent', () => {
         FormsModule,
         MatCardModule,
         HttpClientTestingModule,
-        MatSnackBarModule
+        MatChipsModule
       ],
       providers: [
         GameService, UserService

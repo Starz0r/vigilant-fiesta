@@ -12,6 +12,11 @@
 
   <mat-card-content>
     <div class="comment">{{review.comment}}</div>
+    
+    <app-tag-list 
+      *ngIf="tags" 
+      [tags]="tags">
+    </app-tag-list>
 
     <div class="rate">
       <span class="valign">Rating: {{review.rating/10 || 'N/A'}}</span>

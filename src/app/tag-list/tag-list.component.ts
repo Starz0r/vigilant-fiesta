@@ -15,7 +15,7 @@ export class TagListComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    if (this.tags.length == 0) {
+    if (this.game_id) {
       this.gameService.getTagsForGame(this.game_id)
         .subscribe(tags => this.tags = tags);
     }
