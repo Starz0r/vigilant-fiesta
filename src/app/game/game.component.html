@@ -54,6 +54,11 @@
       [game_id]="game.id">
     </app-tag-list>
 
+    <div>
+      <button mat-raised-button color="accent" 
+        *ngIf="isRandom" (click)="reroll()">Re-roll Game!</button>
+    </div>
+
   </div>
 
   <div class="gallery">

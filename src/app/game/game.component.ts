@@ -35,18 +35,6 @@ export class GameComponent implements OnInit {
   
   reviewInputExpanded: boolean = false;
 
-  ngOnInit() {
-    if (this.id) {
-      this.getGame(false);
-    } else if (this.game) {
-      this.id = ""+this.game.id;
-      this.gameLoaded();
-    } else if (!!this.route.snapshot.paramMap.get('id')) {
-      this.id = this.route.snapshot.paramMap.get('id');
-      this.getGame(true);
-    }
-  }
-
   diffNames: string[] = [
     'Remarkably easy',
     'Beginner-Friendly',
@@ -88,6 +76,25 @@ export class GameComponent implements OnInit {
 
   user: User;
 
+  isRandom: boolean = false;
+
+  ngOnInit() {
+    if (this.id) {
+      this.getGame(false);
+    } else if (this.game) {
+      this.id = ""+this.game.id;
+      this.gameLoaded();
+    } else if (!!this.route.snapshot.paramMap.get('id')) {
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.getGame(true);
+    }
+  }
+
+  reroll() {
+    this.id = "random";
+    this.getGame(true);
+  }
+
   getUserReview(): void {
     if (this.id && this.user) {
       const userId = this.user.id;
@@ -111,13 +118,19 @@ export class GameComponent implements OnInit {
   }
 
   getGame(fromRoute: boolean): void {
+    this.loading = true;
     this.gameService.getGame(this.id).subscribe(
       game => {
-        this.game = game;
-        this.loading = false;
         //if we randomed, change the url so a copy-paste job will let
         //others come to the same game
-        if (fromRoute) this.location.replaceState(`/game/${game.id}`);
+        if (fromRoute) {
+          this.isRandom = (this.id === "random");
+          this.location.replaceState(`/game/${game.id}`);
+        }
+        
+        this.id = ""+game.id;
+        this.game = game;
+        this.loading = false;
         this.gameLoaded();
       },
       error => {
