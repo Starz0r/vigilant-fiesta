@@ -102,6 +102,9 @@ export class GamesComponent implements OnInit, OnDestroy {
     return this.searchParams.difficultyTo;
   }
 
+  startdate: string; //TODO
+  enddate: string; //TODO
+
   set hasDownload(value: string | boolean) {
     if (value == "yes") value = true;
     else if (value == "no") value = false;
