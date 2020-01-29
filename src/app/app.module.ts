@@ -67,6 +67,7 @@ import { NewsWriterComponent } from './news-writer/news-writer.component';
 import { NewsCardComponent } from './news-card/news-card.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 import { GuidelinesComponent } from './guidelines/guidelines.component';
+import { SubmitComponent } from './submit/submit.component';
 
 @NgModule({
   declarations: [
@@ -98,7 +99,8 @@ import { GuidelinesComponent } from './guidelines/guidelines.component';
     NewsWriterComponent,
     NewsCardComponent,
     TagInputComponent,
-    GuidelinesComponent
+    GuidelinesComponent,
+    SubmitComponent
   ],
   imports: [
     BrowserModule,

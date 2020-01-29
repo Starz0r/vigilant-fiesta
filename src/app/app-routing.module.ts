@@ -7,6 +7,7 @@ import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
 import { GuidelinesComponent } from './guidelines/guidelines.component';
+import { SubmitComponent } from './submit/submit.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'guidelines', component: GuidelinesComponent },
+  { path: 'submit', component: SubmitComponent },
   { path: 'special-thanks', component: SpecialThanksComponent },
 ];
 

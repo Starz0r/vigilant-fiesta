@@ -1,0 +1,43 @@
+Have a game not on the list that you would like to submit to our database? We'd be happy to add it for you! Just fill out the form below.
+
+<ul>
+    <li>New game submissions should be done through the <a mat-button color="accent" href="https://www.iwannawiki.com/request">I Wanna Wiki</a></li> 
+    <li>Games that are added to the wiki that are not yet on delfruit are in the process of being added or not added for a reason.</li>
+    <li>Submission of games that are not listed on delfruit can be submitted through the <a mat-button color="accent" href="https://delicious-fruit.com/submit.php">Delicious Fruit Submission Page</a>. Do not request for a download link to be added, that is a right reserved to the creators themself and should be done through the wiki.</li>
+    <li>Games that are found to be untrustworthy will be removed and/or not added in the first place without proof of trustworthiness.</li>
+</ul>
+
+If you agree with the above terms, please check the box in the form.
+
+<form (ngSubmit)="ok()">
+    <mat-form-field>
+        <input matInput placeholder="Game Name" name="name"
+            required minlength="1" type="text" 
+            [(ngModel)]="game.name" #namecheck="ngModel" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Author" name="author"
+            required minlength="1" type="text" 
+            [(ngModel)]="game.author" #authorcheck="ngModel" />
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Download Link" name="url"
+            type="text" 
+            [(ngModel)]="game.url" #urlcheck="ngModel"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Speedrun.com Link" name="url_spdrn"
+            type="text" 
+            [(ngModel)]="game.url_spdrn" #urlspdrncheck="ngModel"/>
+    </mat-form-field>
+    <section>
+        <mat-checkbox [(ngModel)]="accept" name="accept">
+            I agree to the submission terms.
+        </mat-checkbox>
+    </section>
+
+    <button mat-raised-button 
+        color="primary" 
+        [disabled]="!accept || namecheck.errors || authorcheck.errors"
+        type="submit">Ok</button>
+</form>
