@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService }  from '../game.service';
+import { GameSearchParams } from '../game-search-params';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,13 @@ export class DashboardComponent implements OnInit {
   news: any[] = [];
   curNews: any;
   newsIndex = 0; 
+
+  gameListParams: GameSearchParams = {
+    page: 0,
+    limit: 25,
+    orderCol: "date_created",
+    orderDir: "DESC"
+  }
 
   ngOnInit() {
     this.gameService.getNews().subscribe(news => {
