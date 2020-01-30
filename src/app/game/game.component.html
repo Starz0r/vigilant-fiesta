@@ -81,7 +81,7 @@
   </mat-expansion-panel>
   <app-review-list 
     *ngIf="this.game" 
-    [gameId]="this.game.id"></app-review-list>
+    [gameId]="this.game.id" [showTitle]="false"></app-review-list>
 </div>
 
 <div *ngIf="notFound">

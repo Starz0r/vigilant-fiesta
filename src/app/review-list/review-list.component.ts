@@ -9,6 +9,7 @@ import { Review } from '../review';
 })
 export class ReviewListComponent implements OnInit {
 
+  @Input() showTitle: boolean = true;
   @Input() userId: number;
   @Input() gameId: number;
   @Input() reviews: Review[] = [];

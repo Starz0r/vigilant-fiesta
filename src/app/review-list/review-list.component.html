@@ -8,5 +8,6 @@
       <ng-template ngPluralCase="other">Reviews</ng-template>
     </ng-container>
   </h3>
-  <app-review *ngFor="let review of reviews" [review]="review"></app-review>
+  <app-review *ngFor="let review of reviews" 
+    [review]="review" [showTitle]="showTitle"></app-review>
 </div>
