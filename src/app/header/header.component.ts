@@ -88,9 +88,15 @@ export class HeaderComponent implements OnInit {
         && error.status === 400) {
           console.log('400 on user register:')
           console.log(error);
-          this.snackBar.open(`Registration Failed!\n${error.error}`,null,{
-            duration: 5000,
-          });
+          if (error.error.code === 1) {
+            this.snackBar.open(`Registration Failed! User already exists.`,null,{
+              duration: 5000,
+            });
+          } else {
+            this.snackBar.open(`We're sorry, registration is currently experiencing issues. Please try again later!`,null,{
+              duration: 5000,
+            });
+          }
       } else {
         console.log(error);
         this.snackBar.open(`We're sorry, registration is currently experiencing issues. Please try again later!`,null,{
