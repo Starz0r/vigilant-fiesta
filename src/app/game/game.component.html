@@ -29,6 +29,12 @@
       </ng-container>
     </div>
 
+    <ng-container *ngIf="editing">
+      <mat-form-field>
+        <input matInput placeholder="Owner ID" [(ngModel)]="game.ownerId">
+      </mat-form-field>
+    </ng-container>
+
     <div class="rating" [ngStyle]="{'background-color': rateColor(game.rating)}">
       <div>Average Rating</div>
       <div class="value">
@@ -118,6 +124,11 @@
     <div>
       <button mat-raised-button color="accent" 
         *ngIf="isRandom" (click)="reroll()">Re-roll Game!</button>
+    </div>
+
+    <div class="owner-review" *ngIf="game.ownerBio">
+      <app-review [review]="game.ownerBio" 
+        [showTitle]="false"></app-review>
     </div>
 
   </div>

@@ -1,3 +1,5 @@
+import { Review } from './review';
+
 export class Game {
   id?: number;
   name?: string;
@@ -9,4 +11,7 @@ export class Game {
 
   rating?: number;
   difficulty?: number;
+
+  ownerId?: number;
+  ownerBio?: Review;
 }

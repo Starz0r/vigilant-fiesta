@@ -15,6 +15,7 @@ import { Tag } from '../tag';
 export class ReviewComponent implements OnInit {
 
   @Input() showTitle: boolean = true;
+  @Input() showRatings: boolean = true;
   @Input() review: Review;
   @Input() id: string;
 

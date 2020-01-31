@@ -46,3 +46,7 @@ mat-form-field {
   width: 100%;
   max-width: 500px;
 }
+
+.owner-review {
+  max-width: 360px;
+}

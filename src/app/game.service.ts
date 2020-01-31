@@ -74,6 +74,7 @@ export class GameService {
   getReviewsForUserGame(gameId: number, userId: number): Observable<Review[]> {
     let params = new HttpParams();
     params = params.append("byUserId", ""+userId);
+    params = params.append("includeOwnerReview", "true");
     return this.http.get<Review[]>(`/api/games/${gameId}/reviews`,{params});
   }
 

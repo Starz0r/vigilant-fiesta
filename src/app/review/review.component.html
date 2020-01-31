@@ -18,13 +18,13 @@
       [tags]="tags">
     </app-tag-list>
 
-    <div class="rate">
+    <div class="rate" *ngIf="showRatings">
       <span class="valign">Rating: {{review.rating/10 || 'N/A'}}</span>
       <span class="hearts">
         <span [style.width]="(170*review.rating/100)+'px'"></span>
       </span>
     </div> 
-    <div class="rate">
+    <div class="rate" *ngIf="showRatings">
       <span class="valign">Difficulty: {{review.difficulty || 'N/A'}}</span>
       <span class="stars">
           <span [style.width]="(170*review.difficulty/100)+'px'"></span>

@@ -234,5 +234,12 @@ export class GameComponent implements OnInit {
     //update reviews
     this.reviewList.getReviews();
     this.reviewInputExpanded = false;
+    if (this.game.ownerId == this.user.id) {
+      this.gameService.getReviewsForUserGame(this.game.id,this.user.id)
+        .subscribe(r => {
+          if (r.length == 1) this.game.ownerBio = r[0];
+          else delete this.game.ownerBio;
+        });
+    }
   }
 }
