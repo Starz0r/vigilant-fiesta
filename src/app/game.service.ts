@@ -53,8 +53,7 @@ export class GameService {
   }
 
   updateGame(game: Game): Observable<any> {
-    console.log('not implemented');
-    return of(null);
+    return this.http.patch<Game>(`${this.gamesUrl}/${game.id}`,game);
   }
 
   getReviews(page: number, limit: number): Observable<Review[]> {

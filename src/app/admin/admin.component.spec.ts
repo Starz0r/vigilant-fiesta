@@ -41,6 +41,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { TagInputComponent } from '../tag-input/tag-input.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -86,7 +87,8 @@ describe('AdminComponent', () => {
         MatIconModule,
         BrowserAnimationsModule,
         BrowserModule,
-        MatInputModule
+        MatInputModule,
+        MatDatepickerModule
       ],
       providers: [UserService,
         GameService,

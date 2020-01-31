@@ -41,3 +41,8 @@ div.game-content {
   display: inline-block; 
   vertical-align: top;
 }
+
+mat-form-field {
+  width: 100%;
+  max-width: 500px;
+}

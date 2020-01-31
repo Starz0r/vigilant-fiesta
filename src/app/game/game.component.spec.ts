@@ -26,6 +26,7 @@ import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { TagInputComponent } from '../tag-input/tag-input.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -57,6 +58,7 @@ describe('GameComponent', () => {
         MatSnackBarModule,
         MatChipsModule,
         MatIconModule,
+        MatDatepickerModule
       ],
       providers: [
         DecimalPipe,

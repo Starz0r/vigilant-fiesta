@@ -4,6 +4,7 @@ import { Game } from '../game';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { GameService } from '../game.service';
 import { UserService } from '../user.service';
@@ -26,7 +27,8 @@ export class GameComponent implements OnInit {
     private route: ActivatedRoute,
     private gameService: GameService,
     private userService: UserService,
-    private location: Location
+    private location: Location,
+    private snackBar: MatSnackBar
   ) {
     this.userService.userChange.subscribe(user=>this.user=user);
   }
@@ -78,6 +80,8 @@ export class GameComponent implements OnInit {
 
   isRandom: boolean = false;
 
+  editing: boolean = false;
+
   ngOnInit() {
     if (this.id) {
       this.getGame(false);
@@ -88,6 +92,29 @@ export class GameComponent implements OnInit {
       this.id = this.route.snapshot.paramMap.get('id');
       this.getGame(true);
     }
+  }
+
+  saveChanges() {
+    this.gameService.updateGame(this.game).subscribe(game => {
+      if (!game) {
+        console.log('game return was null');
+        this.snackBar.open("Game Update Failed!",null,{
+          duration: 5000,
+        });
+        return;
+      }
+      this.game = game;
+      this.editing = false;
+      this.snackBar.open("Game Updated!",null,{
+        duration: 5000,
+      })
+    },
+    error => {
+      console.log(error);
+      this.snackBar.open("Game Update Failed!",null,{
+        duration: 5000,
+      });
+    });
   }
 
   reroll() {

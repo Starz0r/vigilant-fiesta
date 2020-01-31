@@ -3,9 +3,9 @@ export class Game {
   name?: string;
   author?: string;
   url?: string;
-  url_spdrn?: string;
+  urlSpdrn?: string;
   collab?: number;
-  date_created?: Date;
+  dateCreated?: Date;
 
   rating?: number;
   difficulty?: number;

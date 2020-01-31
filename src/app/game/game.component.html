@@ -4,14 +4,29 @@
 
 <div *ngIf="game && !loading">
   <div class="game-content">
-    <h2>{{game.name}}</h2>
+    <ng-container *ngIf="!editing">
+      <h2>{{game.name}}</h2>
+    </ng-container>
+    <ng-container *ngIf="editing">
+      <mat-form-field>
+        <input matInput placeholder="Game Name" [(ngModel)]="game.name">
+      </mat-form-field>
+    </ng-container>
+
     <div>
-      <ng-container [ngPlural]="game.author.length">
-        <ng-template ngPluralCase="=0">Creators:</ng-template>
-        <ng-template ngPluralCase="=1">Creator:</ng-template>
-        <ng-template ngPluralCase="other">Creators:</ng-template>
+      <ng-container *ngIf="!editing">
+        <ng-container [ngPlural]="game.author.length">
+          <ng-template ngPluralCase="=0">Creators:</ng-template>
+          <ng-template ngPluralCase="=1">Creator:</ng-template>
+          <ng-template ngPluralCase="other">Creators:</ng-template>
+        </ng-container>
+        {{game.author.join(", ")}}
       </ng-container>
-      {{game.author.join(", ")}}
+      <ng-container *ngIf="editing">
+        <mat-form-field>
+          <input matInput placeholder="Creator(s)" [(ngModel)]="game.author">
+        </mat-form-field>
+      </ng-container>
     </div>
 
     <div class="rating" [ngStyle]="{'background-color': rateColor(game.rating)}">
@@ -35,17 +50,60 @@
       </div>
     </div>
 
-    <div>Release Date: {{game.date_created ? (game.date_created | date) : 'Not Available'}}</div>
+    <div>
+      <ng-container *ngIf="!editing">
+        Release Date: {{game.dateCreated ? (game.dateCreated | date) : 'Not Available'}}
+      </ng-container>
+      <ng-container *ngIf="editing">
+        <mat-form-field>
+          <input matInput [matDatepicker]="createdPicker" [(ngModel)]="game.dateCreated" placeholder="Release Date">
+          <mat-datepicker-toggle matSuffix [for]="createdPicker"></mat-datepicker-toggle>
+          <mat-datepicker #createdPicker></mat-datepicker>
+        </mat-form-field>
+      </ng-container>
+    </div>
 
-    <div *ngIf="game.url">
-      <a mat-raised-button target="_blank" href="{{game.url}}">Download Game</a>
-    </div>
-    <div *ngIf="!game.url">
-      Private Game
-    </div>
-    <div *ngIf="game.url_spdrn">
-      <a mat-raised-button target="_blank" href="{{game.url_spdrn}}">Speedrun Leaderboards</a>
-    </div>
+    <ng-container *ngIf="!editing">
+      <div *ngIf="game.url">
+        <a mat-raised-button target="_blank" href="{{game.url}}">
+          Download Game
+        </a>
+      </div>
+      <div *ngIf="!game.url">
+        Private Game
+      </div>
+    </ng-container>
+    <ng-container *ngIf="editing">
+      <mat-form-field>
+        <input matInput placeholder="Download Link" [(ngModel)]="game.url">
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="!editing">
+      <div *ngIf="game.urlSpdrn">
+        <a mat-raised-button target="_blank" href="{{game.urlSpdrn}}">
+          Speedrun Leaderboards
+        </a>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="editing">
+      <mat-form-field>
+        <input matInput placeholder="Speedrun.com Link" [(ngModel)]="game.urlSpdrn">
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container *ngIf="this.user && this.user.isAdmin">
+      <div *ngIf="!editing">
+        <button mat-raised-button (click)="editing = true">
+          Edit Game
+        </button>
+      </div>
+      <div *ngIf="editing">
+        <button mat-raised-button (click)="saveChanges()">
+          Save Changes
+        </button>
+      </div>
+    </ng-container>
 
     <app-list *ngIf="user && game"
       [user_id]="user.id"
