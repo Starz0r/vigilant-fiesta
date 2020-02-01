@@ -88,7 +88,10 @@ export class GameService {
   }
 
   getScreenshotsForGame(gameId: number): Observable<Screenshot[]> {
-    return this.http.get<Screenshot[]>(`/api/games/${gameId}/screenshots`);
+    let params = new HttpParams();
+    params = params.append("approved", "1"); //forced for non admins on server
+    return this.http.get<Screenshot[]>(`/api/games/${gameId}/screenshots`,
+      {params});
   }
 
   getUser(userId: number): Observable<PublicUser> {
