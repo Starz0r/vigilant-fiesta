@@ -77,7 +77,9 @@ export class GameService {
   }
 
   getReviewsForGame(gameId: number): Observable<Review[]> {
-    return this.http.get<Review[]>(`/api/games/${gameId}/reviews`);
+    let params = new HttpParams();
+    params = params.append("textReviewsFirst", "true");
+    return this.http.get<Review[]>(`/api/games/${gameId}/reviews`,{params});
   }
 
   getReviewsForUserGame(gameId: number, userId: number): Observable<Review[]> {
