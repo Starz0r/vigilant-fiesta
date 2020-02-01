@@ -68,6 +68,8 @@ import { NewsCardComponent } from './news-card/news-card.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 import { GuidelinesComponent } from './guidelines/guidelines.component';
 import { SubmitComponent } from './submit/submit.component';
+import { ScreenshotAddDialogComponent } from './screenshot-add-dialog/screenshot-add-dialog.component';
+import { DragDropDirective } from './drag-drop.directive';
 
 @NgModule({
   declarations: [
@@ -100,7 +102,9 @@ import { SubmitComponent } from './submit/submit.component';
     NewsCardComponent,
     TagInputComponent,
     GuidelinesComponent,
-    SubmitComponent
+    SubmitComponent,
+    ScreenshotAddDialogComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,
@@ -134,6 +138,6 @@ import { SubmitComponent } from './submit/submit.component';
     DecimalPipe
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent,RegisterDialogComponent]
+  entryComponents: [LoginComponent,RegisterDialogComponent,ScreenshotAddDialogComponent]
 })
 export class AppModule { }

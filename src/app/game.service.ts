@@ -56,6 +56,15 @@ export class GameService {
     return this.http.patch<Game>(`${this.gamesUrl}/${game.id}`,game);
   }
 
+  addScreenshot(gameId: number, description: string, file: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append("description",description);
+    formData.append("screenshot",file);
+    return this.http.post<Screenshot>(
+      `${this.gamesUrl}/${gameId}/screenshots`,
+      formData);
+  }
+
   getReviews(page: number, limit: number): Observable<Review[]> {
     let p = new HttpParams();
     p = p.append("page", page.toString());

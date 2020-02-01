@@ -15,6 +15,8 @@ import { User } from '../user';
 import { ReviewSubmission } from '../review-input/review-submission';
 import { forkJoin } from 'rxjs';
 import { Tag } from '../tag';
+import { MatDialog } from '@angular/material/dialog';
+import { ScreenshotAddDialogComponent } from '../screenshot-add-dialog/screenshot-add-dialog.component';
 
 @Component({
   selector: 'app-game',
@@ -28,7 +30,8 @@ export class GameComponent implements OnInit {
     private gameService: GameService,
     private userService: UserService,
     private location: Location,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {
     this.userService.userChange.subscribe(user=>this.user=user);
   }
@@ -120,6 +123,29 @@ export class GameComponent implements OnInit {
   reroll() {
     this.id = "random";
     this.getGame(true);
+  }
+
+  showScreenshotDialog() {
+    const dialogRef = this.dialog.open(ScreenshotAddDialogComponent, {
+      width: '350px', data:{}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.gameService.addScreenshot(
+        this.game.id,
+        result.description,
+        result.file
+      ).subscribe(ss => {
+        this.snackBar.open("Screenshot Submitted!",null,{
+          duration: 5000,
+        })
+      },
+      error => {
+        this.snackBar.open("Failed to submit screenshot.",null,{
+          duration: 5000,
+        })
+      });
+    });
   }
 
   getUserReview(): void {

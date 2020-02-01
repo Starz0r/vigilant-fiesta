@@ -138,6 +138,7 @@
       *ngIf="game" 
       [gameId]="game.id"></app-game-screenshots>
   </div>
+  <button mat-raised-button (click)="showScreenshotDialog()">Add Screenshot</button>
 
   <mat-expansion-panel *ngIf="user" [(expanded)]="reviewInputExpanded">
     <mat-expansion-panel-header>
