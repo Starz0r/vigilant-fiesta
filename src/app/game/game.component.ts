@@ -136,12 +136,12 @@ export class GameComponent implements OnInit {
         result.description,
         result.file
       ).subscribe(ss => {
-        this.snackBar.open("Screenshot Submitted!",null,{
+        this.snackBar.open("Screenshot Submitted! Once an admin approves it, it will be added.",null,{
           duration: 5000,
         })
       },
       error => {
-        this.snackBar.open("Failed to submit screenshot.",null,{
+        this.snackBar.open("Failed to submit screenshot, try again later!",null,{
           duration: 5000,
         })
       });
