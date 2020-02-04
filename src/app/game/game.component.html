@@ -116,10 +116,12 @@
       [game_id]="game.id">
     </app-list>
 
-    <app-tag-list 
-      *ngIf="game" 
-      [game_id]="game.id">
-    </app-tag-list>
+    <div class="tag-list">
+      <app-tag-list 
+        *ngIf="game" 
+        [game_id]="game.id">
+      </app-tag-list>
+    </div>
 
     <div>
       <button mat-raised-button color="accent" 
