@@ -9,6 +9,7 @@ import { Screenshot } from './screenshot';
 import { Observable ,  of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GameSearchParams } from './game-search-params';
+import { User } from './user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -174,7 +175,10 @@ export class GameService {
   }
 
   addGame(game: Game): Observable<Game> {
-    console.log(game)
     return this.http.post<Game>(`/api/games`,game)
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(`/api/users`)
   }
 }

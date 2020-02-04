@@ -70,6 +70,7 @@ import { GuidelinesComponent } from './guidelines/guidelines.component';
 import { SubmitComponent } from './submit/submit.component';
 import { ScreenshotAddDialogComponent } from './screenshot-add-dialog/screenshot-add-dialog.component';
 import { DragDropDirective } from './drag-drop.directive';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { DragDropDirective } from './drag-drop.directive';
     GuidelinesComponent,
     SubmitComponent,
     ScreenshotAddDialogComponent,
-    DragDropDirective
+    DragDropDirective,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

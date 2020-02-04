@@ -42,6 +42,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { TagInputComponent } from '../tag-input/tag-input.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { UserListComponent } from '../user-list/user-list.component';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -65,7 +66,8 @@ describe('AdminComponent', () => {
         TagComponent,
         NewsWriterComponent,
         NewsCardComponent,
-        TagInputComponent
+        TagInputComponent,
+        UserListComponent
       ],
       imports: [
         MatSnackBarModule,
