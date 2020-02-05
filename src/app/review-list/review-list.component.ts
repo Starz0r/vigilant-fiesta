@@ -13,6 +13,8 @@ export class ReviewListComponent implements OnInit {
   @Input() userId: number;
   @Input() gameId: number;
   @Input() reviews: Review[] = [];
+  @Input() page: number = 0;
+  @Input() limit: number = 5;
 
   loading: boolean = false;
 
@@ -35,7 +37,7 @@ export class ReviewListComponent implements OnInit {
       this.gameService.getReviewsForGame(this.gameId)
         .subscribe(this.assignReviews.bind(this));
     } else {
-      this.gameService.getReviews(0,5)
+      this.gameService.getReviews(this.page,this.limit)
         .subscribe(this.assignReviews.bind(this));
     }
   }

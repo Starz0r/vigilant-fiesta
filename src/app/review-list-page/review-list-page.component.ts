@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { GameService } from '../game.service';
+import { Review } from '../review';
 
 @Component({
   selector: 'app-review-list-page',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewListPageComponent implements OnInit {
 
+  page = 0;
+  limit = 25;
+
   constructor() { }
 
   ngOnInit() {
   }
-
 }
