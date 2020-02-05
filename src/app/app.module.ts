@@ -71,6 +71,7 @@ import { SubmitComponent } from './submit/submit.component';
 import { ScreenshotAddDialogComponent } from './screenshot-add-dialog/screenshot-add-dialog.component';
 import { DragDropDirective } from './drag-drop.directive';
 import { UserListComponent } from './user-list/user-list.component';
+import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { UserListComponent } from './user-list/user-list.component';
     SubmitComponent,
     ScreenshotAddDialogComponent,
     DragDropDirective,
-    UserListComponent
+    UserListComponent,
+    ReviewListPageComponent
   ],
   imports: [
     BrowserModule,

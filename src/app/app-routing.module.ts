@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
 import { GuidelinesComponent } from './guidelines/guidelines.component';
 import { SubmitComponent } from './submit/submit.component';
+import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'guidelines', component: GuidelinesComponent },
   { path: 'submit', component: SubmitComponent },
   { path: 'special-thanks', component: SpecialThanksComponent },
+  { path: 'reviews', component: ReviewListPageComponent },
 ];
 
 @NgModule({
