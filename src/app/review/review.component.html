@@ -4,7 +4,7 @@
       {{review.game_name}}
   </mat-card-title>
   <mat-card-subtitle>
-    <div class="name">
+    <div class="name" i18n>
       By: <a mat-button [routerLink]="'/user/'+review.user_id">{{review.user_name}}</a>
     </div>
     <div class="date">{{review.date_created | date}}</div>
@@ -19,13 +19,13 @@
     </app-tag-list>
 
     <div class="rate" *ngIf="showRatings">
-      <span class="valign">Rating: {{review.rating/10 || 'N/A'}}</span>
+      <span class="valign" i18n>Rating: {{review.rating/10 || 'N/A'}}</span>
       <span class="hearts">
         <span [style.width]="(170*review.rating/100)+'px'"></span>
       </span>
     </div> 
     <div class="rate" *ngIf="showRatings">
-      <span class="valign">Difficulty: {{review.difficulty || 'N/A'}}</span>
+      <span class="valign" i18n>Difficulty: {{review.difficulty || 'N/A'}}</span>
       <span class="stars">
           <span [style.width]="(170*review.difficulty/100)+'px'"></span>
       </span>
@@ -38,10 +38,10 @@
       <button mat-raised-button color="primary" *ngIf="isLiked" (click)="unlikeReview()">
         <i class="material-icons">thumb_up</i> {{review.like_count}}
       </button>
-      <button mat-button>Reply</button>
+      <button mat-button i18n>Reply</button>
   </mat-card-actions>
 </mat-card>
 </ng-container>
-<ng-container *ngIf="!review">
+<ng-container *ngIf="!review" i18n>
   No review
 </ng-container>

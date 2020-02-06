@@ -6,19 +6,19 @@
         </h1></span>
         <span class="fill-remaining-space"></span>
         <span>
-          <button mat-raised-button i18n *ngIf="!user" (click)="showLogin()">Login</button>
-          <button mat-raised-button i18n *ngIf="!user" (click)="showRegister()">Register</button>
+          <button mat-raised-button i18n *ngIf="!user" (click)="showLogin()" i18n>Login</button>
+          <button mat-raised-button i18n *ngIf="!user" (click)="showRegister()" i18n>Register</button>
 
           <a button mat-button *ngIf="user" [routerLink]="'/user/'+user.id">{{user.name}}</a>
-          <button mat-raised-button i18n *ngIf="user" (click)="logout()">Logout</button>
+          <button mat-raised-button i18n *ngIf="user" (click)="logout()" i18n>Logout</button>
         </span>
     </mat-toolbar-row>
     <mat-toolbar-row>
         <nav>
-            <a mat-button i18n routerLink="/dashboard">Dashboard</a>
-            <a mat-button i18n routerLink="/games">Games</a>
-            <a mat-button i18n target="_blank" href="http://www.twitch.tv/team/thewannabes">Twitch Team</a>
-            <a mat-button i18n target="_blank" href="http://www.fangam.es/intro">Intro</a>
+            <a mat-button i18n routerLink="/dashboard" i18n>Dashboard</a>
+            <a mat-button i18n routerLink="/games" i18n>Games</a>
+            <a mat-button i18n target="_blank" href="http://www.twitch.tv/team/thewannabes" i18n>Twitch Team</a>
+            <a mat-button i18n target="_blank" href="http://www.fangam.es/intro" i18n>Intro</a>
           </nav>
     </mat-toolbar-row>
 </mat-toolbar>

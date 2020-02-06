@@ -1,14 +1,14 @@
 <div *ngIf="loading">
-  <h2>Loading...</h2>
+  <h2 i18n>Loading...</h2>
 </div>
 
 <div *ngIf="user">
-    <h2 *ngIf="!isMe">{{user.name}}'s Profile</h2>
-    <h2 *ngIf="isMe">My Profile</h2>
+    <h2 *ngIf="!isMe" i18n>{{user.name}}'s Profile</h2>
+    <h2 *ngIf="isMe" i18n>My Profile</h2>
   <mat-tab-group>
       <mat-tab label="Profile">
-          <p>Joined on: xxx</p>
-          <p>Bio:</p>
+          <p i18n>Joined on: xxx</p>
+          <p i18n>Bio:</p>
           <p>{{user.bio}}</p>
           <p>
             I've submitted:<br>
@@ -17,15 +17,15 @@
             1126 Screenshots!			
           </p>
           <a *ngIf="user.twitchLink" [href]="'https://www.twitch.tv/'+user.twitchLink">
-            <img src="assets/images/twitch16.png"> Twitch Stream
+            <img src="assets/images/twitch16.png"> <ng-container i18n>Twitch Stream</ng-container>
           </a><br>
           <a *ngIf="user.youtubeLink" [href]="'https://www.youtube.com/user/'+user.youtubeLink">
-            <img src="assets/images/youtube16.png"> Youtube Channel
+            <img src="assets/images/youtube16.png"> <ng-container i18n>Youtube Channel</ng-container>
           </a><br>
           <a *ngIf="user.twitterLink" [href]="'https://www.twitter.com/'+user.twitterLink">
-            <img src="assets/images/twitter16.png"> Twitter
+            <img src="assets/images/twitter16.png"> <ng-container i18n>Twitter</ng-container>
           </a><br>
-          <a href="/report.php?t=user&amp;id=746">Report this user</a>
+          <a href="/report.php?t=user&amp;id=746" i18n>Report this user</a>
       </mat-tab>
       <mat-tab label="Ratings">
             <app-dashboard-games [params]="gameListParams"></app-dashboard-games>
@@ -49,9 +49,9 @@
 </div>    
 
 <div *ngIf="notFound">
-  <h2>No user found by id {{id}}</h2>
+  <h2 i18n>No user found by id {{id}}</h2>
 </div>
 
 <div *ngIf="!user && !loading && !notFound">
-  <h2>Unable to load user {{id}}. Please try again later.</h2>
+  <h2 i18n>Unable to load user {{id}}. Please try again later.</h2>
 </div>

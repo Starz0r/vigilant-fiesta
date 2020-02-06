@@ -4,12 +4,12 @@
     [{{report.id}}] {{report.type}}
   </mat-card-title>
   <mat-card-subtitle>
-    <div class="name">
+    <div class="name" i18n>
       By: <a mat-button [routerLink]="'/user/'+report.reporterId">{{report.reporterName}}</a>
     </div>
     <div class="date">{{report.dateCreated | date}}</div>
   </mat-card-subtitle>
-  <mat-card-subtitle *ngIf="report.answeredById">
+  <mat-card-subtitle *ngIf="report.answeredById" i18n>
     Answered by {{report.answeredByName}} on {{report.dateAnswered | date}}
   </mat-card-subtitle>
 
@@ -18,7 +18,7 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button *ngIf="!report.answeredById" (click)="resolve()">Mark Resolved</button>
+    <button mat-button *ngIf="!report.answeredById" (click)="resolve()" i18n>Mark Resolved</button>
   </mat-card-actions>
 </mat-card>
 </ng-container>

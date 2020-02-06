@@ -1,5 +1,5 @@
 <div class="reviews">
-  <h3 *ngIf="loading">Loading Reviews...</h3>
+  <h3 *ngIf="loading" i18n>Loading Reviews...</h3>
   <h3 *ngIf="!loading">
     {{reviews?reviews.length:0}}
     <ng-container [ngPlural]="reviews.length">

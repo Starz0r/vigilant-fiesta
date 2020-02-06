@@ -1,19 +1,19 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-      <span>
+      <span i18n>
         Delicious-Fruit - Site Design © Klazen 2015-2020
       </span>
       <ng-container *ngIf="!production">&nbsp;((Dev))</ng-container>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <span>
-      <a mat-button routerLink="/special-thanks">Special Thanks</a>
-      <a mat-button routerLink="/guidelines">Site Guidelines</a>
+      <a mat-button routerLink="/special-thanks" i18n>Special Thanks</a>
+      <a mat-button routerLink="/guidelines" i18n>Site Guidelines</a>
     </span>
     <span class="fill-remaining-space"></span>
     <span>
         <a mat-button routerLink="/admin" 
-          *ngIf="showAdmin()">Admin Portal</a>
+          *ngIf="showAdmin()" i18n>Admin Portal</a>
     </span>
   </mat-toolbar-row>
 </mat-toolbar>

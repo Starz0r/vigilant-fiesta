@@ -1,5 +1,5 @@
 <div *ngIf="loading">
-  <h2>Loading...</h2>
+  <h2 i18n>Loading...</h2>
 </div>
 
 <div *ngIf="game && !loading">
@@ -36,7 +36,7 @@
     </ng-container>
 
     <div class="rating" [ngStyle]="{'background-color': rateColor(game.rating)}">
-      <div>Average Rating</div>
+      <div i18n>Average Rating</div>
       <div class="value">
         {{game.rating | rating}}<br>
         {{game.rating!==null
@@ -46,7 +46,7 @@
       </div>
     </div>
     <div class="rating" [ngStyle]="{'background-color': diffColor(game.difficulty)}">
-      <div>Average Difficulty</div>
+      <div i18n>Average Difficulty</div>
       <div class="value">
         {{game.difficulty | difficulty}}<br>
         {{game.difficulty!==null
@@ -58,7 +58,7 @@
 
     <div>
       <ng-container *ngIf="!editing">
-        Release Date: {{game.dateCreated ? (game.dateCreated | date) : 'Not Available'}}
+        <ng-container i18n>Release Date:</ng-container> {{game.dateCreated ? (game.dateCreated | date) : 'Not Available'}}
       </ng-container>
       <ng-container *ngIf="editing">
         <mat-form-field>
@@ -71,11 +71,11 @@
 
     <ng-container *ngIf="!editing">
       <div *ngIf="game.url">
-        <a mat-raised-button target="_blank" href="{{game.url}}">
+        <a mat-raised-button target="_blank" href="{{game.url}}" i18n>
           Download Game
         </a>
       </div>
-      <div *ngIf="!game.url">
+      <div *ngIf="!game.url" i18n>
         Private Game
       </div>
     </ng-container>
@@ -87,7 +87,7 @@
 
     <ng-container *ngIf="!editing">
       <div *ngIf="game.urlSpdrn">
-        <a mat-raised-button target="_blank" href="{{game.urlSpdrn}}">
+        <a mat-raised-button target="_blank" href="{{game.urlSpdrn}}" i18n>
           Speedrun Leaderboards
         </a>
       </div>
@@ -100,12 +100,12 @@
 
     <ng-container *ngIf="this.user && this.user.isAdmin">
       <div *ngIf="!editing">
-        <button mat-raised-button (click)="editing = true">
+        <button mat-raised-button (click)="editing = true" i18n>
           Edit Game
         </button>
       </div>
       <div *ngIf="editing">
-        <button mat-raised-button (click)="saveChanges()">
+        <button mat-raised-button (click)="saveChanges()" i18n>
           Save Changes
         </button>
       </div>
@@ -125,7 +125,7 @@
 
     <div>
       <button mat-raised-button color="accent" 
-        *ngIf="isRandom" (click)="reroll()">Re-roll Game!</button>
+        *ngIf="isRandom" (click)="reroll()" i18n>Re-roll Game!</button>
     </div>
 
     <div class="owner-review" *ngIf="game.ownerBio">
@@ -140,11 +140,11 @@
       *ngIf="game" 
       [gameId]="game.id"></app-game-screenshots>
   </div>
-  <button mat-raised-button (click)="showScreenshotDialog()">Add Screenshot</button>
+  <button mat-raised-button (click)="showScreenshotDialog()" i18n>Add Screenshot</button>
 
   <mat-expansion-panel *ngIf="user" [(expanded)]="reviewInputExpanded">
     <mat-expansion-panel-header>
-        <mat-panel-title>
+        <mat-panel-title i18n>
             Write a Review
         </mat-panel-title>
     </mat-expansion-panel-header>
@@ -160,9 +160,9 @@
 </div>
 
 <div *ngIf="notFound">
-  <h2>No game found by id {{id}}</h2>
+  <h2 i18n>No game found by id {{id}}</h2>
 </div>
 
 <div *ngIf="!game && !loading && !notFound">
-  <h2>Unable to load game {{id}}. Please try again later.</h2>
+  <h2 i18n>Unable to load game {{id}}. Please try again later.</h2>
 </div>

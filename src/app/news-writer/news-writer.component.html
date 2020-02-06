@@ -1,14 +1,14 @@
 <mat-form-field>
     <input matInput placeholder="Title" 
-    [(ngModel)]="news.title" name="title"/>
+    [(ngModel)]="news.title" name="title" i18n-placeholder="news title"/>
 </mat-form-field>
 <mat-form-field>
 <textarea matInput placeholder="News"
     (change)="recompile()" (keyup)="recompile()" 
-    [(ngModel)]="input"></textarea>
+    [(ngModel)]="input" i18n-placeholder="news input box"></textarea>
 </mat-form-field>
-<button mat-button (click)="submitNews.emit(news)">Submit News</button><a mat-button target="_blank" href="https://spec.commonmark.org/0.29">Read Markdown Specification</a>
-<p>Preview:</p>
+<button mat-button (click)="submitNews.emit(news)">Submit News</button><a mat-button target="_blank" href="https://spec.commonmark.org/0.29" i18n="link to markdown specs">Read Markdown Specification</a>
+<p i18n="news preview">Preview:</p>
 <app-news-card
     [news]="news"
     [hasPrev]="false">

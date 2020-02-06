@@ -1,15 +1,15 @@
-<h1>Admin Portal</h1>
+<h1 i18n>Admin Portal</h1>
 
 <mat-tab-group>
   <mat-tab label="Report Queue">
-    <div *ngIf="!currentReport">No new reports! Take a break :)</div>
+    <div *ngIf="!currentReport" i18n>No new reports! Take a break :)</div>
     <app-report *ngIf="currentReport" [report]="currentReport"
         (onResolve)="resolve(report.id)"></app-report>
 
     <ng-container *ngIf="currentReport">
         <mat-toolbar>
             <span class="fill-remaining-space"></span>
-            <span>Reported Content</span>
+            <span i18n>Reported Content</span>
             <span class="fill-remaining-space"></span>
         </mat-toolbar>
 
@@ -35,7 +35,7 @@
                 <img [src]="screenshotUrl(currentReport.id)" />
             </div>
 
-            <div *ngSwitchDefault>Unable to preview report type: {{currentReport.type}}</div>
+            <div *ngSwitchDefault i18n>Unable to preview report type: {{currentReport.type}}</div>
         </ng-container>
     </ng-container>
 

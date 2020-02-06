@@ -1,4 +1,4 @@
-<h2>News</h2>
+<h2 i18n>News</h2>
 <mat-tab-group [selectedIndex]="newsIndex">
   <mat-tab *ngFor="let curNews of news; index as i">
         <app-news
@@ -7,11 +7,11 @@
   </mat-tab>
 </mat-tab-group>
 
-<h2>Latest Games</h2>
+<h2 i18n>Latest Games</h2>
 <app-dashboard-games [params]="gameListParams"></app-dashboard-games>
 
-<a mat-raised-button routerLink="/game/random">Random Game!</a>
+<a mat-raised-button routerLink="/game/random" i18n>Random Game!</a>
 
 <app-review-list></app-review-list>
 
-<a mat-raised-button routerLink="/reviews">See all reviews</a>
+<a mat-raised-button routerLink="/reviews" i18n>See all reviews</a>
