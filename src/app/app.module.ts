@@ -72,6 +72,7 @@ import { ScreenshotAddDialogComponent } from './screenshot-add-dialog/screenshot
 import { DragDropDirective } from './drag-drop.directive';
 import { UserListComponent } from './user-list/user-list.component';
 import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import { ReviewListPageComponent } from './review-list-page/review-list-page.com
     MatTabsModule,
     MatIconModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
+    MatPaginatorModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

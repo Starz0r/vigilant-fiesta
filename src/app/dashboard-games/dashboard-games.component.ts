@@ -13,13 +13,23 @@ import { GameSearchParams } from '../game-search-params';
 export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
 
   games: Game[] = [];
+  total: number = 0;
   loading: boolean = true;
 
   columnsToDisplay=['game','released','rating','difficulty'];
 
   @Input() params: GameSearchParams = {
-    page:0,limit:25
+    page:0,limit:10
   };
+
+  page(event: any) {
+    this.params = {
+      ...this.params,
+      page: event.pageIndex,
+      limit: event.pageSize
+    }
+    this.getGames();
+  }
 
   debounceSearch: Subject<SimpleChanges> = new Subject<SimpleChanges>();
 
@@ -48,7 +58,8 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
 
   getGames(): void {
     this.gameService.getGames(this.params).subscribe(games => {
-        this.games = games;
+        this.games = games.games;
+        if (games.total) this.total = games.total;
         this.loading = false;
       });
   }

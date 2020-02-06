@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
 
   gameListParams: GameSearchParams = {
     page: 0,
-    limit: 25,
+    limit: 10,
     orderCol: "date_created",
     orderDir: "DESC"
   }

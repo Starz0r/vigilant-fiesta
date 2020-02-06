@@ -30,6 +30,10 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
   </table>  
+  <mat-paginator 
+    [length]="total"
+    [pageSize]="params.limit"
+    (page)="page($event)"></mat-paginator>
   <div *ngIf="loading">Loading...
   </div>
 </div>

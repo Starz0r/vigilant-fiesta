@@ -7,13 +7,18 @@ import { Tag } from './tag';
 import { PublicUser } from './public-user';
 import { Screenshot } from './screenshot';
 import { Observable ,  of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { GameSearchParams } from './game-search-params';
 import { User } from './user';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+
+export class GameListResponse {
+  games: Game[];
+  total?: number;
+}
 
 @Injectable()
 export class GameService {
@@ -23,7 +28,7 @@ export class GameService {
     private http: HttpClient
   ) { }
 
-  getGames(params: GameSearchParams): Observable<Game[]> {
+  getGames(params: GameSearchParams): Observable<GameListResponse> {
     let p = new HttpParams();
     p = p.append("page", (""+params.page)||"0");
     p = p.append("limit", (""+params.limit)||"25");
@@ -46,7 +51,14 @@ export class GameService {
     if (params.difficultyFrom) p = p.append("difficultyFrom", ""+params.difficultyFrom);
     if (params.difficultyTo) p = p.append("difficultyTo", ""+params.difficultyTo);
 
-    return this.http.get<Game[]>(this.gamesUrl, {params: p});
+    return this.http.get<Game[]>(
+      this.gamesUrl, 
+      {params: p, observe: 'response'}
+    ).pipe(map(response => ({
+        games:response.body,
+        total:+response.headers.get('total-count')
+      })
+    ));
   }
 
   getGame(id: string): Observable<Game> {
