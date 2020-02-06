@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TagInputComponent } from '../tag-input/tag-input.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 describe('GamesComponent', () => {
   let component: GamesComponent;
@@ -45,7 +47,9 @@ describe('GamesComponent', () => {
         MatRadioModule,
         BrowserAnimationsModule,
         MatChipsModule,
-        MatIconModule
+        MatIconModule,
+        MatPaginatorModule,
+        MatSortModule
       ],
       providers: [
         GameService,

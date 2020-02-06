@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     page: 0,
     limit: 10,
     orderCol: "date_created",
-    orderDir: "DESC"
+    orderDir: "desc"
   }
 
   ngOnInit() {

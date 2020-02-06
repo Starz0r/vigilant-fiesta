@@ -19,6 +19,8 @@ import { FormsModule } from '@angular/forms';
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -45,6 +47,8 @@ describe('DashboardComponent', () => {
         HttpClientTestingModule,
         MatSnackBarModule,
         MatChipsModule,
+        MatPaginatorModule,
+        MatSortModule,
         //????
         MatFormFieldModule,
         FormsModule

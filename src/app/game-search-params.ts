@@ -1,10 +1,12 @@
+import { SortDirection } from '@angular/material/sort';
+
 export class GameSearchParams {
     q?: string;
 
     page: number;
     limit: number;
     orderCol?: string;
-    orderDir?: "ASC" | "DESC";
+    orderDir?: SortDirection;
   
     id?: number;
     ownerUserId?: number;

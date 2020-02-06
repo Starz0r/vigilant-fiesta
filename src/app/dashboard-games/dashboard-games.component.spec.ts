@@ -5,6 +5,8 @@ import { MatTableModule } from '@angular/material/table';
 import { RouterTestingModule } from '@angular/router/testing';
 import { GameService } from '../game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 describe('DashboardGamesComponent', () => {
   let component: DashboardGamesComponent;
@@ -13,7 +15,11 @@ describe('DashboardGamesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ DashboardGamesComponent ],
-      imports: [MatTableModule,RouterTestingModule,HttpClientTestingModule],
+      imports: [MatTableModule,
+        RouterTestingModule,
+        HttpClientTestingModule,
+        MatPaginatorModule,
+        MatSortModule],
       providers: [GameService]
     })
     .compileComponents();

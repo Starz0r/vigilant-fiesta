@@ -73,6 +73,7 @@ import { DragDropDirective } from './drag-drop.directive';
 import { UserListComponent } from './user-list/user-list.component';
 import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatIconModule,
     MatDatepickerModule,
     MatMomentDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

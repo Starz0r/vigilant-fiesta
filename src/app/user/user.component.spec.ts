@@ -18,6 +18,8 @@ import { UserService } from '../user.service';
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { TagComponent } from '../tag/tag.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -42,7 +44,9 @@ describe('UserComponent', () => {
         FormsModule,
         MatCardModule,
         HttpClientTestingModule,
-        MatChipsModule
+        MatChipsModule,
+        MatPaginatorModule,
+        MatSortModule
       ],
       providers: [
         GameService, UserService

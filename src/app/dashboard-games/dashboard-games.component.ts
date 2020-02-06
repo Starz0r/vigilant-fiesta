@@ -4,6 +4,7 @@ import { GameService } from '../game.service';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { GameSearchParams } from '../game-search-params';
+import { Sort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-dashboard-games',
@@ -16,7 +17,7 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
   total: number = 0;
   loading: boolean = true;
 
-  columnsToDisplay=['game','released','rating','difficulty'];
+  columnsToDisplay=['name','date_created','rating','difficulty'];
 
   @Input() params: GameSearchParams = {
     page:0,limit:10
@@ -27,6 +28,15 @@ export class DashboardGamesComponent implements OnInit, OnChanges, OnDestroy {
       ...this.params,
       page: event.pageIndex,
       limit: event.pageSize
+    }
+    this.getGames();
+  }
+  sort(event: Sort) {
+    this.params = {
+      ...this.params,
+      orderCol: event.active||'date_created',
+      orderDir: event.direction,
+      page: 0,
     }
     this.getGames();
   }

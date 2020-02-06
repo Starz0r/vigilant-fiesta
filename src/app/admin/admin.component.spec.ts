@@ -43,6 +43,8 @@ import { MatInputModule } from '@angular/material/input';
 import { TagInputComponent } from '../tag-input/tag-input.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { UserListComponent } from '../user-list/user-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -90,7 +92,9 @@ describe('AdminComponent', () => {
         BrowserAnimationsModule,
         BrowserModule,
         MatInputModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatPaginatorModule,
+        MatSortModule
       ],
       providers: [UserService,
         GameService,
