@@ -74,6 +74,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ForgotPasswordDialogComponent } from './forgot-password-dialog/forgot-password-dialog.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { MatSortModule } from '@angular/material/sort';
     ScreenshotAddDialogComponent,
     DragDropDirective,
     UserListComponent,
-    ReviewListPageComponent
+    ReviewListPageComponent,
+    ForgotPasswordDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -146,6 +148,11 @@ import { MatSortModule } from '@angular/material/sort';
     DecimalPipe
   ],
   bootstrap: [AppComponent],
-  entryComponents: [LoginComponent,RegisterDialogComponent,ScreenshotAddDialogComponent]
+  entryComponents: [
+    LoginComponent,
+    RegisterDialogComponent,
+    ScreenshotAddDialogComponent,
+    ForgotPasswordDialogComponent
+  ]
 })
 export class AppModule { }

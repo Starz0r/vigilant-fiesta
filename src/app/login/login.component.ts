@@ -22,9 +22,15 @@ export class LoginComponent implements OnInit {
     ok(): void {
       this.dialogRef.close(this.data);
     }
+
+    forgot() {
+      this.data.forgot = true;
+      this.dialogRef.close(this.data);
+    }
 }
 
 export interface DialogData {
   username: string;
   password: string;
+  forgot: boolean;
 }

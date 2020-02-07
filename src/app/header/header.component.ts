@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../user';
+import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-password-dialog.component';
 
 @Component({
   selector: 'app-header',
@@ -31,7 +32,30 @@ export class HeaderComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.login(result.username, result.password);
+      console.log(result);
+      if (!result.forgot) {
+        if (result.username && result.password) {
+          this.login(result.username, result.password);
+        }
+      } else {
+        const forgotRef = this.dialog.open(ForgotPasswordDialogComponent, {
+          width: '350px', data:{username:result.username}
+        });
+
+        forgotRef.afterClosed().subscribe(result => {
+          console.log("ok");
+        });
+      }
+    });
+  }
+
+  showForgotPassword() {
+    const dialogRef = this.dialog.open(ForgotPasswordDialogComponent, {
+      width: '350px', data:{}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("ok");
     });
   }
 
