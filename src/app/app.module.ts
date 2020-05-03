@@ -75,6 +75,7 @@ import { ReviewListPageComponent } from './review-list-page/review-list-page.com
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ForgotPasswordDialogComponent } from './forgot-password-dialog/forgot-password-dialog.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { ForgotPasswordDialogComponent } from './forgot-password-dialog/forgot-p
     DragDropDirective,
     UserListComponent,
     ReviewListPageComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent,
+    PasswordResetComponent
   ],
   imports: [
     BrowserModule,

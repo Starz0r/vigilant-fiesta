@@ -112,4 +112,16 @@ export class UserService {
       this.userChange.next(this.user);
     }
   }
+
+  requestReset(username: string, email: string): Observable<any> {
+    return this.http.post<User>('/api/auth/request-reset',{
+      username,email
+    }).pipe(tap(user => this.setUser(user)));
+  }
+
+  resetPassword(username: string, token: string, password: string): Observable<any> {
+    return this.http.post<User>('/api/auth/reset',{
+      username,password,token
+    }).pipe(tap(user => this.setUser(user)));
+  }
 }

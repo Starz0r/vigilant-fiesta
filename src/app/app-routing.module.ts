@@ -9,6 +9,7 @@ import { SpecialThanksComponent } from './special-thanks/special-thanks.componen
 import { GuidelinesComponent } from './guidelines/guidelines.component';
 import { SubmitComponent } from './submit/submit.component';
 import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'submit', component: SubmitComponent },
   { path: 'special-thanks', component: SpecialThanksComponent },
   { path: 'reviews', component: ReviewListPageComponent },
+  { path: 'password-reset', component: PasswordResetComponent },
 ];
 
 @NgModule({

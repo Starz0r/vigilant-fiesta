@@ -3,14 +3,17 @@
 <div mat-dialog-content>
     <mat-form-field>
         <input matInput placeholder="Username" type="text" i18n-placeholder
+            required minlength="4" 
             [(ngModel)]="data.username" name="username"/>
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Password"  type="password" i18n-placeholder
+            required minlength="6" 
             [(ngModel)]="data.password" name="password"/>
     </mat-form-field>
     <mat-form-field>
         <input matInput placeholder="Confirm Password"  type="password" i18n-placeholder 
+            required minlength="6" 
             [(ngModel)]="data.passwordConfirm" name="confirm"/>
     </mat-form-field>
     <mat-form-field>

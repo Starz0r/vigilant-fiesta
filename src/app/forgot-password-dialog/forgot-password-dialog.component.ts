@@ -26,5 +26,5 @@ export class ForgotPasswordDialogComponent implements OnInit {
 
 export interface ForgotPasswordDialogData {
   username: string;
-  password: string;
+  email: string;
 }

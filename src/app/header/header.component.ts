@@ -43,7 +43,19 @@ export class HeaderComponent implements OnInit {
         });
 
         forgotRef.afterClosed().subscribe(result => {
-          console.log("ok");
+          if (result.username && result.email) {
+            this.userService.requestReset(result.username,result.email).subscribe(
+              _ => {
+                this.snackBar.open('Request Submitted!',null,{duration: 5000,});
+              },
+              error => {
+                console.log(error);
+                this.snackBar.open(`Sorry, we were unable to submit your request. Please try again, or contact an administrator!`,null,{
+                  duration: 5000,
+                });
+              }
+            ); 
+          }
         });
       }
     });
