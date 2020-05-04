@@ -7,3 +7,11 @@ mat-radio-button {
      Every toolbar row uses a flexbox row layout. */
   flex: 1 1 auto;
 }
+
+.paging-buttons {
+  margin: 1rem;
+}
+
+.paging-buttons button {
+  margin-right: 3rem;
+}

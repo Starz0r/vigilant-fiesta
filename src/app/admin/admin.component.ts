@@ -23,6 +23,8 @@ export class AdminComponent implements OnInit {
 
   user: User;
 
+  reportIndex = 0;
+
   constructor(
     private userService: UserService,
     private reportService: ReportService,
@@ -54,8 +56,18 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  prevReport() {
+    this.reportIndex--;
+    this.getNextReport();
+  }
+
+  nextReport() {
+    this.reportIndex++;
+    this.getNextReport();
+  }
+
   getNextReport() {
-    this.reportService.getReports(false,0,1).subscribe(reports => {
+    this.reportService.getReports(false,this.reportIndex,this.reportIndex+1).subscribe(reports => {
       if (reports.length==0) {
         this.currentReport = null;
       } else {
