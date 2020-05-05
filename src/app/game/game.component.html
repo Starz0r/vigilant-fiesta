@@ -85,17 +85,22 @@
       </mat-form-field>
     </ng-container>
 
-    <ng-container *ngIf="!editing">
-      <div *ngIf="game.urlSpdrn">
-        <a mat-raised-button target="_blank" href="{{game.urlSpdrn}}" i18n>
-          Speedrun Leaderboards
-        </a>
-      </div>
-    </ng-container>
-    <ng-container *ngIf="editing">
-      <mat-form-field>
-        <input matInput placeholder="Speedrun.com Link" [(ngModel)]="game.urlSpdrn">
-      </mat-form-field>
+    <ng-container *ngIf="categories">
+      == Speedrun Leaderboards ==
+      <ng-container *ngIf="!editing">
+        <div>
+          <div *ngFor="let run of runs">
+            {{run.place}}: 
+            {{players[run.run.players[0].id]?.names?.international || '...'}} 
+            ({{run.run.times.primary_t | speedrunTimer}})
+          </div>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="editing">
+        <mat-form-field>
+          <input matInput placeholder="Speedrun.com Link" [(ngModel)]="game.urlSpdrn">
+        </mat-form-field>
+      </ng-container>
     </ng-container>
 
     <ng-container *ngIf="this.user && this.user.isAdmin">
@@ -136,11 +141,19 @@
   </div>
 
   <div class="gallery">
+    <div>
     <app-game-screenshots 
       *ngIf="game" 
       [gameId]="game.id"></app-game-screenshots>
+    </div>
+    <button mat-raised-button 
+      class="ss-mgmt-btn"
+      (click)="showScreenshotDialog()" i18n>Add Screenshot</button>
+    <button mat-raised-button 
+      *ngIf="this.user && this.user.isAdmin" 
+      class="ss-mgmt-btn"
+      (click)="showManageScreenshotDialog()" i18n>Manage Screenshot</button>
   </div>
-  <button mat-raised-button (click)="showScreenshotDialog()" i18n>Add Screenshot</button>
 
   <mat-expansion-panel *ngIf="user" [(expanded)]="reviewInputExpanded">
     <mat-expansion-panel-header>

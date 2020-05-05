@@ -15,6 +15,10 @@ mat-card {
   cursor: pointer;
 }
 
+mat-card-title {
+  font-size: 20px;
+}
+
 span.hearts {
   display: inline-block;
   background: url(/assets/images/hearts.png) 0 0px repeat-x;
@@ -45,4 +49,8 @@ span.stars span {
 .valign {
   vertical-align: middle;
   margin-right:0.5em;
+}
+
+div.comment {
+  padding-bottom:0.5em;
 }

@@ -76,6 +76,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ForgotPasswordDialogComponent } from './forgot-password-dialog/forgot-password-dialog.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { ScreenshotMgmtComponent } from './screenshot-mgmt/screenshot-mgmt.component';
+import { SpeedrumComService } from './speedrum-com.service';
+import { SpeedrunTimerPipe } from './speedrun-timer.pipe';
 
 @NgModule({
   declarations: [
@@ -114,7 +117,9 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
     UserListComponent,
     ReviewListPageComponent,
     ForgotPasswordDialogComponent,
-    PasswordResetComponent
+    PasswordResetComponent,
+    ScreenshotMgmtComponent,
+    SpeedrunTimerPipe
   ],
   imports: [
     BrowserModule,
@@ -146,8 +151,8 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
-    MessageService, GameService, UserService,
-    DecimalPipe
+    MessageService, GameService, UserService, SpeedrumComService, 
+    DecimalPipe, SpeedrunTimerPipe
   ],
   bootstrap: [AppComponent],
   entryComponents: [

@@ -53,3 +53,7 @@ mat-form-field {
 .tag-list {
   max-width: 360px;
 }
+
+.ss-mgmt-btn {
+  margin-right: 1em;
+}

@@ -13,10 +13,12 @@ import { Review } from '../review';
 import { ReviewListComponent } from '../review-list/review-list.component';
 import { User } from '../user';
 import { ReviewSubmission } from '../review-input/review-submission';
-import { forkJoin } from 'rxjs';
+import { forkJoin, Observable, of } from 'rxjs';
 import { Tag } from '../tag';
 import { MatDialog } from '@angular/material/dialog';
 import { ScreenshotAddDialogComponent } from '../screenshot-add-dialog/screenshot-add-dialog.component';
+import { SpeedrumComService, SRCategory, SRLeaderboardRun, SRPlayer, SRUser } from '../speedrum-com.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-game',
@@ -31,9 +33,11 @@ export class GameComponent implements OnInit {
     private userService: UserService,
     private location: Location,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private speedrunService: SpeedrumComService
   ) {
     this.userService.userChange.subscribe(user=>this.user=user);
+    this.players = new Map<string,SRUser>();
   }
   
   @ViewChild(ReviewListComponent, {static: false}) reviewList:ReviewListComponent;
@@ -148,6 +152,29 @@ export class GameComponent implements OnInit {
     });
   }
 
+  showManageScreenshotDialog() {
+    const dialogRef = this.dialog.open(ScreenshotAddDialogComponent, {
+      width: '350px', data:{}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.gameService.addScreenshot(
+        this.game.id,
+        result.description,
+        result.file
+      ).subscribe(ss => {
+        this.snackBar.open("Screenshot Submitted! Once an admin approves it, it will be added.",null,{
+          duration: 5000,
+        })
+      },
+      error => {
+        this.snackBar.open("Failed to submit screenshot, try again later!",null,{
+          duration: 5000,
+        })
+      });
+    });
+  }
+
   getUserReview(): void {
     if (this.id && this.user) {
       const userId = this.user.id;
@@ -168,6 +195,44 @@ export class GameComponent implements OnInit {
   gameLoaded() {
     this.getUserReview();
     this.getTags();
+    this.getSpeedrunCategories();
+  }
+
+  categories: SRCategory[];
+  getSpeedrunCategories() {
+    if (this.game.urlSpdrn) {
+      this.speedrunService.getCategories(this.game.urlSpdrn)
+      .subscribe(categories => {
+        this.categories = categories;
+        this.getSpeedrunLeaderboard(this.categories[0]);
+      }, error => {
+        console.log("failed to get speedrun categories");
+        console.log(error);
+      });
+    }
+  }
+
+  runs: SRLeaderboardRun[];
+  players: Map<string,SRUser>;
+  getSpeedrunLeaderboard(category: SRCategory) {
+    this.speedrunService.getLeaderboard(this.game.urlSpdrn,category.id)
+    .subscribe(runs => {
+      this.runs = runs.slice(0,5);
+      this.runs.forEach(run => 
+        this.speedrunService.getPlayer(run.run.players[0]).subscribe(user => 
+          this.players[user.id] = user
+        )
+      );
+    }, error => {
+      console.log("failed to get speedrun leaderboard for category: "+category.id);
+      console.log(error);
+    });
+  }
+
+  getUserName(player: SRPlayer): Observable<string|undefined> {
+    if (!player) return of("N/A");
+    return this.speedrunService.getPlayer(player)
+      .pipe(map(user=>user?"N/A":""+user.names.international));
   }
 
   getGame(fromRoute: boolean): void {
