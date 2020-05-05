@@ -25,8 +25,8 @@ export class CommentComponent implements OnInit, OnChanges {
     source = 
       "<N>"
       +source
-      .replace("[spoiler]","</N><X>")
-      .replace("[/spoiler]","</X><N>")
+      .replace(/\[spoiler\]/g,"</N><X>")
+      .replace(/\[\/spoiler\]/g,"</X><N>")
       +"</N>"
     let sourcearray = source.split("><");
     let mappedarray = sourcearray.map((v,i)=>{
@@ -38,7 +38,7 @@ export class CommentComponent implements OnInit, OnChanges {
     return mappedarray.map(v => {
       if (v.charAt(1)==='X') return {type:'spoiler',content:this.unescapeHtml(v.substr(3,v.length-3-4))}
       else                   return {type:'normal' ,content:this.unescapeHtml(v.substr(3,v.length-3-4))}
-    })
+    }).filter(v => v.content.trim())
   }
 
   escapeHtml(unsafe) {
