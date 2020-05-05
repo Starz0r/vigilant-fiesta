@@ -29,6 +29,7 @@ import { TagInputComponent } from '../tag-input/tag-input.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
+import { SpeedrunTimerPipe } from '../speedrun-timer.pipe';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -48,7 +49,8 @@ describe('GameComponent', () => {
         TagComponent,
         TagInputComponent,
         CommentComponent,
-        CommentSpoilerComponent
+        CommentSpoilerComponent,
+        SpeedrunTimerPipe
       ],
       imports: [
         NgxGalleryModule,MatExpansionModule,
@@ -67,7 +69,8 @@ describe('GameComponent', () => {
       providers: [
         DecimalPipe,
         GameService,
-        UserService
+        UserService,
+        SpeedrunTimerPipe
       ]
     })
     .compileComponents();

@@ -47,6 +47,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
+import { SpeedrunTimerPipe } from '../speedrun-timer.pipe';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -60,6 +61,7 @@ describe('AdminComponent', () => {
         ReviewComponent,
         RatingPipe,
         DifficultyPipe,
+        SpeedrunTimerPipe,
         ListComponent,
         TagListComponent,
         ReviewListComponent,
@@ -102,7 +104,8 @@ describe('AdminComponent', () => {
       ],
       providers: [UserService,
         GameService,
-        DecimalPipe]
+        DecimalPipe,
+        SpeedrunTimerPipe]
     })
     .compileComponents();
   }));
