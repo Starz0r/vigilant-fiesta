@@ -10,6 +10,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { CommentComponent } from '../review/comment/comment.component';
+import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 
 describe('ReviewListComponent', () => {
   let component: ReviewListComponent;
@@ -21,7 +23,9 @@ describe('ReviewListComponent', () => {
         ReviewListComponent,
         ReviewComponent,
         TagListComponent,
-        TagComponent
+        TagComponent,
+        CommentComponent,
+        CommentSpoilerComponent
        ],
       imports: [
         RouterTestingModule,

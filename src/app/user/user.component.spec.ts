@@ -20,6 +20,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { TagComponent } from '../tag/tag.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CommentComponent } from '../review/comment/comment.component';
+import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -33,7 +35,9 @@ describe('UserComponent', () => {
         UserAdminControlComponent,
         ReviewComponent,
         TagListComponent,
-        TagComponent
+        TagComponent,
+        CommentComponent,
+        CommentSpoilerComponent
       ],
       imports: [
         MatTabsModule,

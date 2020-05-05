@@ -27,6 +27,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { TagInputComponent } from '../tag-input/tag-input.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { CommentComponent } from '../review/comment/comment.component';
+import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -44,7 +46,9 @@ describe('GameComponent', () => {
         ReviewComponent,
         GameScreenshotsComponent,
         TagComponent,
-        TagInputComponent
+        TagInputComponent,
+        CommentComponent,
+        CommentSpoilerComponent
       ],
       imports: [
         NgxGalleryModule,MatExpansionModule,

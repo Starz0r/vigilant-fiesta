@@ -11,7 +11,7 @@
   </mat-card-subtitle>
 
   <mat-card-content>
-    <div class="comment">{{review.comment}}</div>
+    <app-comment [comment]="review.comment"></app-comment>
     
     <app-tag-list 
       *ngIf="tags" 

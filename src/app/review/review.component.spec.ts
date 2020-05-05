@@ -10,6 +10,8 @@ import { GameService } from '../game.service';
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { CommentComponent } from './comment/comment.component';
+import { CommentSpoilerComponent } from './comment-spoiler/comment-spoiler.component';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -20,7 +22,9 @@ describe('ReviewComponent', () => {
       declarations: [ 
         ReviewComponent, 
         TagListComponent ,
-        TagComponent
+        TagComponent,
+        CommentComponent,
+        CommentSpoilerComponent
       ],
       imports: [
         MatCardModule,

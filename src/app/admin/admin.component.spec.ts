@@ -45,6 +45,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { UserListComponent } from '../user-list/user-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CommentComponent } from '../review/comment/comment.component';
+import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -69,7 +71,9 @@ describe('AdminComponent', () => {
         NewsWriterComponent,
         NewsCardComponent,
         TagInputComponent,
-        UserListComponent
+        UserListComponent,
+        CommentComponent,
+        CommentSpoilerComponent
       ],
       imports: [
         MatSnackBarModule,

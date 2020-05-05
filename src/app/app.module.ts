@@ -79,6 +79,8 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { ScreenshotMgmtComponent } from './screenshot-mgmt/screenshot-mgmt.component';
 import { SpeedrumComService } from './speedrum-com.service';
 import { SpeedrunTimerPipe } from './speedrun-timer.pipe';
+import { CommentComponent } from './review/comment/comment.component';
+import { CommentSpoilerComponent } from './review/comment-spoiler/comment-spoiler.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,7 @@ import { SpeedrunTimerPipe } from './speedrun-timer.pipe';
     GameComponent,
     GamesComponent,
     ReviewComponent,
+    CommentComponent,
     HeaderComponent,
     LoginComponent,
     UserComponent,
@@ -119,7 +122,8 @@ import { SpeedrunTimerPipe } from './speedrun-timer.pipe';
     ForgotPasswordDialogComponent,
     PasswordResetComponent,
     ScreenshotMgmtComponent,
-    SpeedrunTimerPipe
+    SpeedrunTimerPipe,
+    CommentSpoilerComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,8 @@ import { MatCardModule } from '@angular/material/card';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatChipsModule } from '@angular/material/chips';
 import { GameService } from '../game.service';
+import { CommentComponent } from '../review/comment/comment.component';
+import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 
 describe('ReviewListPageComponent', () => {
   let component: ReviewListPageComponent;
@@ -23,7 +25,9 @@ describe('ReviewListPageComponent', () => {
         ReviewListComponent,
         ReviewComponent,
         TagListComponent,
-        TagComponent
+        TagComponent,
+        CommentComponent,
+        CommentSpoilerComponent
        ],
       imports: [
         RouterTestingModule,

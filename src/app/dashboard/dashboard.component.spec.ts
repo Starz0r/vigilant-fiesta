@@ -21,6 +21,8 @@ import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
+import { CommentComponent } from '../review/comment/comment.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -37,7 +39,9 @@ describe('DashboardComponent', () => {
         NewsCardComponent,
         NewsWriterComponent,
         TagListComponent,
-        TagComponent
+        TagComponent,
+        CommentComponent,
+        CommentSpoilerComponent
       ],
       imports: [
         MatTabsModule,
