@@ -20,6 +20,7 @@
         <input matInput placeholder="Email" type="text" i18n-placeholder 
             [(ngModel)]="data.email" name="email"/>
     </mat-form-field>
+    <app-captcha-notice></app-captcha-notice>
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="cancel()" i18n>Cancel</button>

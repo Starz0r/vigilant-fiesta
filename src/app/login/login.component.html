@@ -9,6 +9,7 @@
         <input matInput placeholder="Password" name="password"
             type="password" [(ngModel)]="data.password" i18n-placeholder />
     </mat-form-field>
+    <app-captcha-notice></app-captcha-notice>
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button (click)="cancel()" i18n>Cancel</button>

@@ -19,3 +19,5 @@ $ip-theme-dark: mat-dark-theme($ip-primary, $ip-accent);
 body {
   margin: 2em;
 }
+
+.grecaptcha-badge { visibility: hidden; }

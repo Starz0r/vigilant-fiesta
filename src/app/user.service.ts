@@ -62,7 +62,7 @@ export class UserService {
     });
   }
 
-  login(username: string, password: string): Observable<User> {
+  login(username: string, password: string, rcptoken: string): Observable<User> {
     return this.http.post<User>('/api/auth/login',{
       username,password
     }).pipe(tap(user => this.setUser(user)));
@@ -73,7 +73,7 @@ export class UserService {
     .pipe(tap(user => this.setUser(user)));
   }
 
-  register(username: string, password: string, email: string): Observable<User> {
+  register(username: string, password: string, email: string, rcptoken: string): Observable<User> {
     return this.http.post<User>('/api/users',{
       username,password,email
     }).pipe(tap(user => this.setUser(user)));
@@ -113,15 +113,15 @@ export class UserService {
     }
   }
 
-  requestReset(username: string, email: string): Observable<any> {
+  requestReset(username: string, email: string, rcptoken: string): Observable<any> {
     return this.http.post<User>('/api/auth/request-reset',{
-      username,email
+      username,email,rcptoken
     }).pipe(tap(user => this.setUser(user)));
   }
 
-  resetPassword(username: string, token: string, password: string): Observable<any> {
+  resetPassword(username: string, token: string, password: string, rcptoken: string): Observable<any> {
     return this.http.post<User>('/api/auth/reset',{
-      username,password,token
+      username,password,token,rcptoken
     }).pipe(tap(user => this.setUser(user)));
   }
 }

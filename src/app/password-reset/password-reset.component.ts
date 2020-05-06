@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserService } from '../user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-password-reset',
@@ -27,7 +28,8 @@ export class PasswordResetComponent implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private userService: UserService,
-      private snackBar: MatSnackBar) {
+      private snackBar: MatSnackBar,
+      private recaptchaV3Service: ReCaptchaV3Service) {
     console.log('Called Constructor');
     this.route.queryParams.subscribe(params => {
         this.username = params['name'];
@@ -53,28 +55,31 @@ export class PasswordResetComponent implements OnInit {
   }
 
   ok() {
-    this.userService.resetPassword(
-      this.username,
-      this.token,
-      this.group.get('password').value)
-    .subscribe(user => {
-      this.snackBar.open(`Welcome back, ${user.name}!`,null,{
-        duration: 5000,
-      });
-      this.router.navigateByUrl('/');
-    },
-    error => {
-      if (error.name === 'HttpErrorResponse' 
-        && error.status === 401) {
-          this.snackBar.open(`Sorry, it looks like that token was invalid. Please try again, or contact an administrator!`,null,{
-            duration: 5000,
-          });
-      } else {
-        console.log(error);
-        this.snackBar.open(`Sorry, we were unable to reset your password. Please try again, or contact an administrator!`,null,{
+    this.recaptchaV3Service.execute('resetPW').subscribe((rcptoken) => {
+      this.userService.resetPassword(
+        this.username,
+        this.token,
+        this.group.get('password').value,
+        rcptoken)
+      .subscribe(user => {
+        this.snackBar.open(`Welcome back, ${user.name}!`,null,{
           duration: 5000,
         });
-      }
+        this.router.navigateByUrl('/');
+      },
+      error => {
+        if (error.name === 'HttpErrorResponse' 
+          && error.status === 401) {
+            this.snackBar.open(`Sorry, it looks like that token was invalid. Please try again, or contact an administrator!`,null,{
+              duration: 5000,
+            });
+        } else {
+          console.log(error);
+          this.snackBar.open(`Sorry, we were unable to reset your password. Please try again, or contact an administrator!`,null,{
+            duration: 5000,
+          });
+        }
+      });
     });
   }
 }

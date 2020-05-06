@@ -83,6 +83,9 @@ import { SpeedrunTimerPipe } from './speedrun-timer.pipe';
 import { CommentComponent } from './review/comment/comment.component';
 import { CommentSpoilerComponent } from './review/comment-spoiler/comment-spoiler.component';
 import { BadgeComponent } from './badge/badge.component';
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
+import { CaptchaNoticeComponent } from './captcha-notice/captcha-notice.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -126,7 +129,8 @@ import { BadgeComponent } from './badge/badge.component';
     ScreenshotMgmtComponent,
     SpeedrunTimerPipe,
     CommentSpoilerComponent,
-    BadgeComponent
+    BadgeComponent,
+    CaptchaNoticeComponent
   ],
   imports: [
     BrowserModule,
@@ -155,12 +159,14 @@ import { BadgeComponent } from './badge/badge.component';
     MatMomentDateModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RecaptchaV3Module
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
     MessageService, GameService, UserService, SpeedrumComService, 
-    DecimalPipe, SpeedrunTimerPipe
+    DecimalPipe, SpeedrunTimerPipe,
+    { provide: RECAPTCHA_V3_SITE_KEY, useValue: environment.captcha_key },
   ],
   bootstrap: [AppComponent],
   entryComponents: [
