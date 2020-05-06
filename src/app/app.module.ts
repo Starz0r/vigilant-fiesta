@@ -49,6 +49,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterDialogComponent } from './register-dialog/register-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -81,6 +82,7 @@ import { SpeedrumComService } from './speedrum-com.service';
 import { SpeedrunTimerPipe } from './speedrun-timer.pipe';
 import { CommentComponent } from './review/comment/comment.component';
 import { CommentSpoilerComponent } from './review/comment-spoiler/comment-spoiler.component';
+import { BadgeComponent } from './badge/badge.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +125,8 @@ import { CommentSpoilerComponent } from './review/comment-spoiler/comment-spoile
     PasswordResetComponent,
     ScreenshotMgmtComponent,
     SpeedrunTimerPipe,
-    CommentSpoilerComponent
+    CommentSpoilerComponent,
+    BadgeComponent
   ],
   imports: [
     BrowserModule,
@@ -151,7 +154,8 @@ import { CommentSpoilerComponent } from './review/comment-spoiler/comment-spoile
     MatDatepickerModule,
     MatMomentDateModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTooltipModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},
