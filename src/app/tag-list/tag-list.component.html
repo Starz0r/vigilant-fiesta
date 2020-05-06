@@ -1,5 +1,5 @@
 <ng-container *ngIf="tags && tags.length > 0">
-<p class="header">Tags:</p>
+<p class="header" i18n="@@tags list header">Tags:</p>
 <mat-chip-list>
     <app-tag *ngFor="let tag of tagMap()"
     [id]="tag.id"

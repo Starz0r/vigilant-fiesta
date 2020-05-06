@@ -11,7 +11,7 @@ export class BadgeComponent implements OnInit {
 
   @Input() id: number;
 
-  private text = "";
+  text = "";
   @ViewChild('template', {static: false}) set someDummySetterName(theElementRef: ElementRef) {
     if (!theElementRef) return;
     this.text = theElementRef.nativeElement.textContent.replace(/#/g,"\n");

@@ -11,9 +11,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class PasswordResetComponent implements OnInit {
 
-  private username: string;
-  private token: string;
-  private hide = true;
+  username: string;
+  token: string;
+  hide = true;
 
   group: FormGroup = new FormGroup({
     password: new FormControl(''),

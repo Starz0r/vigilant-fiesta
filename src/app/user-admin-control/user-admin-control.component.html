@@ -1,11 +1,11 @@
 <ng-container *ngIf="user">
-    <section><mat-checkbox [(ngModel)]="user.canReport" i18n>Can Report</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.canSubmit" i18n>Can Submit</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.canReview" i18n>Can Review</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.canScreenshot" i18n>Can Screenshot</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.banned" i18n>Banned</mat-checkbox></section>
-    <button mat-raised-button i18n>Update</button>
+    <section><mat-checkbox [(ngModel)]="user.canReport" i18n="@@admin: user can report">Can Report</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.canSubmit" i18n="@@admin: user can submit">Can Submit</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.canReview" i18n="@@admin: user can review">Can Review</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.canScreenshot" i18n="@@admin: user can submit screenshot">Can Screenshot</mat-checkbox></section>
+    <section><mat-checkbox [(ngModel)]="user.banned" i18n="@@admin: user is banned">Banned</mat-checkbox></section>
+    <button mat-raised-button i18n="@@admin: update user settings button">Update</button>
 </ng-container>
-<ng-container *ngIf="!user" i18n="missing user for container">
+<ng-container *ngIf="!user" i18n="@@admin: missing user for display">
     No user!
 </ng-container>

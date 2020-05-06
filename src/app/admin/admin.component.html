@@ -1,8 +1,8 @@
-<h1 i18n>Admin Portal</h1>
+<h1 i18n="@@admin portal header">Admin Portal</h1>
 
 <mat-tab-group>
   <mat-tab label="Report Queue">
-    <div *ngIf="!currentReport" i18n>No new reports! Take a break :)</div>
+    <div *ngIf="!currentReport" i18n="@@no more reports">No new reports! Take a break :)</div>
     <div *ngIf="currentReport">
         <div class="paging-buttons">
             <button mat-raised-button [disabled]="reportIndex == 0" (click)="prevReport()">Previous Report</button>
@@ -15,7 +15,7 @@
         <ng-container>
             <mat-toolbar>
                 <span class="fill-remaining-space"></span>
-                <span i18n>Reported Content</span>
+                <span i18n="@@report details header">Reported Content</span>
                 <span class="fill-remaining-space"></span>
             </mat-toolbar>
 
@@ -42,7 +42,7 @@
                     <img [src]="screenshotUrl(currentReport.id)" />
                 </div>
 
-                <div *ngSwitchDefault i18n>Unable to preview report type: {{currentReport.type}}</div>
+                <div *ngSwitchDefault i18n="@@report details failed to load">Unable to preview report type: {{currentReport.type}}</div>
             </ng-container>
         </ng-container>
     </div>

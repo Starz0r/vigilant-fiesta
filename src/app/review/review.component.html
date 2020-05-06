@@ -38,10 +38,10 @@
       <button mat-raised-button color="primary" *ngIf="isLiked" (click)="unlikeReview()">
         <i class="material-icons">thumb_up</i> {{review.like_count}}
       </button>
-      <button mat-button i18n>Reply</button>
+      <button mat-button i18n="@@review reply button">Reply</button>
   </mat-card-actions>
 </mat-card>
 </ng-container>
-<ng-container *ngIf="!review" i18n>
+<ng-container *ngIf="!review" i18n="@@review card no review error">
   No review
 </ng-container>
