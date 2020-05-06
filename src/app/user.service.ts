@@ -75,7 +75,7 @@ export class UserService {
 
   register(username: string, password: string, email: string, rcptoken: string): Observable<User> {
     return this.http.post<User>('/api/users',{
-      username,password,email
+      username,password,email,rcptoken
     }).pipe(tap(user => this.setUser(user)));
   }
 
