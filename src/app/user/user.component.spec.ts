@@ -22,6 +22,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -53,7 +55,8 @@ describe('UserComponent', () => {
         MatSortModule
       ],
       providers: [
-        GameService, UserService
+        GameService, UserService,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService}
       ]
     })
     .compileComponents();

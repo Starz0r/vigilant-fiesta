@@ -12,6 +12,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserService } from '../user.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
+import { mockCaptchaService } from '../user.service.spec';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -19,7 +22,11 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent,LoginComponent ],
+      declarations: [ 
+        HeaderComponent,
+        LoginComponent,
+        CaptchaNoticeComponent 
+      ],
       imports: [
         MatButtonModule,
         RouterTestingModule,
@@ -31,7 +38,8 @@ describe('HeaderComponent', () => {
         HttpClientTestingModule,
         MatSnackBarModule
       ],
-      providers: [ UserService ]
+      providers: [ UserService,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService} ]
     })
     .compileComponents();
   }));

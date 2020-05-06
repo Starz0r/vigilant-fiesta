@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BadgeComponent } from './badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('BadgeComponent', () => {
   let component: BadgeComponent;
@@ -8,7 +10,11 @@ describe('BadgeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BadgeComponent ]
+      declarations: [ BadgeComponent ],
+      imports: [
+        MatTooltipModule,
+        BrowserAnimationsModule
+      ]
     })
     .compileComponents();
   }));

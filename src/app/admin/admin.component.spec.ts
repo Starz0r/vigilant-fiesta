@@ -48,6 +48,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 import { SpeedrunTimerPipe } from '../speedrun-timer.pipe';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -105,7 +107,8 @@ describe('AdminComponent', () => {
       providers: [UserService,
         GameService,
         DecimalPipe,
-        SpeedrunTimerPipe]
+        SpeedrunTimerPipe,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService}] 
     })
     .compileComponents();
   }));

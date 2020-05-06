@@ -10,6 +10,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;
@@ -17,7 +20,8 @@ describe('PasswordResetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PasswordResetComponent ],
+      declarations: [ PasswordResetComponent,
+        CaptchaNoticeComponent ],
       imports: [
         MatFormFieldModule,
         FormsModule,
@@ -29,7 +33,8 @@ describe('PasswordResetComponent', () => {
         MatInputModule,
         BrowserAnimationsModule
       ],
-      providers: [ UserService ]
+      providers: [ UserService,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService} ]
     })
     .compileComponents();
   }));

@@ -12,6 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('SubmitComponent', () => {
   let component: SubmitComponent;
@@ -35,7 +37,8 @@ describe('SubmitComponent', () => {
       ],
       providers: [
         GameService,
-        UserService
+        UserService,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService}
       ]
     })
     .compileComponents();

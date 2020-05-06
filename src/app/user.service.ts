@@ -3,8 +3,9 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { User } from './user';
 import { Observable ,  of, BehaviorSubject, Subject, ReplaySubject } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,7 +25,8 @@ export class UserService {
 
   constructor(
     private http: HttpClient,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private recaptchaV3Service: ReCaptchaV3Service
   ) { 
     //Grab the user every minute, to confirm it's still valid
     //If invalid, it will log them out automatically
@@ -62,10 +64,12 @@ export class UserService {
     });
   }
 
-  login(username: string, password: string, rcptoken: string): Observable<User> {
-    return this.http.post<User>('/api/auth/login',{
-      username,password
-    }).pipe(tap(user => this.setUser(user)));
+  login(username: string, password: string): Observable<User> {
+    return this.recaptchaV3Service.execute('login').pipe(switchMap((rcptoken) => {
+      return this.http.post<User>('/api/auth/login',{
+        username,password,rcptoken
+      }).pipe(tap(user => this.setUser(user)));
+    }));
   }
 
   refresh() {
@@ -73,10 +77,12 @@ export class UserService {
     .pipe(tap(user => this.setUser(user)));
   }
 
-  register(username: string, password: string, email: string, rcptoken: string): Observable<User> {
-    return this.http.post<User>('/api/users',{
-      username,password,email,rcptoken
-    }).pipe(tap(user => this.setUser(user)));
+  register(username: string, password: string, email: string): Observable<User> {
+    return this.recaptchaV3Service.execute('register').pipe(switchMap((rcptoken) => {
+        return this.http.post<User>('/api/users',{
+        username,password,email,rcptoken
+      }).pipe(tap(user => this.setUser(user)));
+    }));
   }
 
   setUser(user: any) {
@@ -113,15 +119,19 @@ export class UserService {
     }
   }
 
-  requestReset(username: string, email: string, rcptoken: string): Observable<any> {
-    return this.http.post<User>('/api/auth/request-reset',{
-      username,email,rcptoken
-    }).pipe(tap(user => this.setUser(user)));
+  requestReset(username: string, email: string): Observable<any> {
+    return this.recaptchaV3Service.execute('requestPwReset').pipe(switchMap((rcptoken) => {
+      return this.http.post<User>('/api/auth/request-reset',{
+        username,email,rcptoken
+      }).pipe(tap(user => this.setUser(user)));
+    }));
   }
 
-  resetPassword(username: string, token: string, password: string, rcptoken: string): Observable<any> {
-    return this.http.post<User>('/api/auth/reset',{
-      username,password,token,rcptoken
-    }).pipe(tap(user => this.setUser(user)));
+  resetPassword(username: string, token: string, password: string): Observable<any> {
+    return this.recaptchaV3Service.execute('resetPW').pipe(switchMap((rcptoken) => {
+      return this.http.post<User>('/api/auth/reset',{
+        username,password,token,rcptoken
+      }).pipe(tap(user => this.setUser(user)));
+    }));
   }
 }

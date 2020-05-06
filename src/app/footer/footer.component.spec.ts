@@ -8,6 +8,8 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -17,7 +19,8 @@ describe('FooterComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ FooterComponent ],
       imports: [MatToolbarModule,MatSnackBarModule,HttpClientTestingModule],
-      providers: [UserService]
+      providers: [UserService,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService}]
     })
     .compileComponents();
   }));

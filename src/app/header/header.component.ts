@@ -6,7 +6,6 @@ import { RegisterDialogComponent } from '../register-dialog/register-dialog.comp
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from '../user';
 import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-password-dialog.component';
-import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +18,6 @@ export class HeaderComponent implements OnInit {
     private userService: UserService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar, 
-    private recaptchaV3Service: ReCaptchaV3Service,
   ) { }
 
   user: User;
@@ -46,19 +44,17 @@ export class HeaderComponent implements OnInit {
 
         forgotRef.afterClosed().subscribe(result => {
           if (result.username && result.email) {
-            this.recaptchaV3Service.execute('requestPwReset').subscribe((rcptoken) => {
-              this.userService.requestReset(result.username,result.email,rcptoken).subscribe(
-                _ => {
-                  this.snackBar.open('Request Submitted!',null,{duration: 5000,});
-                },
-                error => {
-                  console.log(error);
-                  this.snackBar.open(`Sorry, we were unable to submit your request. Please try again, or contact an administrator!`,null,{
-                    duration: 5000,
-                  });
-                }
-              ); 
-            });
+            this.userService.requestReset(result.username,result.email).subscribe(
+              _ => {
+                this.snackBar.open('Request Submitted!',null,{duration: 5000,});
+              },
+              error => {
+                console.log(error);
+                this.snackBar.open(`Sorry, we were unable to submit your request. Please try again, or contact an administrator!`,null,{
+                  duration: 5000,
+                });
+              }
+            ); 
           }
         });
       }
@@ -86,27 +82,25 @@ export class HeaderComponent implements OnInit {
   }
 
   login(username: string, password: string) {
-    this.recaptchaV3Service.execute('login').subscribe((rcptoken) => {
-      this.userService.login(username,password,rcptoken)
-        .subscribe(user => {
-          this.snackBar.open(`Welcome, ${user.name}!`,null,{
-            duration: 5000,
-          });
-        },
-        error => {
-          if (error.name === 'HttpErrorResponse' 
-            && error.status === 401) {
-              this.snackBar.open(`Sorry, we were unable to log you in. Please try again!`,null,{
-                duration: 5000,
-              });
-          } else {
-            console.log(error);
-            this.snackBar.open(`We're sorry, login is currently experiencing issues. Please try again later!`,null,{
+    this.userService.login(username,password)
+      .subscribe(user => {
+        this.snackBar.open(`Welcome, ${user.name}!`,null,{
+          duration: 5000,
+        });
+      },
+      error => {
+        if (error.name === 'HttpErrorResponse' 
+          && error.status === 401) {
+            this.snackBar.open(`Sorry, we were unable to log you in. Please try again!`,null,{
               duration: 5000,
             });
-          }
-        });
-    });
+        } else {
+          console.log(error);
+          this.snackBar.open(`We're sorry, login is currently experiencing issues. Please try again later!`,null,{
+            duration: 5000,
+          });
+        }
+      });
   }
 
   logout() {
@@ -119,8 +113,7 @@ export class HeaderComponent implements OnInit {
   }
 
   register(username:string,password:string,email:string) {
-    this.recaptchaV3Service.execute('register').subscribe((rcptoken) => {
-    this.userService.register(username,password,email,rcptoken)
+    this.userService.register(username,password,email)
       .subscribe(user => {
         this.snackBar.open(`Welcome, ${user.name}!`,null,{
           duration: 5000,
@@ -147,7 +140,6 @@ export class HeaderComponent implements OnInit {
           });
         }
       });
-    });
   }
 
 }

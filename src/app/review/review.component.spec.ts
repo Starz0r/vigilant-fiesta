@@ -12,6 +12,8 @@ import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { CommentComponent } from './comment/comment.component';
 import { CommentSpoilerComponent } from './comment-spoiler/comment-spoiler.component';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -35,7 +37,8 @@ describe('ReviewComponent', () => {
       ],
       providers:[
         UserService,
-        GameService
+        GameService,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService}
       ]
     })
     .compileComponents();

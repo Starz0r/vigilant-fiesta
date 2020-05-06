@@ -30,6 +30,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 import { SpeedrunTimerPipe } from '../speedrun-timer.pipe';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { mockCaptchaService } from '../user.service.spec';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -70,7 +72,8 @@ describe('GameComponent', () => {
         DecimalPipe,
         GameService,
         UserService,
-        SpeedrunTimerPipe
+        SpeedrunTimerPipe,
+        {provide: ReCaptchaV3Service, useClass: mockCaptchaService}
       ]
     })
     .compileComponents();
