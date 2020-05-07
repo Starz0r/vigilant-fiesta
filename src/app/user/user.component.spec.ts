@@ -24,6 +24,8 @@ import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { mockCaptchaService } from '../user.service.spec';
+import { BadgeComponent } from '../badge/badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -39,7 +41,8 @@ describe('UserComponent', () => {
         TagListComponent,
         TagComponent,
         CommentComponent,
-        CommentSpoilerComponent
+        CommentSpoilerComponent,
+        BadgeComponent
       ],
       imports: [
         MatTabsModule,
@@ -52,7 +55,8 @@ describe('UserComponent', () => {
         HttpClientTestingModule,
         MatChipsModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatTooltipModule
       ],
       providers: [
         GameService, UserService,

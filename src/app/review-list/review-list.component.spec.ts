@@ -12,6 +12,8 @@ import { TagComponent } from '../tag/tag.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
+import { BadgeComponent } from '../badge/badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('ReviewListComponent', () => {
   let component: ReviewListComponent;
@@ -25,14 +27,16 @@ describe('ReviewListComponent', () => {
         TagListComponent,
         TagComponent,
         CommentComponent,
-        CommentSpoilerComponent
+        CommentSpoilerComponent,
+        BadgeComponent
        ],
       imports: [
         RouterTestingModule,
         MatSnackBarModule,
         MatCardModule,
         HttpClientTestingModule,
-        MatChipsModule
+        MatChipsModule,
+        MatTooltipModule
       ],
       providers: [
         GameService

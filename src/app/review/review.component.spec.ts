@@ -14,6 +14,8 @@ import { CommentComponent } from './comment/comment.component';
 import { CommentSpoilerComponent } from './comment-spoiler/comment-spoiler.component';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { mockCaptchaService } from '../user.service.spec';
+import { BadgeComponent } from '../badge/badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('ReviewComponent', () => {
   let component: ReviewComponent;
@@ -26,14 +28,16 @@ describe('ReviewComponent', () => {
         TagListComponent ,
         TagComponent,
         CommentComponent,
-        CommentSpoilerComponent
+        CommentSpoilerComponent,
+        BadgeComponent
       ],
       imports: [
         MatCardModule,
         RouterTestingModule,
         HttpClientTestingModule,
         MatSnackBarModule,
-        MatChipsModule
+        MatChipsModule,
+        MatTooltipModule
       ],
       providers:[
         UserService,

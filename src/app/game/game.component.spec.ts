@@ -32,6 +32,8 @@ import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoil
 import { SpeedrunTimerPipe } from '../speedrun-timer.pipe';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { mockCaptchaService } from '../user.service.spec';
+import { BadgeComponent } from '../badge/badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('GameComponent', () => {
   let component: GameComponent;
@@ -52,7 +54,8 @@ describe('GameComponent', () => {
         TagInputComponent,
         CommentComponent,
         CommentSpoilerComponent,
-        SpeedrunTimerPipe
+        SpeedrunTimerPipe,
+        BadgeComponent
       ],
       imports: [
         NgxGalleryModule,MatExpansionModule,
@@ -66,7 +69,8 @@ describe('GameComponent', () => {
         MatSnackBarModule,
         MatChipsModule,
         MatIconModule,
-        MatDatepickerModule
+        MatDatepickerModule,
+        MatTooltipModule
       ],
       providers: [
         DecimalPipe,

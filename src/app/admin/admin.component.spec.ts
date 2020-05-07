@@ -50,6 +50,8 @@ import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoil
 import { SpeedrunTimerPipe } from '../speedrun-timer.pipe';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { mockCaptchaService } from '../user.service.spec';
+import { BadgeComponent } from '../badge/badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -77,7 +79,8 @@ describe('AdminComponent', () => {
         TagInputComponent,
         UserListComponent,
         CommentComponent,
-        CommentSpoilerComponent
+        CommentSpoilerComponent,
+        BadgeComponent
       ],
       imports: [
         MatSnackBarModule,
@@ -102,7 +105,8 @@ describe('AdminComponent', () => {
         MatInputModule,
         MatDatepickerModule,
         MatPaginatorModule,
-        MatSortModule
+        MatSortModule,
+        MatTooltipModule
       ],
       providers: [UserService,
         GameService,

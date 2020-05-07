@@ -23,6 +23,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 import { CommentComponent } from '../review/comment/comment.component';
+import { BadgeComponent } from '../badge/badge.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -41,7 +43,8 @@ describe('DashboardComponent', () => {
         TagListComponent,
         TagComponent,
         CommentComponent,
-        CommentSpoilerComponent
+        CommentSpoilerComponent,
+        BadgeComponent
       ],
       imports: [
         MatTabsModule,
@@ -55,7 +58,8 @@ describe('DashboardComponent', () => {
         MatSortModule,
         //????
         MatFormFieldModule,
-        FormsModule
+        FormsModule,
+        MatTooltipModule
       ],
       providers: [GameService]
     })
