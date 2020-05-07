@@ -6,8 +6,10 @@
   <mat-card-subtitle>
     <div class="name" i18n>
       By: 
-      <app-badge *ngIf="review.selected_badge" [id]="review.selected_badge"></app-badge>
-      <a mat-button [routerLink]="'/user/'+review.user_id">{{review.user_name}}</a>
+      <a mat-button [routerLink]="'/user/'+review.user_id">
+        <app-badge *ngIf="review.selected_badge" [id]="review.selected_badge"></app-badge>
+        {{review.user_name}}
+      </a>
     </div>
     <div class="date">{{review.date_created | date}}</div>
   </mat-card-subtitle>

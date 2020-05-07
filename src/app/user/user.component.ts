@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { UserService } from '../user.service';
 import { User } from '../user';
 import { GameSearchParams } from '../game-search-params';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user',
@@ -39,7 +40,8 @@ export class UserComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private gameService: GameService,
-    private userService: UserService
+    private userService: UserService,
+    private snackBar: MatSnackBar
   ) {
     this.userService.userChange.subscribe(user=>this.meUser=user);
   }
@@ -97,7 +99,18 @@ export class UserComponent implements OnInit {
 
   select(badge_id: number) {
     if (!this.isMe) return;
+    const last_badge = this.user.selected_badge;
     this.user.selected_badge = badge_id;
     console.log('selecting '+badge_id)
+    this.userService.updateUser({
+      id:this.user.id,
+      selected_badge: badge_id,
+    }).subscribe(r=>{
+    },e=>{
+      this.snackBar.open("Unable to switch badge! Try again later.",null,{
+        duration: 5000,
+      })
+      this.user.selected_badge = last_badge;
+    })
   }
 }

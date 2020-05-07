@@ -138,4 +138,8 @@ export class UserService {
   getBadges(id: number): Observable<any[]> {
     return this.http.get<any[]>(`/api/users/${id}/badges`);
   }
+
+  updateUser(user: User): Observable<any> {
+    return this.http.patch<any>(`/api/users/${user.id}`,user);
+  }
 }
