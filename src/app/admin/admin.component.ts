@@ -86,6 +86,7 @@ export class AdminComponent implements OnInit {
     this.gameService.addNews(news).subscribe(n => {
       this.snackBar.open("News Submitted!",null,{
         duration: 5000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       })
     });
   }

@@ -107,6 +107,7 @@ export class GameComponent implements OnInit {
         console.log('game return was null');
         this.snackBar.open("Game Update Failed!",null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
         return;
       }
@@ -114,12 +115,14 @@ export class GameComponent implements OnInit {
       this.editing = false;
       this.snackBar.open("Game Updated!",null,{
         duration: 5000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       })
     },
     error => {
       console.log(error);
       this.snackBar.open("Game Update Failed!",null,{
         duration: 5000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       });
     });
   }
@@ -142,11 +145,13 @@ export class GameComponent implements OnInit {
       ).subscribe(ss => {
         this.snackBar.open("Screenshot Submitted! Once an admin approves it, it will be added.",null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         })
       },
       error => {
         this.snackBar.open("Failed to submit screenshot, try again later!",null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         })
       });
     });
@@ -165,11 +170,13 @@ export class GameComponent implements OnInit {
       ).subscribe(ss => {
         this.snackBar.open("Screenshot Submitted! Once an admin approves it, it will be added.",null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         })
       },
       error => {
         this.snackBar.open("Failed to submit screenshot, try again later!",null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         })
       });
     });

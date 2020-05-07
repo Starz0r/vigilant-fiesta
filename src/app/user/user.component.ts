@@ -109,6 +109,7 @@ export class UserComponent implements OnInit {
     },e=>{
       this.snackBar.open("Unable to switch badge! Try again later.",null,{
         duration: 5000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       })
       this.user.selected_badge = last_badge;
     })

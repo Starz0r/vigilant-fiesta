@@ -72,6 +72,7 @@ export class ReviewComponent implements OnInit {
       error => {
         this.snackBar.open(`An error occurred. Please try again later!`,null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
         console.log(error);
       }
@@ -87,6 +88,7 @@ export class ReviewComponent implements OnInit {
       error => {
         this.snackBar.open(`An error occurred. Please try again later!`,null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
         console.log(error);
       }

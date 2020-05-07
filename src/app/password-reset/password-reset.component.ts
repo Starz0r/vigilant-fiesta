@@ -60,6 +60,7 @@ export class PasswordResetComponent implements OnInit {
     .subscribe(user => {
       this.snackBar.open(`Welcome back, ${user.name}!`,null,{
         duration: 5000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       });
       this.router.navigateByUrl('/');
     },
@@ -68,11 +69,13 @@ export class PasswordResetComponent implements OnInit {
         && error.status === 401) {
           this.snackBar.open(`Sorry, it looks like that token was invalid. Please try again, or contact an administrator!`,null,{
             duration: 5000,
+            panelClass: ['mat-toolbar', 'mat-primary']
           });
       } else {
         console.log(error);
         this.snackBar.open(`Sorry, we were unable to reset your password. Please try again, or contact an administrator!`,null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
       }
     });

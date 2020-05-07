@@ -44,6 +44,7 @@ export class SubmitComponent implements OnInit {
     this.gameService.addGame(this.game).subscribe(game=>{
       this.snackBar.open("Game Submitted!",null,{
         duration: 5000,
+        panelClass: ['mat-toolbar', 'mat-primary']
       });
       this.router.navigate([`/game/${game.id}`])
     });

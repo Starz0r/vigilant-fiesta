@@ -61,6 +61,7 @@ export class UserService {
     this.logout();
     this.snackBar.open("Logged out due to inactivity, please log in again.",null,{
       duration: 5000,
+      panelClass: ['mat-toolbar', 'mat-primary']
     });
   }
 

@@ -46,12 +46,15 @@ export class HeaderComponent implements OnInit {
           if (result.username && result.email) {
             this.userService.requestReset(result.username,result.email).subscribe(
               _ => {
-                this.snackBar.open('Request Submitted!',null,{duration: 5000,});
+                this.snackBar.open('Request Submitted!',null,{
+                  duration: 5000,
+                  panelClass: ['mat-toolbar', 'mat-primary']});
               },
               error => {
                 console.log(error);
                 this.snackBar.open(`Sorry, we were unable to submit your request. Please try again, or contact an administrator!`,null,{
                   duration: 5000,
+                  panelClass: ['mat-toolbar', 'mat-primary']
                 });
               }
             ); 
@@ -86,6 +89,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(user => {
         this.snackBar.open(`Welcome, ${user.name}!`,null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
       },
       error => {
@@ -93,11 +97,13 @@ export class HeaderComponent implements OnInit {
           && error.status === 401) {
             this.snackBar.open(`Sorry, we were unable to log you in. Please try again!`,null,{
               duration: 5000,
+              panelClass: ['mat-toolbar', 'mat-primary']
             });
         } else {
           console.log(error);
           this.snackBar.open(`We're sorry, login is currently experiencing issues. Please try again later!`,null,{
             duration: 5000,
+            panelClass: ['mat-toolbar', 'mat-primary']
           });
         }
       });
@@ -108,6 +114,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(()=>{
         this.snackBar.open(`Logged out. See you again soon!`,null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
       });
   }
@@ -117,6 +124,7 @@ export class HeaderComponent implements OnInit {
       .subscribe(user => {
         this.snackBar.open(`Welcome, ${user.name}!`,null,{
           duration: 5000,
+          panelClass: ['mat-toolbar', 'mat-primary']
         });
       },
       error => {
@@ -127,16 +135,19 @@ export class HeaderComponent implements OnInit {
             if (error.error.code === 1) {
               this.snackBar.open(`Registration Failed! User already exists.`,null,{
                 duration: 5000,
+                panelClass: ['mat-toolbar', 'mat-primary']
               });
             } else {
               this.snackBar.open(`We're sorry, registration is currently experiencing issues. Please try again later!`,null,{
                 duration: 5000,
+                panelClass: ['mat-toolbar', 'mat-primary']
               });
             }
         } else {
           console.log(error);
           this.snackBar.open(`We're sorry, registration is currently experiencing issues. Please try again later!`,null,{
             duration: 5000,
+            panelClass: ['mat-toolbar', 'mat-primary']
           });
         }
       });
