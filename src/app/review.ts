@@ -9,6 +9,7 @@ export class Review {
   removed: number;
   user_name: string;
   game_name: string;
+  selected_badge: number; //reviewer's selected badge
 
   like_count: number;
 }

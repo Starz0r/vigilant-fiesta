@@ -11,6 +11,8 @@ export class User {
   isAdmin: boolean;
   token: string;
 
+  selected_badge: number;
+
   canReport: boolean;
   canSubmit: boolean;
   canReview: boolean;

@@ -50,6 +50,7 @@ export class GameService {
     if (params.ratingTo) p = p.append("ratingTo", ""+params.ratingTo);
     if (params.difficultyFrom) p = p.append("difficultyFrom", ""+params.difficultyFrom);
     if (params.difficultyTo) p = p.append("difficultyTo", ""+params.difficultyTo);
+    if (params.ownerUserId) p = p.append("ownerUserId", ""+params.ownerUserId);
 
     return this.http.get<Game[]>(
       this.gamesUrl, 

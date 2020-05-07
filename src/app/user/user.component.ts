@@ -24,7 +24,14 @@ export class UserComponent implements OnInit {
 
   meUser: User;
 
+  badges: any[];
+
   gameListParams: GameSearchParams = {
+    page: 0,
+    limit: 25
+  };
+
+  ownerListParams: GameSearchParams = {
     page: 0,
     limit: 25
   };
@@ -51,10 +58,18 @@ export class UserComponent implements OnInit {
 
   userReady() {
     this.gameListParams = {
-      page: 0,
-      limit: 25,
+      page: 0, limit: 25,
       reviewedByUserId: this.user?this.user.id:undefined
     };
+    this.ownerListParams = {
+      page: 0, limit: 25,
+      ownerUserId: this.user?this.user.id:undefined
+    };
+    this.getBadges();
+  }
+
+  getBadges() {
+    this.userService.getBadges(this.user.id).subscribe(badges=>{this.badges=badges});
   }
 
   getUser(): void {
@@ -78,5 +93,11 @@ export class UserComponent implements OnInit {
         }
       }
     );
+  }
+
+  select(badge_id: number) {
+    if (!this.isMe) return;
+    this.user.selected_badge = badge_id;
+    console.log('selecting '+badge_id)
   }
 }

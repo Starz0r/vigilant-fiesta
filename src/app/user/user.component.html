@@ -34,10 +34,20 @@
           <app-review-list [userId]="user.id"></app-review-list>
       </mat-tab>
       <mat-tab label="Games">
-          <ng-template matTabContent>Content</ng-template>
+          <ng-template matTabContent>
+            <app-dashboard-games [params]="ownerListParams"></app-dashboard-games>
+          </ng-template>
       </mat-tab>
       <mat-tab label="Badges">
-        <ng-template matTabContent>Content</ng-template>
+        <ng-template matTabContent>
+          <div 
+            class="badge-container badge-animator" 
+            [class.selected]="badge.badge_id == user.selected_badge" 
+            (click)="select(badge.badge_id)"
+            *ngFor="let badge of badges">
+            <app-badge [id]="badge.badge_id" [imgClass]="'badge-class'"></app-badge>
+          </div>
+        </ng-template>
       </mat-tab>
       <mat-tab label="Lists">
         <ng-template matTabContent>Content</ng-template>

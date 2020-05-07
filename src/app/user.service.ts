@@ -134,4 +134,8 @@ export class UserService {
       }).pipe(tap(user => this.setUser(user)));
     }));
   }
+
+  getBadges(id: number): Observable<any[]> {
+    return this.http.get<any[]>(`/api/users/${id}/badges`);
+  }
 }

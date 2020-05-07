@@ -10,6 +10,7 @@ import { Badge } from './Badge';
 export class BadgeComponent implements OnInit {
 
   @Input() id: number;
+  @Input() imgClass = '';
 
   text = "";
   @ViewChild('template', {static: false}) set someDummySetterName(theElementRef: ElementRef) {

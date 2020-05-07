@@ -5,6 +5,7 @@ export class Report {
   report?: string;
   reporterName?: string;
   reporterId?: string;
+  reporterSelectedBadge: number;
   answeredById?: string;
   answeredByName?: string;
   dateCreated?: string;

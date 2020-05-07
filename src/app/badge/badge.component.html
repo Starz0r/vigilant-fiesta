@@ -2,6 +2,7 @@
 <img 
     [src]="'/assets/images/badges/'+id+'.png'"
     [matTooltip]='text'
+    [class]="imgClass"
     matTooltipClass="my-tooltip">
 <template *ngIf="id==1"  #template i18n="@@badge - administrator">Admin#One In Charge.</template>
 <template *ngIf="id==2"  #template i18n="@@badge - wannabe">Wannabe#Member of the Twitch.tv Wannabes</template>
