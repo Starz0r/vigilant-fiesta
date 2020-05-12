@@ -43,15 +43,24 @@ export class GameScreenshotsComponent implements OnInit {
   getScreenshots(): void {
     this.gameService.getScreenshotsForGame(this.gameId).subscribe(
       screenshots => {
-        this.galleryImages = this.shuffle(screenshots
-        .map(screenshot => Object.assign(new Screenshot(), screenshot))
-        .map(ss => new NgxGalleryImage({
-            small: ss.getUrl(),
-            medium: ss.getUrl(),
-            big: ss.getUrl(),
-            description: ss.user_name + (ss.description?": " + ss.description:"")
-          })
-        ));
+        if (screenshots.length > 0) {
+          this.galleryImages = this.shuffle(screenshots
+          .map(screenshot => Object.assign(new Screenshot(), screenshot))
+          .map(ss => new NgxGalleryImage({
+              small: ss.getUrl(),
+              medium: ss.getUrl(),
+              big: ss.getUrl(),
+              description: ss.user_name + (ss.description?": " + ss.description:"")
+            })
+          ));
+        } else {
+          this.galleryImages = [new NgxGalleryImage({
+            small: '/assets/images/no-image.png',
+            medium: '/assets/images/no-image.png',
+            big: '/assets/images/no-image.png',
+            description: 'No screenshots yet! Why not add one?'
+          })];
+        }
       }
     );
   }
