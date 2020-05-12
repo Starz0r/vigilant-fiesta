@@ -19,8 +19,6 @@ export class ReviewComponent implements OnInit {
   @Input() review: Review;
   @Input() id: string;
 
-  tags: Tag[] = [];
-
   constructor(
     private userService: UserService, 
     private gameService: GameService,
@@ -53,13 +51,6 @@ export class ReviewComponent implements OnInit {
       this.gameService.isLiked(review.id,this.user.id).subscribe(l => {
         this.isLiked = l.liked;
       });
-    }
-
-    if (review.game_id) {
-      this.gameService.getTagsForGame(review.game_id,review.user_id)
-      .subscribe(tags=>{
-        this.tags = tags;
-      })
     }
   }
 

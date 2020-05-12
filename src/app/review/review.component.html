@@ -16,10 +16,9 @@
 
   <mat-card-content>
     <app-comment [comment]="review.comment"></app-comment>
-    
     <app-tag-list 
-      *ngIf="tags" 
-      [tags]="tags">
+      *ngIf="review.tags" 
+      [tags]="review.tags">
     </app-tag-list>
 
     <div class="rate" *ngIf="showRatings">
