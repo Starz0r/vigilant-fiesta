@@ -23,7 +23,10 @@ export class GameScreenshotsComponent implements OnInit {
         imageDescription: true,
         imageAutoPlay: true,
         imageAutoPlayInterval: 5000,
-        imageAutoPlayPauseOnHover: true
+        imageAutoPlayPauseOnHover: true,
+        thumbnailsAutoHide: true,
+        previewCloseOnClick: true,
+        previewAutoPlay: true,
     },
     {
       breakpoint: 420,
