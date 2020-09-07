@@ -14,14 +14,6 @@ import { FormControl } from '@angular/forms';
 export class UserListComponent implements OnInit, OnChanges, OnDestroy {
 
   myControl = new FormControl();
-  options: string[] = ['One', 'Two', 'Three'];
-  filteredOptions: string[];
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
-  }
   
   users: User[] = [];
   loading: boolean = true;
@@ -38,14 +30,10 @@ export class UserListComponent implements OnInit, OnChanges, OnDestroy {
     this.myControl.valueChanges
     .pipe(
       debounceTime(500),
-      tap(() => {
-        this.filteredOptions = [];
-      }),
       switchMap(value => this.gameService.getUsers(value))
     )
     .subscribe(data => {
-      this.filteredOptions = data.map(u=>u.name);
-      console.log(this.filteredOptions);
+      this.users = data;
     });
     
     this.getUsers();

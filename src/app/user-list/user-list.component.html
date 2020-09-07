@@ -2,15 +2,9 @@
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <input type="text"
-             placeholder="User Search"
-             matInput
-             [formControl]="myControl"
-             [matAutocomplete]="auto">
-      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
+        placeholder="User Search"
+        matInput
+        [formControl]="myControl">
     </mat-form-field>
   </form>
 
