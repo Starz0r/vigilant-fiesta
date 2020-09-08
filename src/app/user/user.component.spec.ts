@@ -26,6 +26,8 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { mockCaptchaService } from '../user.service.spec';
 import { BadgeComponent } from '../badge/badge.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -56,7 +58,9 @@ describe('UserComponent', () => {
         MatChipsModule,
         MatPaginatorModule,
         MatSortModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatDatepickerModule,
+        MatFormFieldModule
       ],
       providers: [
         GameService, UserService,

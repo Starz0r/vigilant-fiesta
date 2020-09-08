@@ -13,9 +13,6 @@ export class User {
 
   selected_badge?: number;
 
-  canReport?: boolean;
-  canSubmit?: boolean;
-  canReview?: boolean;
-  canScreenshot?: boolean;
+  permissions?: any[]; 
   banned?: boolean;
 }
