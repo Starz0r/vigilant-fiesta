@@ -40,7 +40,7 @@ export class GameComponent implements OnInit {
     this.players = new Map<string,SRUser>();
   }
   
-  @ViewChild(ReviewListComponent, {static: false}) reviewList:ReviewListComponent;
+  @ViewChild(ReviewListComponent) reviewList:ReviewListComponent;
   
   reviewInputExpanded: boolean = false;
 

@@ -12,7 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { GameComponent } from '../game/game.component';
-import { NgxGalleryModule } from 'ngx-gallery';
+import { NgxGalleryModule } from 'ngx-gallery-9';
 import { UserComponent } from '../user/user.component';
 import { ReviewComponent } from '../review/review.component';
 import { DecimalPipe } from '@angular/common';

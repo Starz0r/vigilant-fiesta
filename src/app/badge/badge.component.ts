@@ -13,7 +13,7 @@ export class BadgeComponent implements OnInit {
   @Input() imgClass = '';
 
   text = "";
-  @ViewChild('template', {static: false}) set someDummySetterName(theElementRef: ElementRef) {
+  @ViewChild('template') set someDummySetterName(theElementRef: ElementRef) {
     if (!theElementRef) return;
     this.text = theElementRef.nativeElement.textContent.replace(/#/g,"\n");
     this.changeDetector.detectChanges();

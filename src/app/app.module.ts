@@ -19,7 +19,7 @@ import { GamesComponent } from './games/games.component';
 
 import { UserService } from './user.service';
 
-import { NgxGalleryModule } from 'ngx-gallery';
+import { NgxGalleryModule } from 'ngx-gallery-9';
 import { ReviewComponent } from './review/review.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';

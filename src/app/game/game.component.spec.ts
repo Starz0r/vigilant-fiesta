@@ -6,7 +6,7 @@ import { DifficultyPipe } from '../difficulty.pipe';
 import { RatingPipe } from '../rating.pipe';
 import { ListComponent } from '../list/list.component';
 import { TagListComponent } from '../tag-list/tag-list.component';
-import { NgxGalleryModule } from 'ngx-gallery';
+import { NgxGalleryModule } from 'ngx-gallery-9';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ReviewInputComponent } from '../review-input/review-input.component';
 import { ReviewListComponent } from '../review-list/review-list.component';

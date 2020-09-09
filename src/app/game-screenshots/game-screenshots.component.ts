@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgxGalleryAnimation, NgxGalleryImageSize, NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery';
+import { NgxGalleryAnimation, NgxGalleryImageSize, NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery-9';
 import { GameService } from '../game.service';
 import { Screenshot } from '../screenshot';
 
