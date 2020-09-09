@@ -191,7 +191,10 @@ export class GameService {
     return this.http.post<Game>(`/api/games`,game)
   }
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`/api/users`)
+  getUsers(name?: string): Observable<User[]> {
+    let params = new HttpParams()
+    if (name) params = params.append('name', name);
+    return this.http.get<User[]>(`/api/users`,
+    {params})
   }
 }

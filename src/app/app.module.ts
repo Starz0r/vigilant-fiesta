@@ -86,6 +86,7 @@ import { BadgeComponent } from './badge/badge.component';
 import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { CaptchaNoticeComponent } from './captcha-notice/captcha-notice.component';
 import { environment } from '../environments/environment';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -160,7 +161,8 @@ import { environment } from '../environments/environment';
     MatPaginatorModule,
     MatSortModule,
     MatTooltipModule,
-    RecaptchaV3Module
+    RecaptchaV3Module,
+    MatAutocompleteModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true},

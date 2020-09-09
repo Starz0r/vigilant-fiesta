@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserAdminControlComponent } from './user-admin-control.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 describe('UserAdminControlComponent', () => {
   let component: UserAdminControlComponent;
@@ -13,7 +15,9 @@ describe('UserAdminControlComponent', () => {
       declarations: [ UserAdminControlComponent ],
       imports: [
         FormsModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatFormFieldModule
       ]
     })
     .compileComponents();

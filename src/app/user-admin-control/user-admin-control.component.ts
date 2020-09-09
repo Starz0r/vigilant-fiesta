@@ -10,9 +10,20 @@ export class UserAdminControlComponent implements OnInit {
 
   @Input() user: User;
 
+  today = new Date();
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.user);
+  }
+
+  get permissions(): any[] {
+    return this.user? Object.values(this.user.permissions) : [];
+  }
+
+  update() {
+    
   }
 
 }

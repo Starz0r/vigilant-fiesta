@@ -1,9 +1,10 @@
 import { Component, OnInit, SimpleChanges, OnDestroy, OnChanges } from '@angular/core';
 import { User } from '../user';
-import { Subject } from 'rxjs';
+import { Subject, Observable, of } from 'rxjs';
 import { UserService } from '../user.service';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, startWith, map, tap, switchMap } from 'rxjs/operators';
 import { GameService } from '../game.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
@@ -12,6 +13,8 @@ import { GameService } from '../game.service';
 })
 export class UserListComponent implements OnInit, OnChanges, OnDestroy {
 
+  myControl = new FormControl();
+  
   users: User[] = [];
   loading: boolean = true;
 
@@ -24,6 +27,15 @@ export class UserListComponent implements OnInit, OnChanges, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.myControl.valueChanges
+    .pipe(
+      debounceTime(500),
+      switchMap(value => this.gameService.getUsers(value))
+    )
+    .subscribe(data => {
+      this.users = data;
+    });
+    
     this.getUsers();
 
     this.debounceSearch

@@ -1,4 +1,13 @@
 <div class="container">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input type="text"
+        placeholder="User Search"
+        matInput
+        [formControl]="myControl">
+    </mat-form-field>
+  </form>
+
   <table mat-table [dataSource]="users" *ngIf="!loading">
     <ng-container matColumnDef="user">
       <th mat-header-cell *matHeaderCellDef i18n="@@user list name header">User</th>

@@ -1,10 +1,14 @@
 <ng-container *ngIf="user">
-    <section><mat-checkbox [(ngModel)]="user.canReport" i18n="@@admin: user can report">Can Report</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.canSubmit" i18n="@@admin: user can submit">Can Submit</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.canReview" i18n="@@admin: user can review">Can Review</mat-checkbox></section>
-    <section><mat-checkbox [(ngModel)]="user.canScreenshot" i18n="@@admin: user can submit screenshot">Can Screenshot</mat-checkbox></section>
+    <section *ngFor="let perm of permissions">
+        <mat-checkbox #chk [checked]="!perm.revoked_until">{{perm.permission_id}}</mat-checkbox>
+        <mat-form-field *ngIf="!chk.checked">
+            <input matInput [matDatepicker]="revokePicker" placeholder="Revoked Until" [value]="today">
+            <mat-datepicker-toggle matSuffix [for]="revokePicker"></mat-datepicker-toggle>
+            <mat-datepicker #revokePicker [startAt]="perm.revoked_until || today"></mat-datepicker>
+        </mat-form-field>
+    </section>
     <section><mat-checkbox [(ngModel)]="user.banned" i18n="@@admin: user is banned">Banned</mat-checkbox></section>
-    <button mat-raised-button i18n="@@admin: update user settings button">Update</button>
+    <button mat-raised-button i18n="@@admin: update user settings button" (click)="update()">Update</button>
 </ng-container>
 <ng-container *ngIf="!user" i18n="@@admin: missing user for display">
     No user!

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AdminComponent } from './admin.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { ReportComponent } from '../report/report.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
@@ -52,6 +52,8 @@ import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { mockCaptchaService } from '../user.service.spec';
 import { BadgeComponent } from '../badge/badge.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import {MatSelectModule} from '@angular/material/select';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -86,6 +88,10 @@ describe('AdminComponent', () => {
         MatSnackBarModule,
         HttpClientTestingModule,
         FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatAutocompleteModule,
         MatRadioModule,
         MatCardModule,
         RouterModule,
@@ -96,17 +102,16 @@ describe('AdminComponent', () => {
         MatTabsModule,
         MatCheckboxModule,
         MatSliderModule,
-        MatFormFieldModule,
         MatTableModule,
         MatChipsModule,
         MatIconModule,
         BrowserAnimationsModule,
         BrowserModule,
-        MatInputModule,
         MatDatepickerModule,
         MatPaginatorModule,
         MatSortModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatSelectModule
       ],
       providers: [UserService,
         GameService,
