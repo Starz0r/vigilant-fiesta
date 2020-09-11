@@ -88,6 +88,7 @@ import { CaptchaNoticeComponent } from './captcha-notice/captcha-notice.componen
 import { environment } from '../environments/environment';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { DurationPipe } from './pipe/duration.pipe';
+import { OrdinalPipe } from './pipe/ordinal.pipe';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { DurationPipe } from './pipe/duration.pipe';
     CaptchaNoticeComponent,
     DurationPipe,
     RevokeDialog,
-    GrantDialog
+    GrantDialog,
+    OrdinalPipe
   ],
   imports: [
     BrowserModule,

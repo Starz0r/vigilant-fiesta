@@ -111,6 +111,7 @@ export class SpeedrumComService {
 
     getCategories(url: string): Observable<SRCategory[]> {
       const id = this.getId(url);
+      console.log(id);
       return this.http.get<any>(`https://www.speedrun.com/api/v1/games/${id}/categories`)
         .pipe(map(res => res.data || null));
     }
@@ -134,10 +135,10 @@ export class SpeedrumComService {
       const urlPattern = /^.*speedrun\.com\/(.*)$/i
 
       let id = url;
-      /*let result = urlPattern.exec(url);
+      let result = urlPattern.exec(url);
       if (result) {
-        id = result.groups[1];
-      }*/
+        id = result[1];
+      }
 
       return id;
     }

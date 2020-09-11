@@ -224,6 +224,7 @@ export class GameComponent implements OnInit {
   getSpeedrunLeaderboard(category: SRCategory) {
     this.speedrunService.getLeaderboard(this.game.urlSpdrn,category.id)
     .subscribe(runs => {
+      console.log(runs);
       this.runs = runs.slice(0,5);
       this.runs.forEach(run => 
         this.speedrunService.getPlayer(run.run.players[0]).subscribe(user => 

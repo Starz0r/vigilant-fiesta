@@ -85,22 +85,42 @@
       </mat-form-field>
     </ng-container>
 
-    <ng-container *ngIf="categories">
-      == Speedrun Leaderboards ==
-      <ng-container *ngIf="!editing">
-        <div>
+    <ng-container *ngIf="!editing">
+      <mat-card *ngIf="categories" class="leaderboard">
+        <mat-card-header>
+          <mat-card-title>
+            <a class="leaderboard-link" [href]="game.urlSpdrn" target="_blank">
+              Speedrun.com Leaderboards
+            </a>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
           <div *ngFor="let run of runs">
-            {{run.place}}: 
-            {{players[run.run.players[0].id]?.names?.international || '...'}} 
-            ({{run.run.times.primary_t | speedrunTimer}})
+            <span [ngSwitch]="run.place">
+              <img *ngSwitchCase="1" src="/assets/images/sr/1st.png"/>
+              <img *ngSwitchCase="2" src="/assets/images/sr/2nd.png"/>
+              <img *ngSwitchCase="3" src="/assets/images/sr/3rd.png"/>
+            </span>
+            {{run.place | ordinal}}: 
+            <a class="leaderboard-link" 
+              *ngIf="players[run.run.players[0].id]"
+              [href]="players[run.run.players[0].id].weblink" 
+              target="_blank">
+              {{players[run.run.players[0].id]?.names?.international || '...'}}
+            </a> 
+            <a class="leaderboard-link" 
+              [href]="run.run.weblink" 
+              target="_blank">
+              ({{run.run.times.primary_t | speedrunTimer}})
+            </a>
           </div>
-        </div>
-      </ng-container>
-      <ng-container *ngIf="editing">
-        <mat-form-field>
-          <input matInput placeholder="Speedrun.com Link" [(ngModel)]="game.urlSpdrn">
-        </mat-form-field>
-      </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="editing">
+      <mat-form-field>
+        <input matInput placeholder="Speedrun.com Link" [(ngModel)]="game.urlSpdrn">
+      </mat-form-field>
     </ng-container>
 
     <ng-container *ngIf="this.user && this.user.isAdmin">
