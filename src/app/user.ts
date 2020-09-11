@@ -13,6 +13,6 @@ export class User {
 
   selected_badge?: number;
 
-  permissions?: any[]; 
+  permissions?: any; 
   banned?: boolean;
 }

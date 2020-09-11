@@ -1,15 +1,23 @@
 <ng-container *ngIf="user">
-    <section *ngFor="let perm of permissions">
-        <mat-checkbox #chk [checked]="!perm.revoked_until">{{perm.permission_id}}</mat-checkbox>
-        <mat-form-field *ngIf="!chk.checked">
-            <input matInput [matDatepicker]="revokePicker" placeholder="Revoked Until" [value]="today">
-            <mat-datepicker-toggle matSuffix [for]="revokePicker"></mat-datepicker-toggle>
-            <mat-datepicker #revokePicker [startAt]="perm.revoked_until || today"></mat-datepicker>
-        </mat-form-field>
-    </section>
-    <section><mat-checkbox [(ngModel)]="user.banned" i18n="@@admin: user is banned">Banned</mat-checkbox></section>
-    <button mat-raised-button i18n="@@admin: update user settings button" (click)="update()">Update</button>
+    <mat-card *ngFor="let perm of permissions">
+        <mat-card-header>
+          <mat-card-title>{{perm.permission_id}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p *ngIf="!isRevoked(perm)">
+                Allowed
+            </p>
+            <p *ngIf="isRevoked(perm)">
+                REVOKED UNTIL {{perm.revoked_until | date}} (Remaining: {{perm.revoked_until | duration}})
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="showDialog(perm)">Revoke</button>
+          <button mat-raised-button color="primary" (click)="showDialogGrant(perm)" [disabled]="!isRevoked(perm)">Grant</button>
+        </mat-card-actions>
+      </mat-card>
 </ng-container>
+
 <ng-container *ngIf="!user" i18n="@@admin: missing user for display">
     No user!
 </ng-container>

@@ -61,7 +61,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { ReportComponent } from './report/report.component';
 import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
-import { UserAdminControlComponent } from './user-admin-control/user-admin-control.component';
+import { UserAdminControlComponent, RevokeDialog, GrantDialog } from './user-admin-control/user-admin-control.component';
 import { NewsComponent } from './news/news.component';
 import { GameScreenshotsComponent } from './game-screenshots/game-screenshots.component';
 import { NewsWriterComponent } from './news-writer/news-writer.component';
@@ -87,6 +87,7 @@ import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from 'ng-recaptcha';
 import { CaptchaNoticeComponent } from './captcha-notice/captcha-notice.component';
 import { environment } from '../environments/environment';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { DurationPipe } from './duration.pipe';
 
 @NgModule({
   declarations: [
@@ -131,7 +132,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     SpeedrunTimerPipe,
     CommentSpoilerComponent,
     BadgeComponent,
-    CaptchaNoticeComponent
+    CaptchaNoticeComponent,
+    DurationPipe,
+    RevokeDialog,
+    GrantDialog
   ],
   imports: [
     BrowserModule,
@@ -175,7 +179,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     LoginComponent,
     RegisterDialogComponent,
     ScreenshotAddDialogComponent,
-    ForgotPasswordDialogComponent
+    ForgotPasswordDialogComponent,
+    RevokeDialog,
+    GrantDialog
   ]
 })
 export class AppModule { }

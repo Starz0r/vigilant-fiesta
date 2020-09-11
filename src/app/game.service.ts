@@ -10,6 +10,7 @@ import { Observable ,  of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { GameSearchParams } from './game-search-params';
 import { User } from './user';
+import { Moment } from 'moment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -196,5 +197,11 @@ export class GameService {
     if (name) params = params.append('name', name);
     return this.http.get<User[]>(`/api/users`,
     {params})
+  }
+
+  updatePermission(uid: number, name: string, until: Moment) {
+    return this.http.patch<any>(`/api/users/${uid}/permissions/${name}`,{
+      revoked_until: until.toISOString()
+    })
   }
 }
