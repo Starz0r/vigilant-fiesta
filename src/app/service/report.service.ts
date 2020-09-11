@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Report } from './report';
+import { Report } from '../model/report';
 import * as moment from 'moment';
 
 const httpOptions = {

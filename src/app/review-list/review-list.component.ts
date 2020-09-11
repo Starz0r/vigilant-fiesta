@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameService }  from '../game.service';
-import { Review } from '../review';
+import { GameService }  from '../service/game.service';
+import { Review } from '../model/review';
 
 @Component({
   selector: 'app-review-list',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
-import { User } from '../user';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user';
 import { Router } from '@angular/router';
-import { GameService } from '../game.service';
-import { Game } from '../game';
+import { GameService } from '../service/game.service';
+import { Game } from '../model/game';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

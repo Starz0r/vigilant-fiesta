@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../environments/environment';
-import { UserService } from '../user.service';
-import { User } from '../user';
+import { environment } from '../../../environments/environment';
+import { UserService } from '../../service/user.service';
+import { User } from '../../model/user';
 
 @Component({
   selector: 'app-footer',

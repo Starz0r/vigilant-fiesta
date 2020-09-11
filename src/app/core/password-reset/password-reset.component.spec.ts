@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PasswordResetComponent } from './password-reset.component';
-import { UserService } from '../user.service';
+import { UserService } from '../../service/user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -10,9 +10,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
+import { CaptchaNoticeComponent } from '../../captcha-notice/captcha-notice.component';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
-import { mockCaptchaService } from '../user.service.spec';
+import { mockCaptchaService } from '../../service/user.service.spec';
 
 describe('PasswordResetComponent', () => {
   let component: PasswordResetComponent;

@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SubmitComponent } from './submit.component';
-import { GameService } from '../game.service';
-import { UserService } from '../user.service';
+import { GameService } from '../service/game.service';
+import { UserService } from '../service/user.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
@@ -13,7 +13,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
-import { mockCaptchaService } from '../user.service.spec';
+import { mockCaptchaService } from '../service/user.service.spec';
 
 describe('SubmitComponent', () => {
   let component: SubmitComponent;

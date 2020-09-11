@@ -5,7 +5,7 @@ import { ReviewComponent } from '../review/review.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TagListComponent } from '../tag-list/tag-list.component';
 import { TagComponent } from '../tag/tag.component';

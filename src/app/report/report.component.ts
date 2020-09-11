@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Report } from '../report';
+import { Report } from '../model/report';
 
 @Component({
   selector: 'app-report',

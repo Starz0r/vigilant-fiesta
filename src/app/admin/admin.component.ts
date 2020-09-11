@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ReportService } from '../report.service';
-import { Report } from '../report';
-import { UserService } from '../user.service';
-import { User } from '../user';
-import { Screenshot } from '../screenshot';
-import { GameService } from '../game.service';
+import { ReportService } from '../service/report.service';
+import { Report } from '../model/report';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user';
+import { Screenshot } from '../model/screenshot';
+import { GameService } from '../service/game.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

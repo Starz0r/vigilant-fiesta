@@ -1,9 +1,9 @@
 import { Component, OnInit, SimpleChanges, OnDestroy, OnChanges } from '@angular/core';
-import { User } from '../user';
+import { User } from '../model/user';
 import { Subject, Observable, of } from 'rxjs';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 import { debounceTime, startWith, map, tap, switchMap } from 'rxjs/operators';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { FormControl } from '@angular/forms';
 
 @Component({

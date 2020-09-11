@@ -5,11 +5,11 @@ import { GameComponent } from './game/game.component';
 import { GamesComponent } from './games/games.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
-import { SpecialThanksComponent } from './special-thanks/special-thanks.component';
-import { GuidelinesComponent } from './guidelines/guidelines.component';
+import { SpecialThanksComponent } from './core/special-thanks/special-thanks.component';
+import { GuidelinesComponent } from './core/guidelines/guidelines.component';
 import { SubmitComponent } from './submit/submit.component';
 import { ReviewListPageComponent } from './review-list-page/review-list-page.component';
-import { PasswordResetComponent } from './password-reset/password-reset.component';
+import { PasswordResetComponent } from './core/password-reset/password-reset.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },

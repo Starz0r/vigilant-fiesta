@@ -7,7 +7,7 @@ import { MatDialog, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
+import { CaptchaNoticeComponent } from '../../captcha-notice/captcha-notice.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

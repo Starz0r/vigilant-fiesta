@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { User } from './user';
+import { User } from '../model/user';
 import { Observable ,  of, BehaviorSubject, Subject, ReplaySubject } from 'rxjs';
 import * as jwt_decode from 'jwt-decode';
 import { tap, switchMap } from 'rxjs/operators';

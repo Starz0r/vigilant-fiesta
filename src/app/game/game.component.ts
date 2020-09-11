@@ -1,23 +1,23 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 
-import { Game } from '../game';
+import { Game } from '../model/game';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { GameService } from '../game.service';
-import { UserService } from '../user.service';
+import { GameService } from '../service/game.service';
+import { UserService } from '../service/user.service';
 
-import { Review } from '../review';
+import { Review } from '../model/review';
 import { ReviewListComponent } from '../review-list/review-list.component';
-import { User } from '../user';
+import { User } from '../model/user';
 import { ReviewSubmission } from '../review-input/review-submission';
 import { forkJoin, Observable, of } from 'rxjs';
-import { Tag } from '../tag';
+import { Tag } from '../model/tag';
 import { MatDialog } from '@angular/material/dialog';
 import { ScreenshotAddDialogComponent } from '../screenshot-add-dialog/screenshot-add-dialog.component';
-import { SpeedrumComService, SRCategory, SRLeaderboardRun, SRPlayer, SRUser } from '../speedrum-com.service';
+import { SpeedrumComService, SRCategory, SRLeaderboardRun, SRPlayer, SRUser } from '../service/speedrum-com.service';
 import { map } from 'rxjs/operators';
 
 @Component({

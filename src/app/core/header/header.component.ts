@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../../service/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from '../login/login.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../user';
+import { User } from '../../model/user';
 import { ForgotPasswordDialogComponent } from '../forgot-password-dialog/forgot-password-dialog.component';
 
 @Component({

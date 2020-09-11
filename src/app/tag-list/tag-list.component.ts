@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Tag } from '../tag';
-import { GameService } from '../game.service';
+import { Tag } from '../model/tag';
+import { GameService } from '../service/game.service';
 
 @Component({
   selector: 'app-tag-list',

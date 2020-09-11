@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Review } from '../review';
-import { UserService } from '../user.service';
-import { GameService } from '../game.service';
+import { Review } from '../model/review';
+import { UserService } from '../service/user.service';
+import { GameService } from '../service/game.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from '../user';
-import { Tag } from '../tag';
+import { User } from '../model/user';
+import { Tag } from '../model/tag';
 
 @Component({
   selector: 'app-review',

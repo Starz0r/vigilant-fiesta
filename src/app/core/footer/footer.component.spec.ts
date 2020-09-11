@@ -2,14 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { UserService } from '../user.service';
+import { UserService } from '../../service/user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
-import { mockCaptchaService } from '../user.service.spec';
+import { mockCaptchaService } from '../../service/user.service.spec';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

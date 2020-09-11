@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Tag } from '../tag';
+import { Tag } from '../model/tag';
 import {ENTER,SPACE} from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 

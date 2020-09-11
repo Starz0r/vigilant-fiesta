@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../login/login.component';
+import { DialogData } from '../core/login/login.component';
 
 @Component({
   selector: 'app-screenshot-add-dialog',

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { User } from '../user';
+import { User } from '../model/user';
 import * as moment from 'moment';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListComponent } from './list.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FormsModule } from '@angular/forms';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('ListComponent', () => {

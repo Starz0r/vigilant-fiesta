@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { List } from '../list';
-import { GameService } from '../game.service';
+import { List } from '../model/list';
+import { GameService } from '../service/game.service';
 
 @Component({
   selector: 'app-list',

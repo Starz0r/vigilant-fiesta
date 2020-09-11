@@ -10,7 +10,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatChipsModule } from '@angular/material/chips';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { CommentComponent } from '../review/comment/comment.component';
 import { CommentSpoilerComponent } from '../review/comment-spoiler/comment-spoiler.component';
 import { BadgeComponent } from '../badge/badge.component';

@@ -6,7 +6,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
-import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
+import { CaptchaNoticeComponent } from '../../captcha-notice/captcha-notice.component';
 
 describe('RegisterDialogComponent', () => {
   let component: RegisterDialogComponent;

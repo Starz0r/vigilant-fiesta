@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { TokenInterceptor } from './token-interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 import { BehaviorSubject } from 'rxjs';
 
 describe(`TokenInterceptor`, () => {

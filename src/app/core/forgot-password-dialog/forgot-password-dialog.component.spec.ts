@@ -7,7 +7,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/materia
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
+import { CaptchaNoticeComponent } from '../../captcha-notice/captcha-notice.component';
 
 describe('ForgotPasswordDialogComponent', () => {
   let component: ForgotPasswordDialogComponent;

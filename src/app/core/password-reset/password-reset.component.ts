@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { UserService } from '../user.service';
+import { UserService } from '../../service/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

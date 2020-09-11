@@ -8,10 +8,10 @@ import {
   HttpHeaderResponse,
   HttpResponse
 } from '@angular/common/http';
-import { UserService } from './user.service';
+import { UserService } from './service/user.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { User } from './user';
+import { User } from './model/user';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {

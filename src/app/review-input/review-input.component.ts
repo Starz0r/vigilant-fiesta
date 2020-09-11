@@ -1,11 +1,11 @@
 import {ENTER,SPACE} from '@angular/cdk/keycodes';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
-import { Review } from '../review';
+import { Review } from '../model/review';
 import { MatSliderChange } from '@angular/material/slider';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { Tag } from '../tag';
-import { GameService } from '../game.service';
+import { Tag } from '../model/tag';
+import { GameService } from '../service/game.service';
 import { ReviewSubmission } from './review-submission';
 
 @Component({

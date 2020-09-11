@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TagListComponent } from './tag-list.component';
-import { GameService } from '../game.service';
-import { UserService } from '../user.service';
+import { GameService } from '../service/game.service';
+import { UserService } from '../service/user.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TagComponent } from '../tag/tag.component';

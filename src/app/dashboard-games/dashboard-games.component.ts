@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, OnDestroy } from '@angular/core';
-import { Game } from '../game';
-import { GameService } from '../game.service';
+import { Game } from '../model/game';
+import { GameService } from '../service/game.service';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil } from 'rxjs/operators';
 import { GameSearchParams } from '../game-search-params';

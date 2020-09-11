@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Game } from './game';
-import { Review } from './review';
-import { List } from './list';
-import { Tag } from './tag';
-import { PublicUser } from './public-user';
-import { Screenshot } from './screenshot';
+import { Game } from '../model/game';
+import { Review } from '../model/review';
+import { List } from '../model/list';
+import { Tag } from '../model/tag';
+import { PublicUser } from '../model/public-user';
+import { Screenshot } from '../model/screenshot';
 import { Observable ,  of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { GameSearchParams } from './game-search-params';
-import { User } from './user';
+import { GameSearchParams } from '../game-search-params';
+import { User } from '../model/user';
 import { Moment } from 'moment';
 
 const httpOptions = {

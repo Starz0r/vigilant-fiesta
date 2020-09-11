@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService }  from '../game.service';
+import { GameService }  from '../service/game.service';
 import { GameSearchParams } from '../game-search-params';
 
 @Component({

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardGamesComponent } from './dashboard-games.component';
 import { MatTableModule } from '@angular/material/table';
 import { RouterTestingModule } from '@angular/router/testing';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';

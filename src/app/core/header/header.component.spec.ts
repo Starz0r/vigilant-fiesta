@@ -9,11 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
-import { UserService } from '../user.service';
+import { UserService } from '../../service/user.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CaptchaNoticeComponent } from '../captcha-notice/captcha-notice.component';
-import { mockCaptchaService } from '../user.service.spec';
+import { CaptchaNoticeComponent } from '../../captcha-notice/captcha-notice.component';
+import { mockCaptchaService } from '../../service/user.service.spec';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 
 describe('HeaderComponent', () => {

@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ReviewComponent } from '../review/review.component';
-import { GameService } from '../game.service';
+import { GameService } from '../service/game.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NewsCardComponent } from '../news-card/news-card.component';

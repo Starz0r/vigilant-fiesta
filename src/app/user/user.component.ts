@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { GameService }  from '../game.service';
-import { PublicUser } from '../public-user';
+import { GameService }  from '../service/game.service';
+import { PublicUser } from '../model/public-user';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { UserService } from '../user.service';
-import { User } from '../user';
+import { UserService } from '../service/user.service';
+import { User } from '../model/user';
 import { GameSearchParams } from '../game-search-params';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

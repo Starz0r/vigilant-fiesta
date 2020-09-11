@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Game } from '../game';
+import { Game } from '../model/game';
 import { GameSearchParams } from '../game-search-params';
-import { Tag } from '../tag';
-import { GameService } from '../game.service';
-import { SearchStateService } from '../search-state.service';
+import { Tag } from '../model/tag';
+import { GameService } from '../service/game.service';
+import { SearchStateService } from '../service/search-state.service';
 
 @Component({
   selector: 'app-games',

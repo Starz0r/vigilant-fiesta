@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgxGalleryAnimation, NgxGalleryImageSize, NgxGalleryOptions, NgxGalleryImage } from 'ngx-gallery-9';
-import { GameService } from '../game.service';
-import { Screenshot } from '../screenshot';
+import { GameService } from '../service/game.service';
+import { Screenshot } from '../model/screenshot';
 
 @Component({
   selector: 'app-game-screenshots',
