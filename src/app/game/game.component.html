@@ -93,26 +93,38 @@
               Speedrun.com Leaderboards
             </a>
           </mat-card-title>
+          <mat-card-subtitle>
+            <button mat-button 
+              [color]="category===selCategory?'accent':''"
+              *ngFor="let category of categories"
+              (click)="selectCategory(category)">{{category.name}}</button>
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-          <div *ngFor="let run of runs">
-            <span [ngSwitch]="run.place">
-              <img *ngSwitchCase="1" src="/assets/images/sr/1st.png"/>
-              <img *ngSwitchCase="2" src="/assets/images/sr/2nd.png"/>
-              <img *ngSwitchCase="3" src="/assets/images/sr/3rd.png"/>
-            </span>
-            {{run.place | ordinal}}: 
-            <a class="leaderboard-link" 
-              *ngIf="players[run.run.players[0].id]"
-              [href]="players[run.run.players[0].id].weblink" 
-              target="_blank">
-              {{players[run.run.players[0].id]?.names?.international || '...'}}
-            </a> 
-            <a class="leaderboard-link" 
-              [href]="run.run.weblink" 
-              target="_blank">
-              ({{run.run.times.primary_t | speedrunTimer}})
-            </a>
+          <div *ngFor="let run of runs" class="seg-row">
+            <div class="segment">
+              <span [ngSwitch]="run.place">
+                <img *ngSwitchCase="1" src="/assets/images/sr/1st.png"/>
+                <img *ngSwitchCase="2" src="/assets/images/sr/2nd.png"/>
+                <img *ngSwitchCase="3" src="/assets/images/sr/3rd.png"/>
+              </span>
+              {{run.place | ordinal}}
+            </div>
+            <div class="segment">
+              <a class="leaderboard-link" 
+                *ngIf="players[run.run.players[0].id]"
+                [href]="players[run.run.players[0].id].weblink" 
+                target="_blank">
+                {{players[run.run.players[0].id]?.names?.international || '...'}}
+              </a> 
+            </div>
+            <div class="segment">
+              <a class="leaderboard-link" 
+                [href]="run.run.weblink" 
+                target="_blank">
+                {{run.run.times.primary_t | speedrunTimer}}
+              </a>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>

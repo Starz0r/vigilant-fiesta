@@ -206,17 +206,25 @@ export class GameComponent implements OnInit {
   }
 
   categories: SRCategory[];
+  selCategory: SRCategory;
+
   getSpeedrunCategories() {
     if (this.game.urlSpdrn) {
       this.speedrunService.getCategories(this.game.urlSpdrn)
       .subscribe(categories => {
         this.categories = categories;
-        this.getSpeedrunLeaderboard(this.categories[0]);
+        this.selectCategory(this.categories[0]);
       }, error => {
         console.log("failed to get speedrun categories");
         console.log(error);
       });
     }
+  }
+  
+  selectCategory(category: SRCategory) {
+    this.selCategory = category;
+    this.runs = [];
+    this.getSpeedrunLeaderboard(category);
   }
 
   runs: SRLeaderboardRun[];
