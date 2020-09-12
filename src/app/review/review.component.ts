@@ -54,7 +54,8 @@ export class ReviewComponent implements OnInit {
     }
   }
 
-  likeReview() {
+  likeReview(evt) {
+    evt.stopPropagation();
     this.gameService.likeReview(this.review.id,this.user.id).subscribe(
       result => {
         this.review.like_count++;
@@ -70,7 +71,8 @@ export class ReviewComponent implements OnInit {
     )
   }
 
-  unlikeReview() {
+  unlikeReview(evt) {
+    evt.stopPropagation();
     this.gameService.unlikeReview(this.review.id,this.user.id).subscribe(
       result => {
         this.review.like_count--;

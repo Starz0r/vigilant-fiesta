@@ -1,4 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+import BBCodeParser from 'bbcode-parser';
 
 @Component({
   selector: 'app-news-card',
@@ -12,10 +15,19 @@ export class NewsCardComponent implements OnInit {
   
   @Output() prev = new EventEmitter();
   @Output() next = new EventEmitter();
+
+  parser = new BBCodeParser(BBCodeParser.defaultTags());
   
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+  }
+
+  get newsText() {
+    if (!this.news) return '';
+    if (!this.news.short) return '';
+    return this.sanitizer.bypassSecurityTrustHtml(
+      this.parser.parseString(this.news.short));
   }
 
 }
