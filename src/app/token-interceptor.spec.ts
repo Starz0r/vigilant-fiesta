@@ -7,6 +7,7 @@ import { TokenInterceptor } from './token-interceptor';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { UserService } from './service/user.service';
 import { BehaviorSubject } from 'rxjs';
+import { UserDataService } from './service/user-data.service';
 
 describe(`TokenInterceptor`, () => {
   let httpMock: HttpTestingController;
@@ -23,7 +24,7 @@ describe(`TokenInterceptor`, () => {
           multi: true,
         },
         {
-          provide: UserService,
+          provide: UserDataService,
           useValue: {
             updateToken(newToken: string) {
               token = newToken;

@@ -12,21 +12,25 @@ import { UserService } from './service/user.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { User } from './model/user';
+import { UserDataService } from './service/user-data.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
 
   user: User;
-  us: UserService;
+  us: UserDataService;
 
   constructor(private inj: Injector) {
-    this.us = this.inj.get(UserService);
-    this.us.userChange.subscribe(user => this.user = user);
   }
 
   intercept(
       request: HttpRequest<any>, 
       next: HttpHandler): Observable<HttpEvent<any>> {
+    if (!this.us) {
+      this.us = this.inj.get(UserDataService);
+      this.us.userChange.subscribe(user => this.user = user);
+    }
+
     if (!request.url) return next.handle(request);
     if (this.user && this.user.token && request.url.indexOf('speedrun') === -1) {
       request = request.clone({

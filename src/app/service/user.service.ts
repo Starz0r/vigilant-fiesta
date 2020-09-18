@@ -6,6 +6,7 @@ import * as jwt_decode from 'jwt-decode';
 import { tap, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { UserDataService } from './user-data.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -19,14 +20,15 @@ export class UserService {
 
   tokenWatchdog;
 
-  user: User;
-
-  public userChange: ReplaySubject<User> = new ReplaySubject(1);
+  public get userChange() {
+    return this.userDataService.userChange;
+  }
 
   constructor(
     private http: HttpClient,
     private snackBar: MatSnackBar,
-    private recaptchaV3Service: ReCaptchaV3Service
+    private recaptchaV3Service: ReCaptchaV3Service,
+    private userDataService: UserDataService
   ) { 
     //Grab the user every minute, to confirm it's still valid
     //If invalid, it will log them out automatically
@@ -37,9 +39,9 @@ export class UserService {
   }
 
   checkStatus() {
-    this.getUser();
-    if (!this.user) return;
-    const token = jwt_decode(this.user.token);
+    const user = this.getUser();
+    if (!user) return;
+    const token = jwt_decode(user.token);
 
     const exp = token.exp;
     const now = new Date().getTime()/1000;
@@ -58,7 +60,7 @@ export class UserService {
   }
 
   deauthLogout() {
-    this.logout();
+    this.userDataService.deauthLogout();
     this.snackBar.open("Logged out due to inactivity, please log in again.",null,{
       duration: 5000,
       panelClass: ['mat-toolbar', 'mat-primary']
@@ -87,37 +89,19 @@ export class UserService {
   }
 
   setUser(user: any) {
-    if (!!user) {
-      user = Object.assign(new User(), user);
-      localStorage.setItem('user',JSON.stringify(user));
-    }
-    else localStorage.removeItem('user');
-    this.user = user
-    this.userChange.next(user);
-    return user;
+    return this.userDataService.setUser(user);
   }
 
   logout(): Observable<any> {
-    return of(this.setUser(null));
+    return this.userDataService.logout();
   }
 
   private getUser(): User {
-    if (this.user !== null) this.user;
-
-    if (localStorage.getItem('user') !== null) {
-      const uj = JSON.parse(localStorage.getItem('user'));
-      this.user = Object.assign(new User(), uj);
-      return this.user;
-    }
-
-    return null;
+    return this.userDataService.getUser();
   }
 
   updateToken(token: string) {
-    if (this.user) {
-      this.user.token = token;
-      this.userChange.next(this.user);
-    }
+    this.userDataService.updateToken(token);
   }
 
   requestReset(username: string, email: string): Observable<any> {
