@@ -7,7 +7,7 @@ import { tap, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { UserDataService } from './user-data.service';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 const Environment = environment;
 

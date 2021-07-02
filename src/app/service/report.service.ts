@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Report } from '../model/report';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 import * as moment from 'moment';
 
 const Environment = environment;

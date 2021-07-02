@@ -11,7 +11,7 @@ import { map, tap } from 'rxjs/operators';
 import { GameSearchParams } from '../game-search-params';
 import { User } from '../model/user';
 import { Moment } from 'moment';
-import { environment } from '../environments/environment';
+import { environment } from '../../environments/environment';
 
 const Environment = environment;
 
