@@ -19,6 +19,9 @@ COPY . .
 
 RUN sudo npm cache clean --force
 
+ARG CAPTCHA_KEY="default"
+ARG API_URL="/api"
+
 RUN apk --no-cache add sd --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
 RUN sd "\{\{\{CAPTCHA_KEY\}\}\}" $CAPTCHA_KEY src/environments/environments.prod.ts
 RUN sd "\{\{\{API_URL\}\}\}" $API_URL src/environments/environments.prod.ts
