@@ -5,9 +5,11 @@ FROM node:12-alpine as builder
 
 COPY package.json package-lock.json ./
 
+RUN apk --no-cache add sudo
+
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
-RUN npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
+RUN sudo npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
 
 WORKDIR /ng-app
 
