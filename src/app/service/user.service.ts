@@ -7,6 +7,7 @@ import { tap, switchMap } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ReCaptchaV3Service } from 'ng-recaptcha';
 import { UserDataService } from './user-data.service';
+import { Environment } from '../environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -69,20 +70,20 @@ export class UserService {
 
   login(username: string, password: string): Observable<User> {
     return this.recaptchaV3Service.execute('login').pipe(switchMap((rcptoken) => {
-      return this.http.post<User>('/api/auth/login',{
+      return this.http.post<User>(`${Environment.apiUrl}/auth/login`,{
         username,password,rcptoken
       }).pipe(tap(user => this.setUser(user)));
     }));
   }
 
   refresh() {
-    return this.http.post<User>('/api/auth/refresh',{})
+    return this.http.post<User>(`${Environment.apiUrl}/auth/refresh`,{})
     .pipe(tap(user => this.setUser(user)));
   }
 
   register(username: string, password: string, email: string): Observable<User> {
     return this.recaptchaV3Service.execute('register').pipe(switchMap((rcptoken) => {
-        return this.http.post<User>('/api/users',{
+        return this.http.post<User>(`${Environment.apiUrl}/users`,{
         username,password,email,rcptoken
       }).pipe(tap(user => this.setUser(user)));
     }));
@@ -106,7 +107,7 @@ export class UserService {
 
   requestReset(username: string, email: string): Observable<any> {
     return this.recaptchaV3Service.execute('requestPwReset').pipe(switchMap((rcptoken) => {
-      return this.http.post<User>('/api/auth/request-reset',{
+      return this.http.post<User>(`${Environment.apiUrl}/auth/request-reset`,{
         username,email,rcptoken
       }).pipe(tap(user => this.setUser(user)));
     }));
@@ -114,17 +115,17 @@ export class UserService {
 
   resetPassword(username: string, token: string, password: string): Observable<any> {
     return this.recaptchaV3Service.execute('resetPW').pipe(switchMap((rcptoken) => {
-      return this.http.post<User>('/api/auth/reset',{
+      return this.http.post<User>(`${Environment.apiUrl}/auth/reset`,{
         username,password,token,rcptoken
       }).pipe(tap(user => this.setUser(user)));
     }));
   }
 
   getBadges(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`/api/users/${id}/badges`);
+    return this.http.get<any[]>(`${Environment.apiUrl}/users/${id}/badges`);
   }
 
   updateUser(user: User): Observable<any> {
-    return this.http.patch<any>(`/api/users/${user.id}`,user);
+    return this.http.patch<any>(`${Environment.apiUrl}/users/${user.id}`,user);
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Report } from '../model/report';
+import { Environment } from '../environments/environment';
 import * as moment from 'moment';
 
 const httpOptions = {
@@ -12,8 +13,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ReportService {
-  private gamesUrl = '/api/reports';
-
   constructor(
     private http: HttpClient,) { }
 
@@ -32,7 +31,7 @@ export class ReportService {
     }
 
     resolveReport(reportId: number, answerer: number): Observable<Report> {
-      return this.http.patch<Report>(`${this.gamesUrl}/${reportId}`, {
+      return this.http.patch<Report>(`${Environment.apiUrl}/reports/${reportId}`, {
         id: reportId,
         dateAnswered: moment(new Date()).format('YYYY-MM-DD hh:mm:ss'),
         answeredById: answerer
