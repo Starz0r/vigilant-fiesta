@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  captcha_key: process.env.CAPTCHA_KEY,
-  apiUrl: process.env.API_URL
+  captcha_key: "{{{CAPTCHA_KEY}}}",
+  apiUrl: "{{{API_URL}}}"
 };
