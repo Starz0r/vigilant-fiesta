@@ -23,8 +23,8 @@ ARG CAPTCHA_KEY="default"
 ARG API_URL="/api"
 
 RUN apk --no-cache add sd --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing
-RUN sudo sd "\{\{\{CAPTCHA_KEY\}\}\}" $CAPTCHA_KEY /ng-app/src/environments/environments.prod.ts
-RUN sudo sd "\{\{\{API_URL\}\}\}" $API_URL /ng-app/src/environments/environments.prod.ts
+RUN sudo sd "\{\{\{CAPTCHA_KEY\}\}\}" $CAPTCHA_KEY ./src/environments/environment.prod.ts
+RUN sudo sd "\{\{\{API_URL\}\}\}" $API_URL ./src/environments/environment.prod.ts
 
 RUN sudo npm run ng build -- --prod --output-path=dist
 
