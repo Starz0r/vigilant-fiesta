@@ -29,7 +29,7 @@ export class ReportService {
         if (answered !== undefined && answered !== null) {
           p = p.append("answered",answered?"1":"0");
         }
-        return this.http.get<Report[]>(this.gamesUrl, {params: p});
+        return this.http.get<Report[]>(`${Environment.apiUrl}/reports`, {params: p});
     }
 
     resolveReport(reportId: number, answerer: number): Observable<Report> {
