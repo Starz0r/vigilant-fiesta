@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
 
 # We label our stage as ‘builder’
-FROM node:12-alpine as builder
+FROM node:12.18.4-alpine3.12 as builder
 
 COPY package.json package-lock.json ./
 
@@ -9,9 +9,7 @@ RUN apk --no-cache add sudo
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
-RUN sudo npm audit fix --force
-
-RUN sudo npm install && mkdir /ng-app && mv ./node_modules ./ng-app
+RUN sudo npm ci && mkdir /ng-app && mv ./node_modules ./ng-app
 
 WORKDIR /ng-app
 
@@ -21,7 +19,7 @@ COPY . .
 
 RUN sudo npm cache clean --force
 
-RUN sudo npm run ng build -- --configuration production --output-path=dist
+RUN sudo npm run ng build -- --prod --output-path=dist
 
 
 ### STAGE 2: Setup ###
