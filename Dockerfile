@@ -21,7 +21,7 @@ COPY . .
 
 RUN sudo npm cache clean --force
 
-RUN sudo npm run ng build -- --prod --output-path=dist
+RUN sudo npm run ng build -- --configuration production --output-path=dist
 
 
 ### STAGE 2: Setup ###
