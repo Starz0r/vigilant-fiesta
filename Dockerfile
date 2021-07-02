@@ -9,6 +9,8 @@ RUN apk --no-cache add sudo
 
 ## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 
+RUN npm audit fix
+
 RUN sudo npm install && mkdir /ng-app && mv ./node_modules ./ng-app
 
 WORKDIR /ng-app
